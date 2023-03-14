@@ -1,0 +1,7 @@
+body{margin:0}
+iHTML{display:block;width:100%}
+
+#header{background:lightgreen;display:flex;justify-content:space-between;
+    padding:10px}
+#gallery{display:grid;grid-template-columns:repeat(auto-fill, 20vh);
+    place-content:center;text-align:center}
