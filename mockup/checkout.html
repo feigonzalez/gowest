@@ -1,0 +1,24 @@
+<head>
+    <link rel="stylesheet" href="style.css"/>
+    <script src="ihtml.js"></script>
+</head>
+<body>
+    <iHTML src="header_visit.html"></iHTML>
+    <div id="content">
+        <table id="checkoutTable">
+            <tr><th>Producto</th><th>Cantidad</th><th>Precio Total</th></tr>
+            <script>
+                c=document.getElementById("checkoutTable");
+                for(var i=0;i<20;i++){
+                    d=document.createElement("tr");
+                    c.appendChild(d);
+                    d.outerHTML=`<tr><td>I${i}</td><td>Q${i}</td><td>P${i}</td></tr>`
+                }
+            </script>
+        </table>
+        <div class="btn-row">
+            <a class="btn btn-gray" href="index.html">Cancelar</a>
+            <a class="btn btn-green" href="payment.html">Cancelar</a>
+        </div>
+    </div>
+</body>
