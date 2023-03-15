@@ -23,7 +23,7 @@ iHTML{display:block;width:100%}
 .formLabel{width:10em;display:inline-block}
 
 #header{background:lightgreen;display:flex;justify-content:space-between;
-    padding:10px}
+    padding:10px;align-items:center}
 #content{display:flex;flex-flow:column;padding:10px 10vh}
 #gallery{display:grid;grid-template-columns:repeat(auto-fill, 20vh);
     place-content:center;text-align:center}
