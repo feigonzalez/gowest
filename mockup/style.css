@@ -6,6 +6,16 @@ iHTML{display:block;width:100%}
     color:white;background:black;margin:0.5em}
 .btn-grey, .btn-gray{background:#777}
 .btn-green{background:#3a7}
+.modalCloseBtn{display:block;text-align:center;padding:5px;;background:green;cursor:hand}
+.modalCloseBtn:hover{background:lime}
+.modalCloseBtn:after{content:"×"}
+
+.modalBg{position:fixed;background:#0008;width:100%;height:100%;display:flex;top:0;left:0;
+    justify-content:center;align-items:center}
+.modal{background:red}
+.modalContent{padding:20px}
+
+.formLabel{width:10em;display:inline-block}
 
 #header{background:lightgreen;display:flex;justify-content:space-between;
     padding:10px}
