@@ -1,3 +1,5 @@
+*{font-family:cursive}
+
 body{margin:0}
 iHTML{display:block;width:100%}
 
@@ -6,14 +8,17 @@ iHTML{display:block;width:100%}
     color:white;background:black;margin:0.5em}
 .btn-grey, .btn-gray{background:#777}
 .btn-green{background:#3a7}
-.modalCloseBtn{display:block;text-align:center;padding:5px;;background:green;cursor:hand}
+.modalCloseBtn{display:block;text-align:center;padding:5px;;background:green;cursor:hand;
+    margin:0}
 .modalCloseBtn:hover{background:lime}
 .modalCloseBtn:after{content:"×"}
 
 .modalBg{position:fixed;background:#0008;width:100%;height:100%;display:flex;top:0;left:0;
     justify-content:center;align-items:center}
-.modal{background:red}
+.modal{background:#EEE;border:solid 1px #555}
 .modalContent{padding:20px}
+
+.right{float:right}
 
 .formLabel{width:10em;display:inline-block}
 
