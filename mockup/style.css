@@ -2,6 +2,7 @@
 
 body{margin:0}
 iHTML{display:block;width:100%}
+#companyName{font-variant:small-caps;font-weight:bold;}
 
 .btn-row{display:flex;justify-content:center}
 .btn{padding:0.5em;text-align:center;display:inline-block;text-decoration:none;
