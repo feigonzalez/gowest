@@ -1,22 +1,10 @@
 <div id="gallery">
-    <div class="galleryItem">cel1l</div>
-    <div class="galleryItem">cell</div>
-    <div class="galleryItem">cell</div>
-    <div class="galleryItem">cell</div>
-    <div class="galleryItem">cell</div>
-    <div class="galleryItem">cell</div>
-    <div class="galleryItem">cell</div>
-    <div class="galleryItem">cell</div>
-    <div class="galleryItem">cell</div>
-    <div class="galleryItem">cell</div>
-    <div class="galleryItem">casasell</div>
-    <div class="galleryItem">cell</div>
-    <div class="galleryItem">cell</div>
-    <div class="galleryItem">cell</div>
-    <div class="galleryItem">cell</div>
-    <div class="galleryItem">cell</div>
-    <div class="galleryItem">cell</div>
-    <div class="galleryItem">cell</div>
-    <div class="galleryItem">cell</div>
-    <div class="galleryItem">cell</div>
+    <script>
+        g=document.getElementById("gallery")
+        for(var i=0;i<20;i++){
+            d=document.createElement("div");
+            g.appendChild(d)
+            d.outerHTML="<div class='galleryItem'>Item "+(i+1)+"</div>"
+        }
+    </script>
 </div>
