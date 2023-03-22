@@ -14,6 +14,7 @@ async function loadAll(){
     return;
 }
 window.addEventListener("load",()=>{
+    console.log("ihtml.js engaged")
     loadAll().then(done =>{
         for(s of document.querySelectorAll("ihtml script")){
             eval(s.innerHTML)
