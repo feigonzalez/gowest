@@ -7,6 +7,7 @@
 */
 async function loadAll(){
     for(var toI of document.getElementsByTagName("IHTML")){
+        if(toI.getAttribute("src")!=null)
         await fetch(toI.getAttribute("src"))
             .then(response => response.text())
             .then(data => toI.innerHTML=data);
@@ -26,7 +27,7 @@ async function loadFromElement(e){
         })
 }
 window.addEventListener("load",()=>{
-    console.log("ihtml.js engaged")
+    //console.log("ihtml.js engaged")
     loadAll().then(done =>{
         for(s of document.querySelectorAll("ihtml script")){
             eval(s.innerHTML)
