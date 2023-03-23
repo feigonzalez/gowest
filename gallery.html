@@ -2,8 +2,8 @@
     <script>
         var itemsCount=20;
         var galleryItemContentHead=
-            "<img class='galleryItemImage mx-auto d-block' src='none'><div class='galleryItemLabel'>";
-        var galleryItemContentFoot="</div>";
+            "<a class='galleryItem' href='item.html?id=0'><img class='galleryItemImage mx-auto d-block' src='img/placeholder.png'><div class='galleryItemLabel'>";
+        var galleryItemContentFoot="</div></a>";
         g=document.getElementById("gallery")
         for(var i=0;i<Math.ceil(itemsCount/4);i++){
             r=document.createElement("div");

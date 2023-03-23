@@ -1,10 +1,26 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-success">
+    <a class="navbar-brand" href="#"><img class="navbar-brand-image" src="logo.png"> GoWest</a>
+    <ul id="navbarClient" class="navbar-nav navbar-nav-right">
+        <li class="nav-item">
+          item 1
+          <!--button class="btn btn-success" type="button" data-toggle="modal" data-target="#signupModal">cliente</button-->
+        </li>
+        <li class="nav-item">
+          item 2
+          <!--button class="btn btn-success" type="button" data-toggle="modal" data-target="#loginModal">Ingresar</button-->
+        </li>
+      </ul>
+      <ul id="navbarVisit" class="navbar-nav navbar-nav-right">
+        <button class="btn btn-success" data-toggle="modal" data-target="#signupModal">Registrarse</button>
+        <button  class="btn btn-success" data-toggle="modal" data-target="#loginModal">Ingresar</button>
+    </ul>
+</nav>
 <script>
     /*Determines which navbar to load depending on whether a "u" parameter (for "user") exists in the url*/
     var url = new URL(window.location.href);
     var urlParams = url.searchParams;
-    nav=document.getElementById("navbarImport");
-    if(urlParams.get("u")!=null) nav.setAttribute("src","navbarClient.html");
-    else nav.setAttribute("src","navbarVisit.html");
-    loadFromElement(nav)
+    var navToRemove="";
+    if(urlParams.get("u")!=null) navToRemove="navbarVisit";
+    else navToRemove="navbarClient";
+    document.getElementById(navToRemove).remove();
 </script>
-<ihtml id="navbarImport"></ihtml>

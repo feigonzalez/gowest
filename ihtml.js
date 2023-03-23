@@ -32,5 +32,10 @@ window.addEventListener("load",()=>{
         for(s of document.querySelectorAll("ihtml script")){
             eval(s.innerHTML)
         }
+        /*
+        for(i of document.querySelectorAll("ihtml")){
+            i.outerHTML=i.innerHTML;
+        }
+        */
     })
 })
