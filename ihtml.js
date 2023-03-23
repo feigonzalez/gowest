@@ -13,6 +13,18 @@ async function loadAll(){
     }
     return;
 }
+
+async function loadFromElement(e){
+    e.dataset["ihtmlLoading"]=true;
+    await fetch(e.getAttribute("src"))
+        .then(response => response.text())
+        .then(data => e.innerHTML=data)
+        .then(done => {
+            for(s of document.querySelectorAll("ihtml[data-ihtmlLoading=true] script")){
+                eval(s.innerHTML)
+            }
+        })
+}
 window.addEventListener("load",()=>{
     console.log("ihtml.js engaged")
     loadAll().then(done =>{

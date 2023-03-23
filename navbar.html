@@ -1,0 +1,10 @@
+<script>
+    /*Determines which navbar to load depending on whether a "u" parameter (for "user") exists in the url*/
+    var url = new URL(window.location.href);
+    var urlParams = url.searchParams;
+    nav=document.getElementById("navbarImport");
+    if(urlParams.get("u")!=null) nav.setAttribute("src","navbarClient.html");
+    else nav.setAttribute("src","navbarVisit.html");
+    loadFromElement(nav)
+</script>
+<ihtml id="navbarImport"></ihtml>

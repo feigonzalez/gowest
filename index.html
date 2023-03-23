@@ -14,15 +14,7 @@
     <script src="ihtml.js" defer></script>
 </head>
 <body>
-    <ihtml id="navbarImport"></ihtml>
-    <script>
-        /*Determines which navbar to load depending on whether a "u" parameter (for "user") exists in the url*/
-        var url = new URL(window.location.href);
-        var urlParams = url.searchParams;
-        nav=document.getElementById("navbarImport");
-        if(urlParams.get("u")!=null) nav.setAttribute("src","navbarClient.html");
-        else nav.setAttribute("src","navbarVisit.html");
-    </script>
+    <ihtml src="navbar.html"></ihtml>
     <ihtml src="gallery.html"></ihtml>
     <ihtml src="loginModal.html"></ihtml>
     <ihtml src="signupModal.html"></ihtml>
