@@ -7,11 +7,11 @@
 [ ] index (as Admin)
  [>] .navbar
  [ ] .sidebar
-  [ ] Products Button >
-  [ ] Categories Button >
-  [ ] Clients Button >
-  [ ] Sales Button >
-  [ ] Administators Button >
+  [ ] Products Button > adminSettings/products
+  [ ] Categories Button > adminSettings/categories
+  [ ] Clients Button > adminSettings/clients
+  [ ] Sales Button > adminSettings/sales
+  [ ] Administators Button > adminSettings/administrators
 
 Navbar (as Visit)
  [X] Click Logo > index
@@ -31,13 +31,22 @@ Navbar (as Admin)
   [ ] SignOff Button > index (as Visit)
 
 [ ] category
- [ ] Navbar
+ [>] Navbar
  [ ] Gallery
   [ ] Item Links (only items from the category) > item
 
 [ ] product
- [ ] Navbar
+ [>] Navbar
  [ ] Item Image
  [ ] Item Gallery
  [ ] Item Description
  [ ] AddToCart
+ [ ] Cart Button > cart
+
+[ ] adminSettings/products
+ [ ] List of Products
+  [ ] Product
+   [ ] Edit data
+   [ ] Save changes
+  [ ] Save all changes
+  [ ] Add Product
