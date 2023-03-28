@@ -1,21 +1,81 @@
-<div id="gallery" class="container">
+<div id="gallery" class="container-fluid">
     <script>
-        var itemsCount=20;
-        var galleryItemContentHead=
-            "<a class='galleryItem' href='item.html?id=0'><img class='galleryItemImage mx-auto d-block' src='img/placeholder.png'><div class='galleryItemLabel'>";
-        var galleryItemContentFoot="</div></a>";
-        g=document.getElementById("gallery")
-        for(var i=0;i<Math.ceil(itemsCount/4);i++){
-            r=document.createElement("div");
-            cs="";
-            for(var j=0;j<4;j++){
-                index=i*4+j;
-                cs+="<div class='col-sm-3'>"+(index>=itemsCount?"":
-                    (galleryItemContentHead+"Item "+(index+1)+galleryItemContentFoot+
-                    "</div>"));
+        categoryContents={}
+        function parseCategoryContentsJson(json){
+            var prevCat="";
+            var prevItm="";
+            var template=
+                "<a class='galleryItem' href='item.html?id={ID}'>"+
+                "<img class='galleryItemImage mx-auto d-block' src='img/placeholder.png'>"+
+                "<div class='galleryItemLabel'>{CONTENT}"+
+                    "</div></a>";
+            g=document.getElementById("gallery")
+            for(var c of json["categories"]){
+                cl=c["items"].length //category length
+                ct=document.createElement("div"); //category title
+                g.appendChild(ct)
+                ct.outerHTML="<div class='row bg-gowest categoryTitle'>"+c["name"]+"</div>";
+                for(var i=0;i<Math.ceil(cl/4);i++){
+                    r=document.createElement("div");
+                    cs="";
+                    for(var j=0;j<4;j++){
+                        index=i*4+j;
+                        content="";
+                        if(index<cl){
+                            item=c["items"][index]
+                            content=template;
+                            content=content.replaceAll("{ID}",item["name"])
+                            content=content.replaceAll("{CONTENT}",item["name"])
+                        }
+                        cs+="<div class='col-sm-3'>"+content+"</div>";
+                    }
+                    g.appendChild(r)
+                    r.outerHTML="<div class='row galleryRow'>"+cs+"</div>";
+                }
             }
-            g.appendChild(r)
-            r.outerHTML="<div class='row'>"+cs+"</div>";
         }
+        function parseCategoryContents(text){
+            var prevCat="";
+            var prevItm="";
+            for(line of text.split('\n')){
+                data=line.split(":");
+                switch(data[0]){
+                    case "C":
+                        categoryContents[data[1]]=[]
+                        prevCat=data[1];
+                        break;
+                    case "I":
+                        categoryContents[prevCat].push(data[1])
+                        break;
+                    default:
+                        console.log("PARSE?["+line+"]");
+                        break;
+                }
+            }
+            var galleryItemContentHead=
+                "<a class='galleryItem' href='item.html?id=0'><img class='galleryItemImage mx-auto d-block' src='img/placeholder.png'><div class='galleryItemLabel'>";
+            var galleryItemContentFoot="</div></a>";
+            g=document.getElementById("gallery")
+            for(var c in categoryContents){
+                cl=categoryContents[c].length //category length
+                ct=document.createElement("div"); //category title
+                g.appendChild(ct)
+                ct.outerHTML="<div class='row categoryTitle'>"+c+"</div>";
+                for(var i=0;i<Math.ceil(cl/4);i++){
+                    r=document.createElement("div");
+                    cs="";
+                    for(var j=0;j<4;j++){
+                        index=i*4+j;
+                        cs+="<div class='col-sm-3'>"+(index>=cl?"":
+                            (galleryItemContentHead+categoryContents[c][index]+galleryItemContentFoot+
+                            "</div>"));
+                    }
+                    g.appendChild(r)
+                    r.outerHTML="<div class='row'>"+cs+"</div>";
+                }
+            }
+        }
+        //fetch("categoryContents.txt").then(response=>response.text()).then(text=>parseCategoryContents(text))
+        fetch("categoryContents.json").then(response=>response.json()).then(text=>parseCategoryContentsJson(text))
     </script>
 </div>

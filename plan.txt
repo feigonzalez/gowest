@@ -1,0 +1,43 @@
+ [ ] index (as Visit/Client):
+  [>] .navbar
+ [X] Gallery
+  [X] Categories
+   [X] Title > category
+   [X] Item Links > item
+[ ] index (as Admin)
+ [>] .navbar
+ [ ] .sidebar
+  [ ] Products Button >
+  [ ] Categories Button >
+  [ ] Clients Button >
+  [ ] Sales Button >
+  [ ] Administators Button >
+
+Navbar (as Visit)
+ [X] Click Logo > index
+ [X] Login Button > .modal (login)
+  [X] Cancel / Close > close .modal
+  [X] Login > index (as Client/Admin)
+ [X] SignUp Button > .modal (signup)
+  [X] Cancel / Close > close .modal
+  [X] SignUp> index (as Client)
+Navbar (as Client)
+ [X] Click Logo > index
+ [-] Cart Button > cart
+ [-] Account Button > account
+ [ ] SignOff Button > index (as Visit)
+Navbar (as Admin)
+  [ ] Click Logo > index
+  [ ] SignOff Button > index (as Visit)
+
+[ ] category
+ [ ] Navbar
+ [ ] Gallery
+  [ ] Item Links (only items from the category) > item
+
+[ ] product
+ [ ] Navbar
+ [ ] Item Image
+ [ ] Item Gallery
+ [ ] Item Description
+ [ ] AddToCart

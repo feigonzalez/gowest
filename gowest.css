@@ -1,7 +1,16 @@
+/*.btn-success{background-color:#7b7}*/
+
+.bg-gowest{background-color:#7b7}
+.bg-gowest-dark{background-color:#484}
+/*.bg-gowest .btn{background-color:#373;color:#fff}*/
+
 .navbar-brand-image{width:40px}
 .navbar-nav-right{margin-left:auto}
 
-#gallery{margin-top:40px}
 .galleryItem{width:inherit}
 .galleryItemImage{width:inherit;max-width:320px}
 .galleryItemLabel{text-align:center;margin:20px auto}
+.galleryRow{padding-left:30px;padding-right:40px}
+
+.categoryTitle{color:#fff;font-size:20px;
+    padding:20px;margin-bottom:20px}

@@ -1,0 +1,35 @@
+{
+    "categories":[
+    {   "name":"Categoría 1",
+        "items":[
+            {"name":"Item 11"},
+            {"name":"Item 12"},
+            {"name":"Item 13"},
+            {"name":"Item 14"},
+            {"name":"Item 15"}
+        ]},
+    {   "name":"Categoría 2",
+        "items":[
+            {"name":"Item 21"},
+            {"name":"Item 22"},
+            {"name":"Item 23"},
+            {"name":"Item 24"},
+            {"name":"Item 25"}
+        ]},
+    {   "name":"Categoría 3",
+        "items":[
+            {"name":"Item 31"},
+            {"name":"Item 32"},
+            {"name":"Item 33"},
+            {"name":"Item 34"},
+            {"name":"Item 35"}
+        ]},
+    {   "name":"Categoría 4",
+        "items":[
+            {"name":"Item 41"},
+            {"name":"Item 42"},
+            {"name":"Item 43"},
+            {"name":"Item 44"},
+            {"name":"Item 45"}
+        ]}
+    ]}
