@@ -1,4 +1,5 @@
 /*.btn-success{background-color:#7b7}*/
+.hidden{display:none}
 
 .bg-gowest{background-color:#7b7}
 .bg-gowest-dark{background-color:#484}
@@ -6,11 +7,17 @@
 
 .navbar-brand-image{width:40px}
 .navbar-nav-right{margin-left:auto}
+.navbar button{margin:0 5px}
+.navbar a{margin:0 5px}
 
-.galleryItem{width:inherit}
+.galleryItem{width:inherit;text-decoration:none}
 .galleryItemImage{width:inherit;max-width:320px}
 .galleryItemLabel{text-align:center;margin:20px auto}
 .galleryRow{padding-left:30px;padding-right:40px}
 
 .categoryTitle{color:#fff;font-size:20px;
     padding:20px;margin-bottom:20px}
+
+.icon{display:inline-block;width:1em;height:1em;
+    vertical-align:middle;}
+.icon-signoff{background-image:url("icon_signoff.png")}

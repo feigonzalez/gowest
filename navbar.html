@@ -1,24 +1,41 @@
 <nav id="topNavbar" class="navbar navbar-expand-sm navbar-dark bg-gowest-dark">
     <a class="navbar-brand" href="index.html"><img class="navbar-brand-image" src="logo.png"> GoWest</a>
-    <ul id="navbarClient" class="navbar-nav navbar-nav-right">
+    <ul id="navbarClient" class="navbar-nav navbar-nav-right hidden">
         <li class="nav-item">
           <a class="btn btn-success" href="cart.html" type="button">Carrito</a>
         </li>
         <li class="nav-item">
           <a class="btn btn-success" href="account.html" type="button">Cuenta</a>
         </li>
-      </ul>
-      <ul id="navbarVisit" class="navbar-nav navbar-nav-right">
+        <li class="nav-item">
+          <a class="btn btn-success" href="index.html" type="button">
+            <span class="icon icon-signoff"></span>
+          </a>
+        </li>
+    </ul>
+    <ul id="navbarVisit" class="navbar-nav navbar-nav-right hidden">
         <button class="btn btn-success" data-toggle="modal" data-target="#signupModal">Registrarse</button>
-        <button  class="btn btn-success" data-toggle="modal" data-target="#loginModal">Ingresar</button>
+        <button class="btn btn-success" data-toggle="modal" data-target="#loginModal">Ingresar</button>
+    </ul>
+    <ul id="navbarAdmin" class="navbar-nav navbar-nav-right hidden">
+      <li class="nav-item">
+        <a class="btn btn-success" href="index.html" type="button">
+          <span class="icon icon-signoff"></span>
+        </a>
+      </li>
     </ul>
 </nav>
+<ihtml src="loginModal.html"></ihtml>
+<ihtml src="signupModal.html"></ihtml>
 <script>
     /*Determines which navbar to load depending on whether a "u" parameter (for "user") exists in the url*/
     var url = new URL(window.location.href);
     var urlParams = url.searchParams;
-    var navToRemove="";
-    if(urlParams.get("u")!=null) navToRemove="navbarVisit";
-    else navToRemove="navbarClient";
-    document.getElementById(navToRemove).remove();
+    var navToShow="";
+    if(urlParams.get("u")!=null){
+      if(urlParams.get("u")=="admin@admin") navToShow="navbarAdmin";
+      else navToShow="navbarClient"
+    }
+    else navToShow="navbarVisit";
+    document.getElementById(navToShow).classList.remove("hidden");
 </script>

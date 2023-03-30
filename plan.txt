@@ -6,12 +6,14 @@
    [X] Item Links > item
 [ ] index (as Admin)
  [>] .navbar
- [ ] .sidebar
-  [ ] Products Button > adminSettings/products
-  [ ] Categories Button > adminSettings/categories
-  [ ] Clients Button > adminSettings/clients
-  [ ] Sales Button > adminSettings/sales
-  [ ] Administators Button > adminSettings/administrators
+ [>] .sidebarAdmin
+
+[ ] SidebarAdmin
+ [ ] Products Button > adminSettings/products
+ [ ] Categories Button > adminSettings/categories
+ [ ] Clients Button > adminSettings/clients
+ [ ] Sales Button > adminSettings/sales
+ [ ] Administators Button > adminSettings/administrators
 
 Navbar (as Visit)
  [X] Click Logo > index
@@ -80,5 +82,24 @@ Navbar (as Admin)
   [ ] Add Administrator
 
 [ ] cart
+ [>] .navbar
+  [ ] List of Items
+   [ ] Item
+    [ ] Name
+    [ ] Price
+    [ ] Quantity
+    [ ] Change Quantity Buttons
+    [ ] Remove Button
+   [ ] Total
+  [ ] Checkout Button > checkout
 
 [ ] account
+ [>] .navbar
+ [>] .sidebarClient
+
+[ ] checkout
+
+[ ] SidebarClient
+ [ ] account/preferences
+ [ ] account/sales
+ [ ] account/security (?)

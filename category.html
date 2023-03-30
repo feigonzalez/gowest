@@ -15,6 +15,18 @@
 </head>
 <body>
     <ihtml src="navbar.html"></ihtml>
-    <ihtml src="gallery.html"></ihtml>
+    <div id="err_noCat" class="error hidden">
+        ERROR: No se ha especificado categoría
+    </div>
+    <div id="category" class="container-fluid categoryGallery">
+        <script>
+            var url = new URL(window.location.href);
+            var urlParams = url.searchParams;
+            var category=urlParams.get("c")
+            if(!category)get("err_noCat").classList.remove("hidden")
+            loadCategoryGalleryInto(category,get("category"))
+        </script>
+    </div>
 </body>
+
 </html>
