@@ -35,8 +35,9 @@ Navbar (as Admin)
  [ ] Gallery
   [ ] Item Links (only items from the category) > item
 
-[ ] product
+[ ] item
  [>] Navbar
+ [ ] Breadcrumbs
  [ ] Item Image
  [ ] Item Gallery
  [ ] Item Description
@@ -50,3 +51,34 @@ Navbar (as Admin)
    [ ] Save changes
   [ ] Save all changes
   [ ] Add Product
+
+[ ] adminSettings/categories
+ [ ] List of Categories
+  [ ] Category
+   [ ] Edit data
+   [ ] Save changes
+  [ ] Save all changes
+  [ ] Add category
+
+[ ] adminSettings/clients
+ [ ] List of Clients
+  [ ] Client
+   [ ] Edit data
+   [ ] Save changes
+  [ ] Save all changes
+
+[ ] adminSettings/sales
+ [ ] List of Sales
+  [ ] Sales
+
+[ ] adminSettings/administrators
+ [ ] List of Administrators
+  [ ] Administrators
+   [ ] Edit data
+   [ ] Save changes
+  [ ] Save all changes
+  [ ] Add Administrator
+
+[ ] cart
+
+[ ] account
