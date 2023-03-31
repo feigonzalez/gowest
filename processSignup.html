@@ -1,0 +1,9 @@
+<script>
+	var url = new URL(window.location.href);
+	var urlParams = url.searchParams;
+	if(urlParams.get("user"))window.location.replace(
+		"index.html?"+
+		"u="+urlParams.get("user")+
+		"&n="+urlParams.get("name"))
+	else history.back();
+</script>

@@ -1,32 +1,44 @@
 <nav id="topNavbar" class="navbar navbar-expand-sm navbar-dark bg-gowest-dark">
-    <a class="navbar-brand" href="index.html"><img class="navbar-brand-image" src="logo.png"> GoWest</a>
-    <ul id="navbarClient" class="navbar-nav navbar-nav-right hidden">
+    <a class="navbar-brand" href="index.html">
+		<img class="navbar-brand-image" src="img/logo.png">
+		<span class="navbar-brand-name">GoWest</span>
+	</a>
+    <ul id="navbarVisit" class="navbar-nav navbar-nav-right hidden">
         <li class="nav-item">
-          <a class="btn btn-success" href="cart.html" type="button">Carrito</a>
+          <a class="btn btn-gowest" href="signup.html" type="button">Registrarse</a>
+        </li>
+		<li class="nav-item">
+			<button class="btn btn-gowest" data-toggle="modal" data-target="#loginModal">Ingresar</button>
+		</li>
+    </ul>
+	<ul id="navbarClient" class="navbar-nav navbar-nav-right hidden">
+		<li class="nav-item">
+			<span class="userWelcome"></span>
+		</li>
+        <li class="nav-item">
+          <a class="btn btn-gowest" id="navbarCartBtn" href="cart.html" type="button">Carrito</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-success" href="account.html" type="button">Cuenta</a>
+          <a class="btn btn-gowest" href="account.html" type="button">Cuenta</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-success" href="index.html" type="button">
+          <a class="btn btn-gowest" href="index.html" type="button">
             <span class="icon icon-signoff"></span>
           </a>
         </li>
     </ul>
-    <ul id="navbarVisit" class="navbar-nav navbar-nav-right hidden">
-        <button class="btn btn-success" data-toggle="modal" data-target="#signupModal">Registrarse</button>
-        <button class="btn btn-success" data-toggle="modal" data-target="#loginModal">Ingresar</button>
-    </ul>
     <ul id="navbarAdmin" class="navbar-nav navbar-nav-right hidden">
-      <li class="nav-item">
-        <a class="btn btn-success" href="index.html" type="button">
-          <span class="icon icon-signoff"></span>
-        </a>
-      </li>
-    </ul>
+		<li class="nav-item">
+			<span class="userWelcome"></span>
+		</li>
+		<li class="nav-item">
+			<a class="btn btn-gowest" href="index.html" type="button">
+				<span class="icon icon-signoff"></span>
+			</a>
+		</li>
+	</ul>
 </nav>
 <ihtml src="loginModal.html"></ihtml>
-<ihtml src="signupModal.html"></ihtml>
 <script>
     /*Determines which navbar to load depending on whether a "u" parameter (for "user") exists in the url*/
     var url = new URL(window.location.href);
@@ -38,4 +50,8 @@
     }
     else navToShow="navbarVisit";
     document.getElementById(navToShow).classList.remove("hidden");
+	if(urlParams.get("n"))
+		for(var welcome of document.getElementsByClassName("userWelcome")){
+			welcome.innerText=urlParams.get("n");
+		}
 </script>
