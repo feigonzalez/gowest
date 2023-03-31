@@ -12,18 +12,20 @@ function loadCategoryGalleryInto(cat,e,link){
 }
 
 function parseCategoryContentsJson(json,cat="",link=false){
+    var c=json["categories"][cat];
+    var cl=c.length //category length
     r="<div class='row bg-gowest categoryTitle'>"+
         (link?"<a href='category.html?c="+cat+"'>":"")+
         cat+
-        (link?"</a>":"")+"</div>";
+        (link?" <span class='productCount'>Ver "+cl+" productos</span></a>":"")+"</div>";
     var template=
-        "<a class='galleryItem' href='item.html?id={ID}'>"+
-        "<img class='galleryItemImage mx-auto d-block' src='img/placeholder.png'>"+
-        "<div class='galleryItemLabel'>{CONTENT}"+
-            "</div></a>";
-    var c=json["categories"][cat];
-    var cl=c.length //category length
-    for(var i=0;i<Math.ceil(cl/4);i++){
+        "<div class='galleryItem'>"+
+		"<a class='galleryItemLink' href='product.html?id={ID}'>"+
+        "<img class='galleryItemImage mx-auto d-block' src='img/products/{ID}.png'>"+
+        "<div class='galleryItemLabel'>{CONTENT}</div>"+
+        "<div class='galleryItemPrice'>{PRICE}</div></a>"+
+		"<button class='btn btn-success galleryCartBtn'>Añadir al carrito</button></div>";
+    for(var i=0;i<(link?1:Math.ceil(cl/4));i++){
         r+="<div class='row galleryRow'>";
         for(var j=0;j<4;j++){
             index=i*4+j;
@@ -33,6 +35,7 @@ function parseCategoryContentsJson(json,cat="",link=false){
                 content=template;
                 content=content.replaceAll("{ID}",item["name"])
                 content=content.replaceAll("{CONTENT}",item["name"])
+                content=content.replaceAll("{PRICE}","$"+item["price"])
             }
             r+="<div class='col-sm-3'>"+content+"</div>";
         }

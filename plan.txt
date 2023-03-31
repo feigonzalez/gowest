@@ -20,22 +20,33 @@ Navbar (as Visit)
  [X] Login Button > .modal (login)
   [X] Cancel / Close > close .modal
   [X] Login > index (as Client/Admin)
- [X] SignUp Button > .modal (signup)
-  [X] Cancel / Close > close .modal
-  [X] SignUp> index (as Client)
+ [X] SignUp Button > signup
 Navbar (as Client)
  [X] Click Logo > index
  [-] Cart Button > cart
  [-] Account Button > account
- [ ] SignOff Button > index (as Visit)
+ [X] SignOff Button > index (as Visit)
 Navbar (as Admin)
-  [ ] Click Logo > index
-  [ ] SignOff Button > index (as Visit)
+  [X] Click Logo > index
+  [X] SignOff Button > index (as Visit)
+
+[X] signup
+ [X] .navbar (logo only)
+ [X] Register Form
+  [X] Name Input
+  [X] UTR Input
+  [X] Email Input
+  [X] Phone Input
+  [X] Password Input
+  [X] Password Confirm Input
+  [X] Address Input
+  [X] Security Question Input
+  [X] Security Answer Input
 
 [ ] category
  [>] Navbar
- [ ] Gallery
-  [ ] Item Links (only items from the category) > item
+ [X] Gallery
+  [X] Item Links (only items from the category) > item
 
 [ ] item
  [>] Navbar
@@ -98,6 +109,18 @@ Navbar (as Admin)
  [>] .sidebarClient
 
 [ ] checkout
+ [>] .navbar
+ [ ] Delivery Details
+  [ ] Address Selector
+ [ ] Product List
+  [ ] Product
+   [ ] Name
+   [ ] Price
+   [ ] Quantity Spinner
+   [ ] Subtotal
+   [ ] Remove Button
+  [ ] Total
+  [ ] Pay
 
 [ ] SidebarClient
  [ ] account/preferences
