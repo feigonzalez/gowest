@@ -16,18 +16,58 @@
 </head>
 <body>
     <ihtml src="navbar.html"></ihtml>
-	<div class="container-fluid" id="bradcrumbsHolder">
-		Collares / Collar Rojo (this text has been hardcoded. It's in product.html L20)
+	<div class="container-fluid bg-gowest" id="bradcrumbsHolder">
+		<div class="breadcrumbs">
+			<a id="breadcrumbCategory"></a>
+			/
+			<a id="breadcrumbProduct"></a>
+		</div>
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-6">
-				col1
+			<div class="col-sm-5">
+				<div id="productImageHolder">
+					<img id="productImage"></img>
+				</div>
 			</div>
-			<div class="col-6">
-				col2
+			<div class="col-sm-7">
+				<div id="productDataHolder">
+					<div id="productName"></div>
+					<div id="productPrice"></div>
+					<div id="productDescription"></div>
+					<div id="saleControls">
+						<form class="form-inline">
+							<div class="row">
+								<input class="form-control mr-2 col-3" type="number" value=0/>
+								<button class="btn btn-success" id="addToCartBtn">Añadir al Carrito</button>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+	<script>
+		var url = new URL(window.location.href);
+		var urlParams = url.searchParams;
+		var productId=urlParams.get("p")
+		if(productId)
+			selectAllWhere("products",(i)=>{return i["code"]==productId})
+				.then(d=>loadProductData(d[0]))
+		async function loadProductData(data){
+			cat = (await selectAllWhere("categories",(i)=>{return i["code"]==data["category"]}))[0]["name"]
+			get("breadcrumbCategory").innerText=cat;
+			get("breadcrumbCategory").setAttribute("href","category.html?c="+data["category"])
+			get("breadcrumbProduct").innerText=data["name"];
+			get("breadcrumbProduct").setAttribute("href","product.html?p="+data["code"])
+			get("productImage").setAttribute("src","img/products/"+data["code"]+".png");
+			get("productName").innerText=data["name"];
+			get("productPrice").innerText="$"+data["price"];
+			var desc=""
+			for(l of data["description"]) desc+=l;
+			get("productDescription").innerHTML=desc;
+			
+		}
+	</script>
 </body>
 </html>

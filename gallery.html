@@ -1,12 +1,12 @@
 <div id="gallery" class="container-fluid">
     <script>
-        getCategories().then(cs=>populateGallery(cs));
+        selectAllFrom("categories").then(cs=>populateGallery(cs));
         function populateGallery(cs){
             var g=get("gallery");
             for(c of cs){
                 var d=document.createElement("div");
                 g.appendChild(d);
-                loadCategoryGalleryInto(c,d,true);
+                loadCategoryGalleryInto(c["code"],d,true);
             }
         }
     </script>

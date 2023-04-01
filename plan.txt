@@ -50,12 +50,12 @@ Navbar (as Admin)
 
 [ ] item
  [>] Navbar
- [ ] Breadcrumbs
- [ ] Item Image
- [ ] Item Gallery
- [ ] Item Description
- [ ] AddToCart
- [ ] Cart Button > cart
+ [X] Breadcrumbs
+ [X] Item Image
+ [?] Item Gallery
+ [X] Item Description
+ [X] AddToCart
+ [?] Cart Button > cart
 
 [ ] adminSettings/products
  [ ] List of Products

@@ -1,5 +1,3 @@
-.productCount{font-size:0.7em;font-style:italic;margin-left:1em}
-
 /*.btn-success{background-color:#7b7}*/
 .hidden{display:none}
 
@@ -11,6 +9,14 @@
 .btn-gowest:hover{background-color:#382;color:#fff}
 .btn-gowest:focus{border-color:#271;box-shadow:0 0 0 0.2rem #2718}
 
+.icon{width:1.5em;height:1.5em;}
+.btn .icon{display:block;margin:auto}
+.icon-signoff{background-image:url("img/icon_signoff.png");background-size:cover}
+
+p.disclaimer{font-size:0.7em;font-style:italic;color:#888}
+p.disclaimer:before{content:"("}
+p.disclaimer:after{content:")"}
+
 li.nav-item{display:flex;align-items:center}
 .navbar-brand{display:flex;align-items:center;}
 .navbar-brand-image{width:40px}
@@ -21,7 +27,10 @@ li.nav-item{display:flex;align-items:center}
 .userWelcome{display:flex;align-items:center;margin:0 5px}
 li.nav-item .btn{width:-moz-available}
 
-.galleryItem{margin:20px 0;text-align:center}
+.breadcrumbs{padding:10px}
+.breadcrumbs a{color:#fff}
+
+.galleryItem{margin:20px 0;text-align:center;width:inherit}
 .galleryItemLink{width:inherit;text-decoration:none;display:block;
 	color:#111}
 .galleryItemLink:hover{text-decoration:none;color:#111}
@@ -33,6 +42,11 @@ li.nav-item .btn{width:-moz-available}
 	padding:20px;margin-bottom:20px}
 .categoryTitle a{color:#fff}
 
-.icon{width:1.5em;height:1.5em;}
-.btn .icon{display:block;margin:auto}
-.icon-signoff{background-image:url("img/icon_signoff.png");background-size:cover}
+.productCount{font-size:0.7em;font-style:italic;margin-left:1em}
+
+#productImageHolder{margin:20px;padding:20px;border:solid 1px #AF8;
+	border-radius:10px;}
+#productImage{width:100%}
+#productDataHolder{margin:20px}
+#productName{font-size:2em;font-weight:bold;}
+#productDescription{margin-top:10px;border-top:solid 1px #AF8}
