@@ -1,0 +1,27 @@
+<table class="table table-hover align-middle">
+    <thead>
+      <tr>
+        <th>Imagen</th></th><th>ID</th><th>Nombre</th><th>Precio</th><th>Categoría</th><th></th>
+      </tr>
+    </thead>
+    <tbody id="tableProductsBody">
+        <script>
+            selectAllFrom("products").then(r=>{populateTable(r)});
+            function populateTable(data){
+                var tBody=get("tableProductsBody")
+                for(datum of data){
+                    var row=document.createElement("tr");
+                    tBody.appendChild(row)
+                    row.outerHTML="<tr>"+
+                        `<td><img class='tableImage' src='img/products/${datum["code"]}.png'></td>`+
+                        `<td>${datum["code"]}</td>`+
+                        `<td>${datum["name"]}</td>`+
+                        `<td>${datum["price"]}</td>`+
+                        `<td>${datum["category"]}</td>`+
+                        `<td>[S]</td>`+
+                        `</tr>`;
+                }
+            }
+        </script>
+    </tbody>
+  </table>

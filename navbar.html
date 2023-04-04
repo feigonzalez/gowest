@@ -1,5 +1,5 @@
 <nav id="topNavbar" class="navbar navbar-expand-sm navbar-dark bg-gowest-dark">
-    <a class="navbar-brand" href="index.html">
+    <a id="navbar-brand" class="navbar-brand" href="index.html">
 		<img class="navbar-brand-image" src="img/logo.png">
 		<span class="navbar-brand-name">GoWest</span>
 	</a>
@@ -43,18 +43,29 @@
 </nav>
 <ihtml src="loginModal.html"></ihtml>
 <script>
-    /*Determines which navbar to load depending on whether a "u" parameter (for "user") exists in the url*/
+    /*Determines which navbar to load depending on whether a "u" parameter (for "user") exists in the url
+      if u="admin@admin", the admin view is loaded instead"*/
     var url = new URL(window.location.href);
     var urlParams = url.searchParams;
     var navToShow="";
-    if(urlParams.get("u")!=null){
-      if(urlParams.get("u")=="admin@admin") navToShow="navbarAdmin";
-      else navToShow="navbarClient"
+    if(window.location.pathname=="/adminIndex.html"){
+      navToShow="navbarAdmin";
+      get("navbar-brand").setAttribute("href","adminIndex.html")
+    } else if(urlParams.get("u")!=null){
+      if(urlParams.get("u")=="admin@admin"){
+        navToShow="navbarAdmin";
+        get("navbar-brand").setAttribute("href","adminIndex.html")
+      } else
+      navToShow="navbarClient"
     }
     else navToShow="navbarVisit";
     document.getElementById(navToShow).classList.remove("hidden");
-	if(urlParams.get("n"))
-		for(var welcome of document.getElementsByClassName("userWelcome")){
-			welcome.innerText=urlParams.get("n");
-		}
+    //remove hidden navbar elements
+    var toRemove=[];
+    for(var nav of document.getElementsByClassName("navbar-nav hidden")){toRemove.push(nav)}
+    for(var nav of toRemove){nav.remove();}
+    if(urlParams.get("n"))
+      for(var welcome of document.getElementsByClassName("userWelcome")){
+        welcome.innerText=urlParams.get("n");
+      }
 </script>

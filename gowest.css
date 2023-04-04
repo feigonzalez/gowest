@@ -1,3 +1,5 @@
+h1,h2,h3,h4,h5,h6{margin-top:1rem}
+
 /*.btn-success{background-color:#7b7}*/
 .hidden{display:none}
 
@@ -8,6 +10,13 @@
 .btn-gowest{background-color:#493;color:#fff}
 .btn-gowest:hover{background-color:#382;color:#fff}
 .btn-gowest:focus{border-color:#271;box-shadow:0 0 0 0.2rem #2718}
+
+.sidebar{padding-left:0;padding-right:0;max-height:calc(100vh - 1.625rem - 40px);
+	overflow:hidden}
+
+.list-group-item-gowest{background-color:#493;color:#fff}
+.list-group-item-gowest:hover{text-decoration:none;background-color:#382;color:#fff}
+.list-group-item-last{height:100vh;}
 
 .icon{width:1.5em;height:1.5em;}
 .btn .icon{display:block;margin:auto}
@@ -25,7 +34,7 @@ li.nav-item{display:flex;align-items:center}
 .navbar button{margin:0 5px}
 .navbar a{margin:0 5px}
 .userWelcome{display:flex;align-items:center;margin:0 5px}
-li.nav-item .btn{width:-moz-available}
+li.nav-item .btn{width:-moz-available;width:-webkit-fill-available}
 
 .breadcrumbs{padding:10px}
 .breadcrumbs a{color:#fff}
@@ -43,6 +52,9 @@ li.nav-item .btn{width:-moz-available}
 .categoryTitle a{color:#fff}
 
 .productCount{font-size:0.7em;font-style:italic;margin-left:1em}
+
+.table td{vertical-align:middle}
+.tableImage{width:3em}
 
 #productImageHolder{margin:20px;padding:20px;border:solid 1px #AF8;
 	border-radius:10px;}
