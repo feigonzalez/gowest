@@ -1,3 +1,4 @@
+<input class="searchbar" id="productSearchbar" placeholder="Buscar en Productos"></input>
 <div class="table-responsive">
 	<table class="table table-hover align-middle">
 		<thead>
@@ -24,9 +25,8 @@
 						`<td data-type="string">${datum["name"]}</td>`+
 						`<td class="d-none d-sm-table-cell" data-type="number">${datum["price"]}</td>`+
 						`<td class="d-none d-sm-table-cell" data-type="foreign" data-reference="categories.code">${datum["category"]}</td>`+
-						`<td><button class="btn btn-success" onclick="editRowData(this)"><span class="icon fa fa-pencil"></span></button>`+
-						`<button class="hidden btn btn-success" onclick="saveRowData(this)"><span class="icon fa fa-floppy-o"></span></button>`+
-						`<button class="btn btn-danger" onclick="deleteRow(this)"><span class="icon fa fa-trash"></span></button></td>`+
+						`<td><button class="btn btn-success" data-toggle="modal" data-target="#productDataModal" onclick="fillProductModal(this)"><span class="icon fa fa-pencil"></span></button>`+
+						`<button class="btn btn-danger" data-toggle="modal" data-target="#deleteAlertModal" onclick="confirmDeleteProduct(this)"><span class="icon fa fa-trash"></span></button></td>`+
 						`</tr>`;
 					}
 				}
@@ -35,6 +35,7 @@
 	</table>
 </div>
 <div class="container p-3 fr text-right">
-	<button class="btn btn-success">Añadir Producto</button>
-	<button class="btn btn-success">Guardar Cambios</button>
+	<button class="btn btn-success" data-toggle="modal" data-target="#productDataModal">Añadir Producto</button>
 </div>
+<ihtml src="productDataModal.html"></ihtml>
+<ihtml src="deleteAlertModal.html"></ihtml>

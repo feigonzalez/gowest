@@ -79,6 +79,29 @@ async function loadCategoryGalleryInto(cat="",e,link=false){
     e.innerHTML=r;
 }
 
+async function fillProductModal(e){
+	await selectAllFrom("categories").then(data=>{
+		for(row of data){
+			get("productFormCategory").innerHTML+=`<option value="${row["code"]}">${row["name"]}</option>`;
+		}
+	});
+	if(e){
+		var parent=e.parentElement.parentElement;
+		//get("productFormImage").setAttribute("src",parent.children[0].children.getAttribute("src"));
+		get("productFormImagePreview").setAttribute("src",parent.children[0].children[0].getAttribute("src"))
+		get("productFormCode").value=parent.children[1].innerText;
+		get("productFormName").value=parent.children[2].innerText;
+		get("productFormPrice").value=parent.children[3].innerText;
+		get("productFormCategory").value=parent.children[4].innerText;
+		get("productFormUpdate").value=true;
+	}
+}
+
+function confirmDeleteProduct(e){
+	var name=e.parentElement.parentElement.children[2].innerText;
+	get("deleteAlertMessage").innerText=`¿Eliminar producto ${name}?"`;
+}
+
 window.addEventListener("load",()=>{
     
 })

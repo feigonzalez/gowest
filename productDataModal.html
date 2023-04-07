@@ -1,0 +1,40 @@
+<div class="modal fade" id="productDataModal">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-body">
+				<form action="adminIndex.html?t=products">
+					<div class="form-group">
+						<label for="image">Imagen</label>
+						<div class="form-image-input">
+							<img id="productFormImagePreview">
+							<input type="file" name="image" class="form-control" id="productFormImage">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="image">Nombre</label>
+						<input type="text" name="name" class="form-control" id="productFormName">
+					</div>
+					<div class="form-group">
+						<label for="image">Código</label>
+						<input type="text" name="code" class="form-control" id="productFormCode">
+					</div>
+					<div class="form-group">
+						<label for="image">Precio</label>
+						<input type="number" name="price" class="form-control" id="productFormPrice">
+					</div>
+					<div class="form-group">
+						<label for="image">Categoría</label>
+						<select name="category" class="form-control" id="productFormCategory">
+						</select>
+					</div>
+					<div class="form-group float-right">
+						<button type="button" class="btn" class="close" data-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-success">Ingresar</button>
+					</div>
+					<input type="hidden" name="update" value="false" id="productFormUpdate">
+					<input type="hidden" name="t" value="products">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

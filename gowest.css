@@ -77,6 +77,11 @@ li.nav-item .btn{width:-moz-available;width:-webkit-fill-available}
 .table td{vertical-align:middle}
 .tableImage{width:3em}
 
+.form-image-input{display:flex;align-items:center}
+.form-image-input img{width:120px;padding:1em;border:solid 1px #ced4da;margin-right:1em}
+
+.searchbar{margin:0.5em 0;width:100%;}
+
 #productImageHolder{margin:20px;padding:20px;border:solid 1px #AF8;
 	border-radius:10px;}
 #productImage{width:100%}
