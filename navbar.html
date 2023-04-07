@@ -48,7 +48,8 @@
     var url = new URL(window.location.href);
     var urlParams = url.searchParams;
     var navToShow="";
-    if(window.location.pathname=="/adminIndex.html"){
+	var currPage = window.location.pathname.split("/")[window.location.pathname.split("/").length-1];
+    if(currPage=="adminIndex.html"){
       navToShow="navbarAdmin";
       get("navbar-brand").setAttribute("href","adminIndex.html")
     } else if(urlParams.get("u")!=null){

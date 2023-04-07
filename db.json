@@ -48,7 +48,7 @@
 		 "category":"food",
 		 "description":["<p>Comida para gatos adultos.</p>"],
 		 "code":"foodCatAdult"},
-		{"name":"Alimento Perro Adulto",
+		{"name":"Alimento Gato Cachorro",
 		 "price":2400,
 		 "category":"food",
 		 "description":["<p>Comida para gatos cachorros.</p>"],
