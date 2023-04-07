@@ -7,6 +7,7 @@
     <title>GoWest</title>
 	<link rel="icon" href="img/logo.png"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="gowest.css"/>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -18,17 +19,19 @@
     <ihtml src="navbar.html"></ihtml>
     <div class="container-fluid">
         <div class="row">
-            <div id="adminSidebar" class="sidebar col-sm-3">
-                <div class="list-group">
+            <div id="adminSidebar" class="sidebar col-md-3 sticky-top">
+				<button id="sidebarCollapseBtn" class="btn btn-gowest d-md-none collapsed"
+					data-toggle="collapse" data-target="#adminSidebarGroup"><span class="icon fa fa-angle-up"></span></button>
+                <div id="adminSidebarGroup" class="list-group collapse dont-collapse-sm">
                     <a href="adminIndex.html?t=products" class="list-group-item list-group-item-gowest">Productos</a>
                     <a href="adminIndex.html?t=categories" class="list-group-item list-group-item-gowest">Categorías</a>
                     <a href="adminIndex.html?t=clients" class="list-group-item list-group-item-gowest">Clientes</a>
                     <a href="adminIndex.html?t=sales" class="list-group-item list-group-item-gowest">Ventas</a>
                     <a href="adminIndex.html?t=admins" class="list-group-item list-group-item-gowest">Adminstradores</a>
-                    <div class="list-group-item list-group-item-last d-none d-sm-block"></div>
+                    <div class="list-group-item list-group-item-last d-none d-md-block"></div>
                 </div>
             </div>
-            <div id="adminContent" class="col-sm-9">
+            <div id="adminContent" class="col-md-9">
                 <script>
                     var url = new URL(window.location.href);
                     var urlParams = url.searchParams;

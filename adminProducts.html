@@ -1,27 +1,40 @@
-<table class="table table-hover align-middle">
-    <thead>
-      <tr>
-        <th>Imagen</th></th><th>ID</th><th>Nombre</th><th>Precio</th><th>Categoría</th><th></th>
-      </tr>
-    </thead>
-    <tbody id="tableProductsBody">
-        <script>
-            selectAllFrom("products").then(r=>{populateTable(r)});
-            function populateTable(data){
-                var tBody=get("tableProductsBody")
-                for(datum of data){
-                    var row=document.createElement("tr");
-                    tBody.appendChild(row)
-                    row.outerHTML="<tr>"+
-                        `<td><img class='tableImage' src='img/products/${datum["code"]}.png'></td>`+
-                        `<td>${datum["code"]}</td>`+
-                        `<td>${datum["name"]}</td>`+
-                        `<td>${datum["price"]}</td>`+
-                        `<td>${datum["category"]}</td>`+
-                        `<td>[S]</td>`+
-                        `</tr>`;
-                }
-            }
-        </script>
-    </tbody>
-  </table>
+<div class="table-responsive">
+	<table class="table table-hover align-middle">
+		<thead>
+			<tr>
+			<th>Imagen</th>
+			<th class="d-none d-sm-table-cell">ID</th>
+			<th>Nombre</th>
+			<th class="d-none d-sm-table-cell">Precio</th>
+			<th class="d-none d-sm-table-cell">Categoría</th>
+			<th></th>
+			</tr>
+		</thead>
+		<tbody id="tableProductsBody">
+			<script>
+				selectAllFrom("products").then(r=>{populateTable(r)});
+				function populateTable(data){
+					var tBody=get("tableProductsBody")
+					for(datum of data){
+						var row=document.createElement("tr");
+						tBody.appendChild(row)
+						row.outerHTML="<tr>"+
+						`<td><img class='tableImage' src='img/products/${datum["code"]}.png'></td>`+
+						`<td class="d-none d-sm-table-cell" data-type="string">${datum["code"]}</td>`+
+						`<td data-type="string">${datum["name"]}</td>`+
+						`<td class="d-none d-sm-table-cell" data-type="number">${datum["price"]}</td>`+
+						`<td class="d-none d-sm-table-cell" data-type="foreign" data-reference="categories.code">${datum["category"]}</td>`+
+						`<td><button class="btn btn-success" onclick="editRowData(this)"><span class="icon fa fa-pencil"></span></button>`+
+						`<button class="hidden btn btn-success" onclick="saveRowData(this)"><span class="icon fa fa-floppy-o"></span></button>`+
+						`<button class="btn btn-danger" onclick="deleteRow(this)"><span class="icon fa fa-trash"></span></button></td>`+
+						`</tr>`;
+					}
+				}
+			</script>
+		</tbody>
+	</table>
+</div>
+<div class="container p-3 fr text-right">
+	<button class="btn btn-success">Añadir Producto</button>
+	<button class="btn btn-success">Guardar Cambios</button>
+</div>

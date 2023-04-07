@@ -1,7 +1,15 @@
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+
 h1,h2,h3,h4,h5,h6{margin-top:1rem}
 
 /*.btn-success{background-color:#7b7}*/
-.hidden{display:none}
+.hidden{display:none !important}
 
 .bg-gowest{background-color:#7D4;color:#fff}
 .bg-gowest-dark{background-color:#5A3;color:#fff}
@@ -11,16 +19,29 @@ h1,h2,h3,h4,h5,h6{margin-top:1rem}
 .btn-gowest:hover{background-color:#382;color:#fff}
 .btn-gowest:focus{border-color:#271;box-shadow:0 0 0 0.2rem #2718}
 
-.sidebar{padding-left:0;padding-right:0;max-height:calc(100vh - 1.625rem - 40px);
+#sidebarCollapseBtn{width:100%}
+.sidebar{padding-left:0;padding-right:0;max-height:100vh;
 	overflow:hidden}
+.sidebar .list-group-item{border-radius:0}
 
 .list-group-item-gowest{background-color:#493;color:#fff}
 .list-group-item-gowest:hover{text-decoration:none;background-color:#382;color:#fff}
 .list-group-item-last{height:100vh;}
 
-.icon{width:1.5em;height:1.5em;}
+.icon{font-size:1.5em;vertical-align:middle;}
+button.icon{border:none;background-color:transparent}
 .btn .icon{display:block;margin:auto}
-.icon-signoff{background-image:url("img/icon_signoff.png");background-size:cover}
+.icon-signoff{background-image:url("img/icon_signoff.png")}
+.icon-edit{background-image:url("img/icon_edit.png")}
+.icon-save{background-image:url("img/icon_save.png")}
+.icon-delete{background-image:url("img/icon_delete.png")}
+.icon-collapseCaret{background-image:url("img/icon_caretCollapse.png")}
+.collapsed .icon-collapseCaret{background-image:url("img/icon_caretExpand.png")}
+
+.collapsed .fa-angle-up::before{content:"\f107"}
+
+.tableLabel{margin-left:0.5em}
+.tableEdit{display:none}
 
 p.disclaimer{font-size:0.7em;font-style:italic;color:#888}
 p.disclaimer:before{content:"("}
