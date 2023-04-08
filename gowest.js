@@ -114,14 +114,53 @@ async function prepareCategoryModal(e){
 	}
 }
 
+async function prepareClientModal(e){
+	var user = (await selectAllWhere("users",(i)=>{return i["rut"]==e.dataset["id"]}))[0]
+	var addresses = (await selectAllWhere("addresses",(i)=>{return i["userID"]==user["id"]}))
+	get("clientFormName").innerText=user["name"];
+	get("clientFormSurname").innerText=user["surname"];
+	get("clientFormRUT").innerText=user["rut"];
+	get("clientFormMail").innerText=user["mail"];
+	get("clientFormPhone").innerText=user["phone"];
+	get("clientFormAddressesHolder").innerHTML="";
+	for(a of addresses){
+		var district = (await selectAllWhere("districts",(i)=>{return i["id"]==a["districtID"]}))[0]
+		get("clientFormAddressesHolder").innerHTML+=`<div>${a["street"]} ${a["number"]}, ${district["name"]}</div>`;
+	}
+}
+
+async function prepareAdministratorModal(e){
+	if(e){
+		get("adminFormShow").classList.remove("hidden");
+		get("adminFormNew").classList.add("hidden");
+		var user = (await selectAllWhere("users",(i)=>{return i["rut"]==e.dataset["id"]}))[0];
+		get("adminFormShowName").innerText=user["name"];
+		get("adminFormShowSurname").innerText=user["surname"];
+		get("adminFormShowRUT").innerText=user["rut"];
+		get("adminFormShowMail").innerText=user["mail"];
+		get("adminFormShowPhone").innerText=user["phone"];
+	} else {
+		get("adminFormShow").classList.add("hidden");
+		get("adminFormNew").classList.remove("hidden");
+	}
+}
+
+function confirmDeleteAdministrator(e){
+	var name=e.parentElement.parentElement.children[0].innerText;
+	get("deleteAlertMessage").innerText=`¿Eliminar administrador ${name}?`;
+	get("deleteAlertConfirm").setAttribute("href","adminIndex.html?t=admins");
+}
+
 function confirmDeleteProduct(e){
-	var name=e.parentElement.parentElement.children[2].innerText;
+	var name=e.parentElement.parentElement.children[1].innerText;
 	get("deleteAlertMessage").innerText=`¿Eliminar producto ${name}?`;
+	get("deleteAlertConfirm").setAttribute("href","adminIndex.html?t=products");
 }
 
 function confirmDeleteCategory(e){
 	var name=e.parentElement.parentElement.children[0].innerText;
 	get("deleteAlertMessage").innerText=`¿Eliminar categoría ${name} y todos los productos relacionados?`;
+	get("deleteAlertConfirm").setAttribute("href","adminIndex.html?t=categories");
 }
 
 async function loadSecQuestion(e){

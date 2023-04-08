@@ -22,11 +22,13 @@
   [X] Login > index (as Client/Admin)
   [X] Forgot Password button > recoverPass
  [X] SignUp Button > signup
+ [X] Categories buttons > category
 [ ] Navbar (as Client)
  [X] Click Logo > index
  [-] Cart Button > cart
  [-] Account Button > account
  [X] SignOff Button > index (as Visit)
+ [X] Categories buttons > category
 [X] Navbar (as Admin)
  [X] Click Logo > index
  [X] SignOff Button > index (as Visit)
@@ -78,24 +80,19 @@
    [X] Edit data
   [X] Add category
 
-[ ] adminSettings/clients
- [ ] List of Clients
-  [ ] Client
-   [ ] Edit data
-   [ ] Save changes
-  [ ] Save all changes
+[X] adminSettings/clients
+ [X] List of Clients
+  [X] Client
 
 [ ] adminSettings/sales
  [ ] List of Sales
   [ ] Sales
 
-[ ] adminSettings/administrators
- [ ] List of Administrators
-  [ ] Administrators
-   [ ] Edit data
-   [ ] Save changes
-  [ ] Save all changes
-  [ ] Add Administrator
+[X] adminSettings/administrators
+ [X] List of Administrators
+  [X] Administrators
+   [X] Delete Administrator
+  [X] Add Administrator
 
 [ ] cart
  [>] .navbar

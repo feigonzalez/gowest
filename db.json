@@ -115,5 +115,30 @@
 	"users":[
 		{"id":0,"rut":"10.000.000-0","name":"William","surname":"Hartnell",
 			"mail":"whartnell@mail.com","phone":"+123456789","pass":"pass",
-			"roleId":1,"secQuestionId":3,"secAnswer":"13"}]
+			"roleID":1,"secQuestionID":3,"secAnswer":"13"},
+		{"id":1,"rut":"20.220.000-0","name":"Patrick","surname":"Troughton",
+			"mail":"ptroughton@mail.com","phone":"+234567891","pass":"pass",
+			"roleID":1,"secQuestionID":3,"secAnswer":"12"},
+		{"id":2,"rut":"33.033.000-0","name":"Jon","surname":"Pertwee",
+			"mail":"jpertwee@mail.com","phone":"+345678921","pass":"pass",
+			"roleID":1,"secQuestionID":3,"secAnswer":"11"},
+		{"id":3,"rut":"4.000.000-0","name":"Tom","surname":"Baker",
+			"mail":"tbaker@mail.com","phone":"+456789123","pass":"pass",
+			"roleID":1,"secQuestionID":3,"secAnswer":"10"},
+		{"id":4,"rut":"5.500.055-0","name":"Peter","surname":"Davidson",
+			"mail":"pdavidson@mail.com","phone":"+567891234","pass":"pass",
+			"roleID":1,"secQuestionID":3,"secAnswer":"9"},
+		{"id":10,"rut":"7.707.707-7","name":"Yalvis","surname":"Dickson",
+			"mail":"ydickson@mail.com","phone":"+987654321","pass":"pass",
+			"roleID":0,"secQuestionID":1,"secAnswer":"La Linde"}
+	],
+	"addresses":[
+		{"id":0,"street":"Av. Enida","number":"123","postalCode":"600345","userID":0,"districtID":0},
+		{"id":1,"street":"Av. Siempreviva.","number":"644","postalCode":"530345","userID":0,"districtID":1},
+		{"id":2,"street":"Los Aromos","number":"413-B","postalCode":"332345","userID":1,"districtID":2},
+		{"id":3,"street":"Los Naranjos","number":"166","postalCode":"600123","userID":2,"districtID":0},
+		{"id":4,"street":"Los Manzanos","number":"35-B","postalCode":"2536452","userID":2,"districtID":3},
+		{"id":5,"street":"Los Plátanos","number":"13","postalCode":"112234","userID":3,"districtID":5},
+		{"id":6,"street":"Av. Italia","number":"61","postalCode":"868464","userID":4,"districtID":4}
+	]
 }

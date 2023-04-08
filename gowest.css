@@ -61,6 +61,10 @@ li.nav-item{display:flex;align-items:center}
 .userWelcome{display:flex;align-items:center;margin:0 5px}
 li.nav-item .btn{width:-moz-available;width:-webkit-fill-available}
 
+#categoryTabsList{background-color:#493}
+#categoryTabsList a.btn{border-radius:0}
+#categoryTabsList li.active a.btn{background-color:#382}
+
 .breadcrumbs{padding:10px}
 .breadcrumbs a{color:#fff}
 

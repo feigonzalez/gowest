@@ -1,0 +1,43 @@
+<input class="searchbar" id="administratorsSearchbar" placeholder="Buscar en Administradores"></input>
+<div class="table-responsive">
+	<table class="table table-hover align-middle">
+		<thead>
+			<tr>
+			<th>Nombre</th>
+			<th class="d-none d-sm-table-cell">RUT</th>
+			<th>Correo</th>
+			<th class="d-none d-sm-table-cell">Teléfono</th>
+			<th></th>
+			</tr>
+		</thead>
+		<tbody id="tableAdministratorsBody">
+			<script>
+				selectAllWhere("users",(i)=>{return i["roleID"]==0}).then(data=>{
+					var tBody=get("tableAdministratorsBody")
+					for(row of data){
+						var tRow=document.createElement("tr");
+						tBody.appendChild(tRow)
+						tRow.outerHTML="<tr>"+
+						`<td data-type="string">${row["name"]} ${row["surname"]}</td>`+
+						`<td class="d-none d-sm-table-cell" data-type="string">${row["rut"]}</td>`+
+						`<td data-type="string">${row["mail"]}</td>`+
+						`<td class="d-none d-sm-table-cell" data-type="string">${row["phone"]}</td>`+
+						`<td class="text-right"><button class="btn btn-success"`+
+							`data-toggle="modal" data-target="#administratorDataModal"`+
+							`onclick="prepareAdministratorModal(this)" data-id=${row["rut"]}>`+
+							`<span class="icon fa fa-search"></span></button>`+
+							`<button class="btn btn-danger" data-toggle="modal" `+
+							`data-target="#deleteAlertModal" onclick="confirmDeleteAdministrator(this)">`+
+							`<span class="icon fa fa-trash"></span></button></td>`+
+						`</tr>`;
+					}
+				});
+			</script>
+		</tbody>
+	</table>
+</div>
+<div class="container p-3 fr text-right">
+	<button class="btn btn-success" data-toggle="modal" data-target="#administratorDataModal" onclick="prepareAdministratorModal()">Añadir Administrador</button>
+</div>
+<ihtml src="administratorDataModal.html"></ihtml>
+<ihtml src="deleteAlertModal.html"></ihtml>

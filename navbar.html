@@ -39,6 +39,20 @@
 		</li>
 	</ul>
 </nav>
+<ul id="categoryTabsList" class="nav bg-gowest-dark">
+	<script>
+		selectAllFrom("categories").then(data=>{
+			for(row of data){
+				get("categoryTabsList").innerHTML+=`<li id="catTab_${row["code"]}" class="nav-item bg-gowest-dark"><a class="btn btn-gowest" href="category.html?c=${row["code"]}">${row["name"]}</a></li>`;
+			}
+			var url = new URL(window.location.href);
+			var urlParams = url.searchParams;
+			if(urlParams.get("c")){
+				get("catTab_"+urlParams.get("c")).classList.add("active");
+			}
+		})
+	</script>
+</ul>
 <ihtml src="loginModal.html"></ihtml>
 <script>
     /*Determines which navbar to load depending on whether a "u" parameter (for "user") exists in the url
@@ -48,13 +62,10 @@
     var navToShow="";
 	var currPage = window.location.pathname.split("/")[window.location.pathname.split("/").length-1];
     if(currPage=="adminIndex.html"){
-      navToShow="navbarAdmin";
-      get("navbar-brand").setAttribute("href","adminIndex.html")
+		navToShow="navbarAdmin";
+		get("navbar-brand").setAttribute("href","adminIndex.html")
+		get("categoryTabsList").remove();
     } else if(urlParams.get("u")!=null){
-      if(urlParams.get("u")=="admin@admin"){
-        navToShow="navbarAdmin";
-        get("navbar-brand").setAttribute("href","adminIndex.html")
-      } else
       navToShow="navbarClient"
     }
     else navToShow="navbarVisit";

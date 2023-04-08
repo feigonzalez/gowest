@@ -1,0 +1,36 @@
+<input class="searchbar" id="clientSearchbar" placeholder="Buscar en Clientes"></input>
+<div class="table-responsive">
+	<table class="table table-hover align-middle">
+		<thead>
+			<tr>
+			<th>Nombre</th>
+			<th class="d-none d-sm-table-cell">RUT</th>
+			<th>Correo</th>
+			<th class="d-none d-sm-table-cell">Teléfono</th>
+			<th></th>
+			</tr>
+		</thead>
+		<tbody id="tableClientsBody">
+			<script>
+				selectAllWhere("users",(i)=>{return i["roleID"]==1}).then(data=>{
+					var tBody=get("tableClientsBody")
+					for(row of data){
+						var tRow=document.createElement("tr");
+						tBody.appendChild(tRow)
+						tRow.outerHTML="<tr>"+
+						`<td data-type="string">${row["name"]} ${row["surname"]}</td>`+
+						`<td class="d-none d-sm-table-cell" data-type="string">${row["rut"]}</td>`+
+						`<td data-type="string">${row["mail"]}</td>`+
+						`<td class="d-none d-sm-table-cell" data-type="string">${row["phone"]}</td>`+
+						`<td class="text-right"><button class="btn btn-success"`+
+							`data-toggle="modal" data-target="#clientDataModal"`+
+							`onclick="prepareClientModal(this)" data-id=${row["rut"]}>`+
+							`<span class="icon fa fa-search"></span></button>`+
+						`</tr>`;
+					}
+				});
+			</script>
+		</tbody>
+	</table>
+</div>
+<ihtml src="clientDataModal.html"></ihtml>
