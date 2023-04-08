@@ -52,19 +52,16 @@ Navbar (as Admin)
  [>] Navbar
  [X] Breadcrumbs
  [X] Item Image
- [?] Item Gallery
  [X] Item Description
  [X] AddToCart
  [?] Cart Button > cart
 
-[ ] adminSettings/products
- [ ] List of Products
-  [ ] Product
+[X] adminSettings/products
+ [X] List of Products
+  [X] Product
    [X] Data
-   [ ] Edit data
-   [ ] Save changes
-  [ ] Save all changes
-  [ ] Add Product
+   [X] Edit data
+  [X] Add Product
 
 [ ] adminSettings/categories
  [ ] List of Categories

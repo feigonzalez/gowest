@@ -89,17 +89,17 @@ async function fillProductModal(e){
 		var parent=e.parentElement.parentElement;
 		//get("productFormImage").setAttribute("src",parent.children[0].children.getAttribute("src"));
 		get("productFormImagePreview").setAttribute("src",parent.children[0].children[0].getAttribute("src"))
-		get("productFormCode").value=parent.children[1].innerText;
-		get("productFormName").value=parent.children[2].innerText;
-		get("productFormPrice").value=parent.children[3].innerText;
-		get("productFormCategory").value=parent.children[4].innerText;
+		get("productFormName").value=parent.children[1].innerText;
+		get("productFormPrice").value=parent.children[2].innerText;
+		get("productFormCategory").value=parent.children[3].innerText;
+		get("productFormDescription").innerText=parent.children[4].innerHTML;
 		get("productFormUpdate").value=true;
 	}
 }
 
 function confirmDeleteProduct(e){
 	var name=e.parentElement.parentElement.children[2].innerText;
-	get("deleteAlertMessage").innerText=`¿Eliminar producto ${name}?"`;
+	get("deleteAlertMessage").innerText=`¿Eliminar producto ${name}?`;
 }
 
 window.addEventListener("load",()=>{

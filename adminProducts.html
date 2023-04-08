@@ -4,7 +4,6 @@
 		<thead>
 			<tr>
 			<th>Imagen</th>
-			<th class="d-none d-sm-table-cell">ID</th>
 			<th>Nombre</th>
 			<th class="d-none d-sm-table-cell">Precio</th>
 			<th class="d-none d-sm-table-cell">Categoría</th>
@@ -21,10 +20,10 @@
 						tBody.appendChild(row)
 						row.outerHTML="<tr>"+
 						`<td><img class='tableImage' src='img/products/${datum["code"]}.png'></td>`+
-						`<td class="d-none d-sm-table-cell" data-type="string">${datum["code"]}</td>`+
 						`<td data-type="string">${datum["name"]}</td>`+
 						`<td class="d-none d-sm-table-cell" data-type="number">${datum["price"]}</td>`+
 						`<td class="d-none d-sm-table-cell" data-type="foreign" data-reference="categories.code">${datum["category"]}</td>`+
+						`<td class="hidden">${datum["description"].reduce((res,line)=>res+=line,"")}</td>`+
 						`<td><button class="btn btn-success" data-toggle="modal" data-target="#productDataModal" onclick="fillProductModal(this)"><span class="icon fa fa-pencil"></span></button>`+
 						`<button class="btn btn-danger" data-toggle="modal" data-target="#deleteAlertModal" onclick="confirmDeleteProduct(this)"><span class="icon fa fa-trash"></span></button></td>`+
 						`</tr>`;
