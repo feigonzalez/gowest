@@ -16,45 +16,58 @@
 </head>
 <body>
 	<nav id="topNavbar" class="navbar navbar-expand-sm navbar-dark bg-gowest-dark">
-		<a class="navbar-brand" href="index.html"><img class="navbar-brand-image" src="img/logo.png"> GoWest</a>
+		<a id="navbar-brand" class="navbar-brand" href="index.html">
+			<img class="navbar-brand-image" src="img/logo.png">
+			<span class="navbar-brand-name">GoWest</span>
+		</a>
 	</nav>
 	<div class="container">
 		 <form action="processSignup.html">
-			<div class="form-group">
-				<label for="f_name">Nombre</label>
-				<input class="form-control" id="f_name" name="name">
+			<div class="row">
+				<div class="col-sm-6">
+					<label for="f_name">Nombre</label>
+					<input class="form-control" id="f_name" name="name">
+				</div><div class="col-sm-6">
+					<label for="f_surname">Apellido</label>
+					<input class="form-control" id="f_surname" name="surname">
+				</div>
 			</div>
-			<div class="form-group">
-				<label for="f_utr">RUT</label>
-				<input class="form-control" id="f_utr" name="utr">
+			<label for="f_utr">RUT</label><input class="form-control" id="f_rut" name="rut">
+			<label for="f_user">Correo</label><input type="email" class="form-control" id="f_user" name="user">
+			<label for="f_phone">Teléfono</label><input class="form-control" id="f_phone" name="phone">
+			<div class="row">
+				<div class="col-sm-6">
+					<label for="f_pass">Contraseña</label><input type="password" class="form-control" id="f_pass" name="pass">
+				</div>
+				<div class="col-sm-6">
+					<label for="f_passConfirm">Repetir Contraseña</label><input type="password" class="form-control" id="f_passConfirm" name="passConfirm">
+				</div>
 			</div>
-			<div class="form-group">
-				<label for="f_user">Correo</label>
-				<input type="email" class="form-control" id="f_user" name="user">
-			</div>
-			<div class="form-group">
-				<label for="f_phone">Teléfono</label>
-				<input class="form-control" id="f_phone" name="phone">
-			</div>
-			<div class="form-group">
-				<label for="f_pass">Contraseña</label>
-				<input type="password" class="form-control" id="f_pass" name="pass">
-			</div>
-			<div class="form-group">
-				<label for="f_passConfirm">Repetir Contraseña</label>
-				<input type="password" class="form-control" id="f_passConfirm" name="passConfirm">
-			</div>
-			<div class="form-group">
-				<label for="f_address">Dirección</label>
-				<input class="form-control" id="f_address" name="address">
+			<div class="row">
+				<div class="col-sm-6">
+					<label for="f_address">Dirección</label><input class="form-control" id="f_address" name="address">
+				</div>
+				<div class="col-sm-6">
+					<label for="f_district">Comuna</label>
+					<select id="districtSelect" class="form-control" id="f_district" name="district">
+						<script> //gets sec questions from db and sets them as options
+							selectAllFrom("districts").then(data=>{
+								for(row of data)
+									get("districtSelect").innerHTML+=`<option value="${row["id"]}">${row["name"]}</option>`;
+							})
+						</script>
+					</select>
+				</div>
 			</div>
 			<div class="form-group">
 				<label for="f_question">Seleccione una pregunta de seguridad</label>
-				<select class="form-control" id="f_question">
-					<option>¿Ciudad de nacimiento?</option>
-					<option>¿Nombre de su primera mascota?</option>
-					<option>¿Segundo apellido de su madre?</option>
-					<option>¿Número de hermanos/as mayores?</option>
+				<select id="secQuestionsSelect" class="form-control" id="f_question" name="question">
+					<script> //gets sec questions from db and sets them as options
+						selectAllFrom("secQuestions").then(data=>{
+							for(row of data)
+								get("secQuestionsSelect").innerHTML+=`<option value="${row["id"]}">${row["value"]}</option>`;
+						})
+					</script>
 				</select>
 			</div>
 			<div class="form-group">

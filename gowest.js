@@ -79,7 +79,7 @@ async function loadCategoryGalleryInto(cat="",e,link=false){
     e.innerHTML=r;
 }
 
-async function fillProductModal(e){
+async function prepareProductModal(e){
 	await selectAllFrom("categories").then(data=>{
 		for(row of data){
 			get("productFormCategory").innerHTML+=`<option value="${row["code"]}">${row["name"]}</option>`;
@@ -87,13 +87,21 @@ async function fillProductModal(e){
 	});
 	if(e){
 		var parent=e.parentElement.parentElement;
-		//get("productFormImage").setAttribute("src",parent.children[0].children.getAttribute("src"));
-		get("productFormImagePreview").setAttribute("src",parent.children[0].children[0].getAttribute("src"))
+		get("productFormImagePreview").setAttribute("src",parent.children[0].children[0].getAttribute("src"));
 		get("productFormName").value=parent.children[1].innerText;
 		get("productFormPrice").value=parent.children[2].innerText;
-		get("productFormCategory").value=parent.children[3].innerText;
-		get("productFormDescription").innerText=parent.children[4].innerHTML;
+		get("productFormStock").value=parent.children[3].innerText;
+		get("productFormCategory").value=parent.children[4].innerText;
+		get("productFormDescription").innerText=parent.children[5].innerHTML;
 		get("productFormUpdate").value=true;
+	} else {
+		get("productFormImagePreview").setAttribute("src","");
+		get("productFormName").value="";
+		get("productFormPrice").value="";
+		get("productFormStock").value="";
+		get("productFormCategory").value="";
+		get("productFormDescription").innerText="";
+		get("productFormUpdate").value=false;
 	}
 }
 
@@ -102,6 +110,27 @@ function confirmDeleteProduct(e){
 	get("deleteAlertMessage").innerText=`¿Eliminar producto ${name}?`;
 }
 
+async function loadSecQuestion(e){
+	var user;
+	var secQ;
+	await selectAllWhere("users",(i)=>{return i["rut"]==e.value}).then(data=>{
+		user=data[0];
+	})
+	if(user){
+		get("f_invalidRutFeedback").style.display="none";
+		await selectAllWhere("secQuestions",(i)=>{return i["id"]==user["secQuestionId"]}).then(data=>{
+			secQ=data[0];
+		})
+		get("secQuestionHolder").innerText=secQ["value"];
+		get("f_rut").value=user["rut"];
+		get("f_inputRut").classList.remove("is-invalid");
+	} else {
+		get("secQuestionHolder").innerText="–";
+		get("f_rut").value="";
+		get("f_invalidRutFeedback").style.display="block";
+		get("f_inputRut").classList.add("is-invalid");
+	}
+}
 window.addEventListener("load",()=>{
     
 })

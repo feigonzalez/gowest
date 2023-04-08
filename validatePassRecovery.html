@@ -1,0 +1,16 @@
+<script src="gowest.js"></script>
+<script>
+	var url = new URL(window.location.href);
+	var urlParams = url.searchParams;
+	if(urlParams.get("rut")&&urlParams.get("secAnswer")){
+		selectAllWhere("users",(i)=>{return i["rut"]==urlParams.get("rut")}).then(data=>{
+			var user=data[0];
+			if(user["secAnswer"]==urlParams.get("secAnswer")){
+				window.location.replace(`index.html?u=${user["id"]}&n=${user["name"]} ${user["surname"]}`)
+			} else {
+				window.location.replace("recoverPass.html?valid=false");
+			}
+		})
+	}
+	else history.back();
+</script>

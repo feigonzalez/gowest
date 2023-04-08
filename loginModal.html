@@ -1,6 +1,7 @@
 <div class="modal fade" id="loginModal">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
+			<button type="button" class="form-close" data-dismiss="modal"></button>
 			<div class="modal-body">
 				<form action="index.html?">
 					<div class="form-group">
@@ -11,9 +12,16 @@
 						<label for="pass">Contraseña:</label>
 						<input type="password" class="form-control" placeholder="Ingrese contraseña" id="loginPass" required>
 					</div>
-					<div class="form-group float-right">
-						<button type="button" class="btn" class="close" data-dismiss="modal">Cancelar</button>
-						<button type="submit" class="btn btn-success">Ingresar</button>
+					<div class="row">
+						<div class="col-6">
+							<a class="btn btn-link" href="recoverPass.html">Olvidé mi contraseña</a>
+						</div>
+						<div class="col-6">
+							<div class="form-group float-right">
+								<button type="button" class="btn" class="close" data-dismiss="modal">Cancelar</button>
+								<button type="submit" class="btn btn-success">Ingresar</button>
+							</div>
+						</div>
 					</div>
 				</form>
 			</div>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoWest</title>
+	<link rel="icon" href="img/logo.png"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="gowest.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="gowest.js"></script>
+    <script src="ihtml.js" defer></script>
+</head>
+<body>
+	<nav id="topNavbar" class="navbar navbar-expand-sm navbar-dark bg-gowest-dark">
+		<a id="navbar-brand" class="navbar-brand" href="index.html">
+			<img class="navbar-brand-image" src="img/logo.png">
+			<span class="navbar-brand-name">GoWest</span>
+		</a>
+	</nav>
+	<div class="container">
+		<div class="row mt-3">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="rut">Ingrese su rut</label>
+					<input class="form-control" id="f_inputRut" onchange="loadSecQuestion(this)">
+					<div id="f_invalidRutFeedback" class="invalid-feedback">Usuario no encontrado</div>
+				</div>
+				<div class="form-group">
+					<div>Pregunta de seguridad</div>
+					<div id="secQuestionHolder" style="color:#333">&ndash;</div>
+				</div>
+				<form action="validatePassRecovery.html">
+					<div class="form-group">
+						<label for="secAnswer">Responda la pregunta de seguridad</label>
+						<input class="form-control" id="f_secAnswer" name="secAnswer" required>
+						<div id="f_invalidAnswerFeedback" class="invalid-feedback">Respuesta incorrecta</div>
+						<script>
+							var url = new URL(window.location.href);
+							var urlParams = url.searchParams;
+							if(urlParams.get("valid")&&urlParams.get("valid")=="false"){
+								console.log("invalid");
+								get("f_secAnswer").classList.add("is-invalid");
+							}
+						</script>
+					</div>
+					<input type="hidden" id="f_rut" name="rut">
+					<a href="index.html" class="btn">Cancelar</a>
+					<input type="submit" class="btn btn-success" value="Recuperar contraseña">
+				</form>
+			</div>
+			<div class="col-sm-3"></div>
+		</div>
+	</div>
+</body>
+</html>

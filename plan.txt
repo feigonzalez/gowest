@@ -1,11 +1,11 @@
- [ ] index (as Visit/Client):
-  [>] .navbar
+[ ] index (as Visit/Client):
+ [>] .navbar
  [X] Gallery
   [X] Categories
    [X] Title > category
    [X] Item Links > item
-[ ] index (as Admin)
- [>] .navbar
+[X] index (as Admin)
+ [X] .navbar
  [X] .sidebarAdmin
 
 [X] SidebarAdmin
@@ -15,20 +15,30 @@
  [X] Sales Button > adminSettings/sales
  [X] Administators Button > adminSettings/administrators
 
-Navbar (as Visit)
+[X] Navbar (as Visit)
  [X] Click Logo > index
  [X] Login Button > .modal (login)
   [X] Cancel / Close > close .modal
   [X] Login > index (as Client/Admin)
+  [X] Forgot Password button > recoverPass
  [X] SignUp Button > signup
-Navbar (as Client)
+[ ] Navbar (as Client)
  [X] Click Logo > index
  [-] Cart Button > cart
  [-] Account Button > account
  [X] SignOff Button > index (as Visit)
-Navbar (as Admin)
-  [X] Click Logo > index
-  [X] SignOff Button > index (as Visit)
+[X] Navbar (as Admin)
+ [X] Click Logo > index
+ [X] SignOff Button > index (as Visit)
+
+[X] recoverPass
+ [X] User RUT input
+ [X] Retrieve Security Question
+ [X] User SecAnswer input
+ [X] Cancel > index.html (as Visit)
+ [X] Submit > validatePassRecovery
+
+[X] validatePassRecory
 
 [X] signup
  [X] .navbar (logo only)
@@ -54,7 +64,6 @@ Navbar (as Admin)
  [X] Item Image
  [X] Item Description
  [X] AddToCart
- [?] Cart Button > cart
 
 [X] adminSettings/products
  [X] List of Products

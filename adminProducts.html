@@ -6,6 +6,7 @@
 			<th>Imagen</th>
 			<th>Nombre</th>
 			<th class="d-none d-sm-table-cell">Precio</th>
+			<th class="d-none d-sm-table-cell">Stock</th>
 			<th class="d-none d-sm-table-cell">Categoría</th>
 			<th></th>
 			</tr>
@@ -22,9 +23,10 @@
 						`<td><img class='tableImage' src='img/products/${datum["code"]}.png'></td>`+
 						`<td data-type="string">${datum["name"]}</td>`+
 						`<td class="d-none d-sm-table-cell" data-type="number">${datum["price"]}</td>`+
+						`<td class="d-none d-sm-table-cell" data-type="number">${datum["stock"]}</td>`+
 						`<td class="d-none d-sm-table-cell" data-type="foreign" data-reference="categories.code">${datum["category"]}</td>`+
 						`<td class="hidden">${datum["description"].reduce((res,line)=>res+=line,"")}</td>`+
-						`<td><button class="btn btn-success" data-toggle="modal" data-target="#productDataModal" onclick="fillProductModal(this)"><span class="icon fa fa-pencil"></span></button>`+
+						`<td><button class="btn btn-success" data-toggle="modal" data-target="#productDataModal" onclick="prepareProductModal(this)"><span class="icon fa fa-pencil"></span></button>`+
 						`<button class="btn btn-danger" data-toggle="modal" data-target="#deleteAlertModal" onclick="confirmDeleteProduct(this)"><span class="icon fa fa-trash"></span></button></td>`+
 						`</tr>`;
 					}
@@ -34,7 +36,7 @@
 	</table>
 </div>
 <div class="container p-3 fr text-right">
-	<button class="btn btn-success" data-toggle="modal" data-target="#productDataModal">Añadir Producto</button>
+	<button class="btn btn-success" data-toggle="modal" data-target="#productDataModal" onclick="prepareProductModal()">Añadir Producto</button>
 </div>
 <ihtml src="productDataModal.html"></ihtml>
 <ihtml src="deleteAlertModal.html"></ihtml>
