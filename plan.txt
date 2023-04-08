@@ -72,13 +72,11 @@
    [X] Edit data
   [X] Add Product
 
-[ ] adminSettings/categories
- [ ] List of Categories
-  [ ] Category
-   [ ] Edit data
-   [ ] Save changes
-  [ ] Save all changes
-  [ ] Add category
+[X] adminSettings/categories
+ [X] List of Categories
+  [X] Category
+   [X] Edit data
+  [X] Add category
 
 [ ] adminSettings/clients
  [ ] List of Clients

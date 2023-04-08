@@ -105,9 +105,23 @@ async function prepareProductModal(e){
 	}
 }
 
+async function prepareCategoryModal(e){
+	if(e){
+		var parent=e.parentElement.parentElement;
+		get("categoryFormName").value=parent.children[0].innerText;
+	} else {
+		get("categoryFormName").value="";
+	}
+}
+
 function confirmDeleteProduct(e){
 	var name=e.parentElement.parentElement.children[2].innerText;
 	get("deleteAlertMessage").innerText=`¿Eliminar producto ${name}?`;
+}
+
+function confirmDeleteCategory(e){
+	var name=e.parentElement.parentElement.children[0].innerText;
+	get("deleteAlertMessage").innerText=`¿Eliminar categoría ${name} y todos los productos relacionados?`;
 }
 
 async function loadSecQuestion(e){

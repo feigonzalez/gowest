@@ -26,7 +26,7 @@
 						`<td class="d-none d-sm-table-cell" data-type="number">${datum["stock"]}</td>`+
 						`<td class="d-none d-sm-table-cell" data-type="foreign" data-reference="categories.code">${datum["category"]}</td>`+
 						`<td class="hidden">${datum["description"].reduce((res,line)=>res+=line,"")}</td>`+
-						`<td><button class="btn btn-success" data-toggle="modal" data-target="#productDataModal" onclick="prepareProductModal(this)"><span class="icon fa fa-pencil"></span></button>`+
+						`<td class="text-right"><button class="btn btn-success" data-toggle="modal" data-target="#productDataModal" onclick="prepareProductModal(this)"><span class="icon fa fa-pencil"></span></button>`+
 						`<button class="btn btn-danger" data-toggle="modal" data-target="#deleteAlertModal" onclick="confirmDeleteProduct(this)"><span class="icon fa fa-trash"></span></button></td>`+
 						`</tr>`;
 					}
