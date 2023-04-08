@@ -84,9 +84,9 @@
  [X] List of Clients
   [X] Client
 
-[ ] adminSettings/sales
- [ ] List of Sales
-  [ ] Sales
+[X] adminSettings/sales
+ [X] List of Sales
+  [X] Sales
 
 [X] adminSettings/administrators
  [X] List of Administrators

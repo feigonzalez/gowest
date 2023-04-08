@@ -8,6 +8,9 @@
 
 h1,h2,h3,h4,h5,h6{margin-top:1rem}
 
+.f-b{font-weight:bold}
+.f-i{font-style:italics}
+
 /*.btn-success{background-color:#7b7}*/
 .hidden{display:none !important}
 
@@ -23,7 +26,7 @@ h1,h2,h3,h4,h5,h6{margin-top:1rem}
 .form-close{width:100%;border:none;background-color:#493;color:#fff}
 .form-close:before{content:"\00D7"}
 
-#sidebarCollapseBtn{width:100%}
+#sidebarCollapseBtn{width:100%;border-radius:0}
 .sidebar{padding-left:0;padding-right:0;max-height:100vh;
 	overflow:hidden}
 .sidebar .list-group-item{border-radius:0}
@@ -81,6 +84,8 @@ li.nav-item .btn{width:-moz-available;width:-webkit-fill-available}
 .categoryTitle a{color:#fff}
 
 .productCount{font-size:0.7em;font-style:italic;margin-left:1em}
+
+.badge-saleStatus{font-size:1em;vertical-align:text-top}
 
 .table td{vertical-align:middle}
 .tableImage{width:3em}

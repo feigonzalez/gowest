@@ -1,0 +1,41 @@
+<div class="modal fade" id="saleDataModal">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<button type="button" class="form-close" data-dismiss="modal"></button>
+			<div class="modal-body">
+				<form action="adminIndex.html?t=sales">
+					<div class="row">
+						<div class="col-4"><label class="f-b">Cliente (ID)</label></div>
+						<div class="col-8"><span id="saleFormUser" class="form-value"></span></div>
+					</div>
+					<div class="row">
+						<div class="col-4"><label class="f-b">Dirección Envío</label></div>
+						<div class="col-8"><span id="saleFormAddress" class="form-value"></span></div>
+					</div>
+					<div class="row">
+						<div class="col-4"><label class="f-b">Fecha Venta</label></div>
+						<div class="col-8"><span id="saleFormSaleDate" class="form-value"></span></div>
+					</div>
+					<div class="row">
+						<div class="col-4"><label class="f-b">Fecha Entrega</label></div>
+						<div class="col-8"><span id="saleFormDeliveryDate" class="form-value"></span></div>
+					</div>
+					<div class="row">
+						<div class="col-4"><label class="f-b">Estado</label></div>
+						<div class="col-8"><span id="saleFormStatus" class="form-value"></span></div>
+					</div>
+					<div class="row">
+						<div class="col-4"><label class="f-b">Total</label></div>
+						<div class="col-8"><span id="saleFormTotal" class="form-value"></span></div>
+					</div>
+					<hr>
+					<div class="row"><div class="col"><label class="f-b">Detalle</label></div></div>
+					<div class="row"><div class="col"id="saleFormDetailsHolder"></div></div>
+					<div class="form-group float-right">
+						<button type="button" class="btn btn-success" class="close" data-dismiss="modal">Cerrar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

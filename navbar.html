@@ -42,6 +42,7 @@
 <ul id="categoryTabsList" class="nav bg-gowest-dark">
 	<script>
 		selectAllFrom("categories").then(data=>{
+			if(!get("categoryTabsList"))return;
 			for(row of data){
 				get("categoryTabsList").innerHTML+=`<li id="catTab_${row["code"]}" class="nav-item bg-gowest-dark"><a class="btn btn-gowest" href="category.html?c=${row["code"]}">${row["name"]}</a></li>`;
 			}

@@ -1,0 +1,36 @@
+<input class="searchbar" id="salesSearchbar" placeholder="Buscar en Ventas"></input>
+<div class="table-responsive">
+	<table class="table table-hover align-middle">
+		<thead>
+			<tr>
+			<th>ID Cliente</th>
+			<th>Fecha Venta</th>
+			<th class="d-none d-sm-table-cell">Fecha Entrega</th>
+			<th>Estado</th>
+			<th></th>
+			</tr>
+		</thead>
+		<tbody id="tableSalesBody">
+			<script>
+				selectAllFrom("sales").then(data=>{
+					var tBody=get("tableSalesBody")
+					for(row of data){
+						var tRow=document.createElement("tr");
+						tBody.appendChild(tRow)
+						tRow.outerHTML="<tr>"+
+						`<td data-type="string">${row["userID"]}</td>`+
+						`<td data-type="date">${row["saleDate"]}</td>`+
+						`<td class="d-none d-sm-table-cell" data-type="date">${row["deliveryDate"]}</td>`+
+						`<td data-type="string">${formatSaleStatus(row["status"])}</td>`+
+						`<td class="text-right"><button class="btn btn-success"`+
+							`data-toggle="modal" data-target="#saleDataModal"`+
+							`onclick="prepareSaleModal(this)" data-id=${row["id"]}>`+
+							`<span class="icon fa fa-search"></span></button>`+
+						`</tr>`;
+					}
+				});
+			</script>
+		</tbody>
+	</table>
+</div>
+<ihtml src="saleDataModal.html"></ihtml>

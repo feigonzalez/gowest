@@ -129,6 +129,28 @@ async function prepareClientModal(e){
 	}
 }
 
+async function prepareSaleModal(e){
+	var sale = (await selectAllWhere("sales",(i)=>{return i["id"]==e.dataset["id"]}))[0];
+	var details = (await selectAllWhere("saleDetails",(i)=>{return i["saleID"]==sale["id"]}))
+	var user = (await selectAllWhere("users",(i)=>{return i["id"]==sale["userID"]}))[0]
+	var address = (await selectAllWhere("addresses",(i)=>{return i["id"]==sale["addressID"]}))[0]
+	var district = (await selectAllWhere("districts",(i)=>{return i["id"]==address["districtID"]}))[0]
+	get("saleFormUser").innerText=`${user["name"]} ${user["surname"]} (${sale["userID"]})`;
+	get("saleFormAddress").innerText=`${address["street"]} ${address["number"]}, ${district["name"]}`;
+	get("saleFormSaleDate").innerText=sale["saleDate"];
+	get("saleFormDeliveryDate").innerText=sale["deliveryDate"];
+	get("saleFormStatus").innerHTML=formatSaleStatus(sale["status"]);
+	get("saleFormTotal").innerText=sale["total"];
+	var newInnerHTML="<table class='table text-center'>\n<tr><th>Producto</th><th>Precio</th><th>Unidades</th><th>Subtotal</th></tr>\n";
+	for(d of details){
+		var product = (await selectAllWhere("products",(i)=>{return i["id"]==d["productID"]}))[0]
+		console.log(product)
+		newInnerHTML+=`<tr><td>${product["name"]}</td><td>${product["price"]}</td><td>${d["units"]}</td><td>${d["subtotal"]}</td></tr>\n`;
+	}
+	newInnerHTML+="</table>";
+	get("saleFormDetailsHolder").innerHTML=newInnerHTML;
+}
+
 async function prepareAdministratorModal(e){
 	if(e){
 		get("adminFormShow").classList.remove("hidden");
@@ -161,6 +183,15 @@ function confirmDeleteCategory(e){
 	var name=e.parentElement.parentElement.children[0].innerText;
 	get("deleteAlertMessage").innerText=`¿Eliminar categoría ${name} y todos los productos relacionados?`;
 	get("deleteAlertConfirm").setAttribute("href","adminIndex.html?t=categories");
+}
+
+function formatSaleStatus(status){
+	switch(status){
+		case "Carrito": return `<span class='badge badge-pill badge-secondary badge-saleStatus'>${status}</span>`;
+		case "Despachado": return `<span class='badge badge-pill badge-primary badge-saleStatus'>${status}</span>`;
+		case "Completado": return `<span class='badge badge-pill badge-success badge-saleStatus'>${status}</span>`;
+		default: return status;
+	}
 }
 
 async function loadSecQuestion(e){
