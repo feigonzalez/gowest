@@ -105,35 +105,21 @@
    [X] Delete Administrator
   [X] Add Administrator
 
-[ ] cart
- [>] .navbar
-  [ ] List of Items
-   [ ] Item
-    [ ] Name
-    [ ] Price
-    [ ] Quantity
-    [ ] Change Quantity Buttons
-    [ ] Remove Button
-   [ ] Total
-  [ ] Checkout Button > checkout
+[X] cart
+ [X] .navbar
+  [X] List of Items
+   [X] Item
+    [X] Name
+    [X] Price
+    [X] Quantity
+    [X] Change Quantity Buttons
+    [X] Remove Button
+   [X] Total
+  [X] Checkout Button > checkout
 
 [X] account
  [X] .navbar
  [X] .sidebarClient
-
-[ ] checkout
- [>] .navbar
- [ ] Delivery Details
-  [ ] Address Selector
- [ ] Product List
-  [ ] Product
-   [ ] Name
-   [ ] Price
-   [ ] Quantity Spinner
-   [ ] Subtotal
-   [ ] Remove Button
-  [ ] Total
-  [ ] Pay
 
 [X] SidebarClient
  [X] account/account

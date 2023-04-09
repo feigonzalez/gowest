@@ -273,19 +273,13 @@ function formatSaleStatus(status){
 }
 
 async function loadSecQuestion(e){
-	var user;
-	var secQ;
-	await selectAllWhere("users",(i)=>{return i["rut"]==e.value}).then(data=>{
-		user=data[0];
-	})
-	if(user){
+	var user = (await selectAllWhere("users",(i)=>{return i["rut"]==e.value}))[0]
+	if(user!=null){
 		get("f_invalidRutFeedback").style.display="none";
-		await selectAllWhere("secQuestions",(i)=>{return i["rut"]==user["secQuestionId"]}).then(data=>{
-			secQ=data[0];
-			get("secQuestionHolder").innerText=secQ["value"];
-			get("f_rut").value=user["rut"];
-			get("f_inputRut").classList.remove("is-invalid");
-		})
+		var secQ = (await selectAllWhere("secQuestions",(i)=>{return i["id"]==user["secQuestionID"]}))[0]
+		get("secQuestionHolder").innerText=secQ["value"];
+		get("f_rut").value=user["rut"];
+		get("f_inputRut").classList.remove("is-invalid");
 	} else {
 		get("secQuestionHolder").innerText="–";
 		get("f_rut").value="";

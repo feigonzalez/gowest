@@ -106,6 +106,6 @@
 		{"id":3,"saleID":1,"productID":3,"units":2,"subtotal":2800},
 		{"id":4,"saleID":1,"productID":4,"units":2,"subtotal":3000},
 		{"id":5,"saleID":2,"productID":5,"units":2,"subtotal":4200},
-		{"id":5,"saleID":3,"productID":5,"units":2,"subtotal":4200}
+		{"id":6,"saleID":3,"productID":5,"units":2,"subtotal":4200}
 	]
 }
