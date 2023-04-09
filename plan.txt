@@ -1,5 +1,5 @@
-[ ] index (as Visit/Client):
- [>] .navbar
+[X] index (as Visit/Client):
+ [X] .navbar
  [X] Gallery
   [X] Categories
    [X] Title > category
@@ -24,9 +24,9 @@
   [X] Forgot Password button > recoverPass
  [X] SignUp Button > signup
  [X] Categories buttons > category
-[ ] Navbar (as Client)
+[X] Navbar (as Client)
  [X] Click Logo > index
- [-] Cart Button > cart
+ [X] Cart Button > cart
  [X] Account Button > account
  [X] SignOff Button > index (as Visit)
  [X] Categories buttons > category
@@ -56,13 +56,13 @@
   [X] Security Question Input
   [X] Security Answer Input
 
-[ ] category
- [>] Navbar
+[X] category
+ [X] Navbar
  [X] Gallery
   [X] Item Links (only items from the category) > item
 
-[ ] item
- [>] Navbar
+[X] item
+ [X] Navbar
  [X] Breadcrumbs
  [X] Item Image
  [X] Item Description
@@ -117,9 +117,9 @@
    [ ] Total
   [ ] Checkout Button > checkout
 
-[ ] account
- [>] .navbar
- [>] .sidebarClient
+[X] account
+ [X] .navbar
+ [X] .sidebarClient
 
 [ ] checkout
  [>] .navbar
@@ -135,11 +135,11 @@
   [ ] Total
   [ ] Pay
 
-[ ] SidebarClient
+[X] SidebarClient
  [X] account/account
- [ ] account/sales
- [ ] cart
+ [X] account/sales
+ [X] cart
 
 [X] account/account
 
-[ ] account/sales
+[X] account/sales

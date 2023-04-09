@@ -90,11 +90,13 @@
 		{"id":6,"street":"Av. Italia","number":"61","postalCode":"868464","userID":4,"districtID":4}
 	],
 	"sales":[
-		{"id":0,"saleDate":"01-01-2023","deliveryDate":"10-01-2023","status":"Completado",
+		{"id":0,"saleDate":"01-01-2023","deliveryDate":"10-01-2023","status":"Completada",
 			"total":7200,"userID":0,"addressID":0},
 		{"id":1,"saleDate":"02-02-2023","deliveryDate":"","status":"Carrito",
 			"total":5800,"userID":0,"addressID":0},
-		{"id":2,"saleDate":"03-03-2023","deliveryDate":"","status":"Despachado",
+		{"id":2,"saleDate":"03-03-2023","deliveryDate":"","status":"Despachada",
+			"total":4200,"userID":0,"addressID":1},
+		{"id":3,"saleDate":"03-03-2023","deliveryDate":"","status":"Pagada",
 			"total":4200,"userID":1,"addressID":2}
 	],
 	"saleDetails":[
@@ -103,6 +105,7 @@
 		{"id":2,"saleID":0,"productID":2,"units":2,"subtotal":2600},
 		{"id":3,"saleID":1,"productID":3,"units":2,"subtotal":2800},
 		{"id":4,"saleID":1,"productID":4,"units":2,"subtotal":3000},
-		{"id":5,"saleID":2,"productID":5,"units":2,"subtotal":4200}
+		{"id":5,"saleID":2,"productID":5,"units":2,"subtotal":4200},
+		{"id":5,"saleID":3,"productID":5,"units":2,"subtotal":4200}
 	]
 }

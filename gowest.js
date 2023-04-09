@@ -21,7 +21,7 @@ function clearParamsKeep(keys){
 }
 
 function moveTo(newPage,newParams){
-	if(newParams){
+	if(newParams!=null){
 		for(pair of newParams){
 			params[pair[0]]=pair[1];
 		}
@@ -166,13 +166,17 @@ async function prepareClientModal(e){
 	}
 }
 
-async function prepareSaleModal(e){
-	var sale = (await selectAllWhere("sales",(i)=>{return i["id"]==e.dataset["id"]}))[0];
+async function prepareSaleModal(e,userID){
+	var sale = (await selectAllWhere("sales",(i)=>{return i["id"]==e.dataset["id"] && (userID?i["userID"]==userID:true)}))[0];
 	var details = (await selectAllWhere("saleDetails",(i)=>{return i["saleID"]==sale["id"]}))
 	var user = (await selectAllWhere("users",(i)=>{return i["id"]==sale["userID"]}))[0]
 	var address = (await selectAllWhere("addresses",(i)=>{return i["id"]==sale["addressID"]}))[0]
 	var district = (await selectAllWhere("districts",(i)=>{return i["id"]==address["districtID"]}))[0]
-	get("saleFormUser").innerText=`${user["name"]} ${user["surname"]} (${sale["userID"]})`;
+	if(userID==null){
+		get("saleFormUser").innerText=`${user["name"]} ${user["surname"]} (${sale["userID"]})`;
+	} else {
+		get("saleFormUserRow").classList.add("hidden");
+	}
 	get("saleFormAddress").innerText=`${address["street"]} ${address["number"]}, ${district["name"]}`;
 	get("saleFormSaleDate").innerText=sale["saleDate"];
 	get("saleFormDeliveryDate").innerText=sale["deliveryDate"];
@@ -181,7 +185,6 @@ async function prepareSaleModal(e){
 	var newInnerHTML="<table class='table text-center'>\n<tr><th>Producto</th><th>Precio</th><th>Unidades</th><th>Subtotal</th></tr>\n";
 	for(d of details){
 		var product = (await selectAllWhere("products",(i)=>{return i["id"]==d["productID"]}))[0]
-		console.log(product)
 		newInnerHTML+=`<tr><td>${product["name"]}</td><td>${product["price"]}</td><td>${d["units"]}</td><td>${d["subtotal"]}</td></tr>\n`;
 	}
 	newInnerHTML+="</table>";
@@ -209,17 +212,17 @@ async function prepareAddressModal(e){
 	for(d of districts){
 		get("addressFormDistrict").innerHTML+=`<option value=${d["id"]}>${d["name"]}</option>`;
 	}
-	if(e){
+	if(e==null){
+		get("addressFormStreet").value="";
+		get("addressFormNumber").value="";
+		get("addressFormPostalCode").value="";
+		get("addressFormDistrict").value=0;
+	} else {
 		var address=(await selectAllWhere("addresses",(i)=>{return i["id"]==e.dataset["id"]}))[0]
 		get("addressFormStreet").value=address["street"];
 		get("addressFormNumber").value=address["number"];
 		get("addressFormPostalCode").value=address["postalCode"];
 		get("addressFormDistrict").value=address["districtID"];
-	} else {
-		get("addressFormStreet").value="";
-		get("addressFormNumber").value="";
-		get("addressFormPostalCode").value="";
-		get("addressFormDistrict").value=0;
 	}
 }
 
@@ -247,11 +250,24 @@ function confirmDeleteAddress(e){
 	get("deleteAlertConfirm").setAttribute("onclick","moveTo('account.html',[['t','account']])");
 }
 
+function confirmSaleReception(e){
+	var id=e.dataset["id"];
+	get("saleAlertMessage").innerText=`¿Confirmar que la compra de código ${id} fue entregada?`;
+	get("saleAlertConfirm").setAttribute("onclick","moveTo('account.html',[['t','sales']])");
+}
+
+function confirmSaleShipment(e){
+	var id=e.dataset["id"];
+	get("saleAlertMessage").innerText=`¿Confirmar que la compra de código ${id} fue enviada?`;
+	get("saleAlertConfirm").setAttribute("onclick","moveTo('adminIndex.html',[['t','sales']])");
+}
+
 function formatSaleStatus(status){
 	switch(status){
 		case "Carrito": return `<span class='badge badge-pill badge-secondary badge-saleStatus'>${status}</span>`;
-		case "Despachado": return `<span class='badge badge-pill badge-primary badge-saleStatus'>${status}</span>`;
-		case "Completado": return `<span class='badge badge-pill badge-success badge-saleStatus'>${status}</span>`;
+		case "Pagada": return `<span class='badge badge-pill badge-danger badge-saleStatus'>${status}</span>`;
+		case "Despachada": return `<span class='badge badge-pill badge-primary badge-saleStatus'>${status}</span>`;
+		case "Completada": return `<span class='badge badge-pill badge-success badge-saleStatus'>${status}</span>`;
 		default: return status;
 	}
 }
@@ -280,8 +296,8 @@ async function loadSecQuestion(e){
 
 function addToCart(units){
 	var cartBtn = get("navbarCartBtn");
-	if(!cartBtn) return;
-	if(!units) units = parseInt(get("addToCartUnits").value);
+	if(cartBtn==null) return;
+	if(units==null) units = parseInt(get("addToCartUnits").value);
 	var newUnits=parseInt(cartBtn.dataset["units"])+units;
 	var cartBadge=get("navbarCartUnits");
 	cartBadge.classList.remove("hidden");
