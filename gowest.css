@@ -18,6 +18,8 @@ h1,h2,h3,h4,h5,h6{margin-top:1rem}
 .bg-gowest-dark{background-color:#5A3;color:#fff}
 /*.bg-gowest .btn{background-color:#373;color:#fff}*/
 
+.no-wrap{white-space:nowrap}
+
 .btn-gowest{background-color:#493;color:#fff}
 .btn-gowest:hover{background-color:#382;color:#fff}
 .btn-gowest:focus{border-color:#271;box-shadow:0 0 0 0.2rem #2718}

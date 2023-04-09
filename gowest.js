@@ -204,22 +204,47 @@ async function prepareAdministratorModal(e){
 	}
 }
 
+async function prepareAddressModal(e){
+	var districts=await selectAllFrom("districts");
+	for(d of districts){
+		get("addressFormDistrict").innerHTML+=`<option value=${d["id"]}>${d["name"]}</option>`;
+	}
+	if(e){
+		var address=(await selectAllWhere("addresses",(i)=>{return i["id"]==e.dataset["id"]}))[0]
+		get("addressFormStreet").value=address["street"];
+		get("addressFormNumber").value=address["number"];
+		get("addressFormPostalCode").value=address["postalCode"];
+		get("addressFormDistrict").value=address["districtID"];
+	} else {
+		get("addressFormStreet").value="";
+		get("addressFormNumber").value="";
+		get("addressFormPostalCode").value="";
+		get("addressFormDistrict").value=0;
+	}
+}
+
 function confirmDeleteAdministrator(e){
 	var name=e.parentElement.parentElement.children[0].innerText;
 	get("deleteAlertMessage").innerText=`¿Eliminar administrador ${name}?`;
-	get("deleteAlertConfirm").setAttribute("href","adminIndex.html?t=admins");
+	get("deleteAlertConfirm").setAttribute("onclick","moveTo('adminIndex.html',[['t','admins']])");
 }
 
 function confirmDeleteProduct(e){
 	var name=e.parentElement.parentElement.children[1].innerText;
 	get("deleteAlertMessage").innerText=`¿Eliminar producto ${name}?`;
-	get("deleteAlertConfirm").setAttribute("href","adminIndex.html?t=products");
+	get("deleteAlertConfirm").setAttribute("onclick","moveTo('adminIndex.html',[['t','products']])");
 }
 
 function confirmDeleteCategory(e){
 	var name=e.parentElement.parentElement.children[0].innerText;
 	get("deleteAlertMessage").innerText=`¿Eliminar categoría ${name} y todos los productos relacionados?`;
-	get("deleteAlertConfirm").setAttribute("href","adminIndex.html?t=categories");
+	get("deleteAlertConfirm").setAttribute("onclick","moveTo('adminIndex.html',[['t','categories']])");
+}
+
+function confirmDeleteAddress(e){
+	var name=e.parentElement.parentElement.children[0].innerText;
+	get("deleteAlertMessage").innerText=`¿Eliminar dirección ${name}?`;
+	get("deleteAlertConfirm").setAttribute("onclick","moveTo('account.html',[['t','account']])");
 }
 
 function formatSaleStatus(status){

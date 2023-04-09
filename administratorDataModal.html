@@ -3,7 +3,7 @@
 		<div class="modal-content">
 			<button type="button" class="form-close" data-dismiss="modal"></button>
 			<div class="modal-body">
-				<form id="adminFormShow" action="adminIndex.html?t=admins">
+				<form id="adminFormShow" action="adminIndex.html">
 					<div class="row">
 						<div class="col-4"><label class="f-b">Nombre</label></div>
 						<div class="col-8"><span id="adminFormShowName" class="form-value"></span></div>
@@ -28,7 +28,7 @@
 						<button type="button" class="btn btn-success" class="close" data-dismiss="modal">Cerrar</button>
 					</div>
 				</form>
-				<form id="adminFormNew" action="adminIndex.html?t=admins">
+				<form id="adminFormNew" action="adminIndex.html">
 					<div class="form-group">
 						<label for="name">Nombre</label>
 						<input type="text" name="name" class="form-control" id="adminFormNewName">
@@ -53,8 +53,14 @@
 						<button type="button" class="btn" class="close" data-dismiss="modal">Cancelar</button>
 						<button type="submit" class="btn btn-success">Ingresar</button>
 					</div>
+					<input type="hidden" name="update" value="false" id="productFormUpdate">
+					<input type="hidden" name="t" value="admins">
+					<input id="adminSecFormUser" type="hidden" name="u">
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+	get("adminSecFormUser").value=params["u"];
+</script>

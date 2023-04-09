@@ -17,6 +17,7 @@
 		<div class="form-group">
 			<input id="adminSaveData" type="submit" value="Guardar" class="btn btn-success">
 		</div>
+		<input id="adminDataFormUser" type="hidden" name="u">
 	</form>
 	<hr>
 	<form action="processAdminAccountChanges.html">
@@ -43,8 +44,11 @@
 		<div class="form-group">
 			<input id="adminSaveData" type="submit" value="Guardar" class="btn btn-success">
 		</div>
+		<input id="adminSecFormUser" type="hidden" name="u">
 	</form>
 	<script>
+		get("adminDataFormUser").value=params["u"];
+		get("adminSecFormUser").value=params["u"];
 		selectAllWhere("users",(i)=>{return i["id"]==params["u"]}).then(data=>{
 			var row=data[0];
 			get("adminName").value=row["name"];

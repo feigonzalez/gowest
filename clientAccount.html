@@ -1,0 +1,101 @@
+<div class="container mt-3">
+	<h4>Datos</h4>
+	<form action="processClientAccountChanges.html">
+		<div class="row form-group">
+			<div class="col-sm-6">
+				<label for="name">Nombre</label>
+				<input id="clientName" name="name" class="form-control">
+			</div>
+			<div class="col-sm-6">
+				<label for="surname">Apellido</label>
+				<input id="clientSurname" name="surname" class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="mail">Correo</label>
+			<input id="clientMail" name="mail" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="phone">Teléfono</label>
+			<input id="clientPhone" name="phone" class="form-control">
+		</div>
+		<div class="form-group text-right">
+			<input id="clientSaveData" type="submit" value="Guardar" class="btn btn-success">
+		</div>
+		<input type="hidden" id="clientDataFormUser" name="u">
+	</form>
+	<hr>
+	<h4>Seguridad</h4>
+	<form action="processClientAccountChanges.html">
+		<div class="row form-group">
+			<div class="col-sm-6">
+				<label for="pass">Nueva Contraseña</label>
+				<input id="clientPass" name="pass" class="form-control">
+			</div>
+			<div class="col-sm-6">
+				<label for="newPassConfirm">Repetir Nueva Contraseña</label>
+				<input id="clientPassConfirm" name="passConfirm" class="form-control">
+			</div>
+		</div>
+		<div class="row form-group">
+			<div class="col-sm-6">
+				<label for="secQuestion">Cambiar Pregunta de Seguridad</label>
+				<select id="clientSecQuestion" name="secQuestion" class="form-control"></select>
+			</div>
+			<div class="col-sm-6">
+				<label for="secAnswer">Cambiar Respuesta de Seguridad</label>
+				<input id="clientSecAnswer" name="secAnswer" class="form-control">
+			</div>
+		</div>
+		<div class="form-group text-right">
+			<input id="clientSaveData" type="submit" value="Guardar" class="btn btn-success">
+		</div>
+		<input type="hidden" id="clientSecFormUser" name="u">
+	</form>
+	<hr>
+	<h4>Direcciones</h4>
+	<div class="table-responsive">
+		<table class="table table-hover align-middle">
+			<tbody id="tableAddressesBody">
+				<script>
+					selectAllFrom("districts").then(districts=>{
+						selectAllWhere("addresses",(i)=>{return i["userID"]==params["u"]}).then(data=>{
+							var tBody=get("tableAddressesBody")
+							for(var row of data){
+								var district=districts[row["districtID"]];
+								var tRow=document.createElement("tr");
+								tBody.appendChild(tRow)
+								tRow.outerHTML="<tr>"+
+								`<td data-type="string">${row["street"]} ${row["number"]}, ${district["name"]}</td>`+
+								`<td class="text-right"><button class="btn btn-success" data-id="${row['id']}"data-toggle="modal" data-target="#addressDataModal" onclick="prepareAddressModal(this)"><span class="icon fa fa-pencil"></span></button>`+
+								`<button class="btn btn-danger" data-toggle="modal" data-target="#deleteAlertModal" onclick="confirmDeleteAddress(this)"><span class="icon fa fa-trash"></span></button></td>`+
+								`</tr>`;
+							}
+						});
+					})
+				</script>
+			</tbody>
+		</table>
+	</div>
+	<div class="container p-3 fr text-right">
+		<button class="btn btn-success" data-toggle="modal" data-target="#addressDataModal" onclick="prepareAddressModal()">Añadir Dirección</button>
+	</div>
+	<script>
+		get("clientDataFormUser").value=params["u"];
+		get("clientSecFormUser").value=params["u"];
+		selectAllWhere("users",(i)=>{return i["id"]==params["u"]}).then(data=>{
+			var row=data[0];
+			get("clientName").value=row["name"];
+			get("clientSurname").value=row["surname"];
+			get("clientMail").value=row["mail"];
+			get("clientPhone").value=row["phone"];
+		})
+		selectAllFrom("secQuestions").then(data=>{
+			for(row of data){
+				get("clientSecQuestion").innerHTML+=`<option value="${row["id"]}">${row["value"]}</option>`
+			}
+		})
+	</script>
+</div>
+<ihtml src="addressDataModal.html"></ihtml>
+<ihtml src="deleteAlertModal.html"></ihtml>

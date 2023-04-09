@@ -3,7 +3,7 @@
 		<div class="modal-content">
 			<button type="button" class="form-close" data-dismiss="modal"></button>
 			<div class="modal-body">
-				<form action="adminIndex.html?t=products">
+				<form action="adminIndex.html">
 					<div class="form-group">
 						<label for="image">Imagen</label>
 						<div class="form-image-input">
@@ -38,8 +38,12 @@
 					</div>
 					<input type="hidden" name="update" value="false" id="productFormUpdate">
 					<input type="hidden" name="t" value="products">
+					<input id="productFormUser" type="hidden" name="u">
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+	get("productFormUser").value=params["u"];
+</script>

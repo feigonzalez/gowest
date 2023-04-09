@@ -1,0 +1,38 @@
+<div class="modal fade" id="addressDataModal">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<button type="button" class="form-close" data-dismiss="modal"></button>
+			<div class="modal-body">
+				<form action="account.html">
+					<div class="form-group">
+						<label for="name">Calle</label>
+						<input type="text" name="name" class="form-control" id="addressFormStreet">
+					</div>
+					<div class="form-group">
+						<label for="price">Número</label>
+						<input type="number" name="price" class="form-control" id="addressFormNumber">
+					</div>
+					<div class="form-group">
+						<label for="price">Código Postal</label>
+						<input type="number" name="stock" class="form-control" id="addressFormPostalCode">
+					</div>
+					<div class="form-group">
+						<label for="category">Comuna</label>
+						<select name="category" class="form-control" id="addressFormDistrict">
+						</select>
+					</div>
+					<div class="form-group float-right">
+						<button type="button" class="btn" class="close" data-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-success">Ingresar</button>
+					</div>
+					<input type="hidden" name="update" value="false" id="addressFormUpdate">
+					<input type="hidden" name="t" value="account">
+					<input id="addressFormUser" type="hidden" name="u">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	get("addressFormUser").value=params["u"];
+</script>

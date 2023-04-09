@@ -136,12 +136,10 @@
   [ ] Pay
 
 [ ] SidebarClient
- [ ] account/preferences
+ [X] account/account
  [ ] account/sales
- [ ] account/security (?)
+ [ ] cart
 
-[ ] account/preferences
+[X] account/account
 
 [ ] account/sales
-
-[ ] account/security

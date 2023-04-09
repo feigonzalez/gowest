@@ -3,7 +3,7 @@
 		<div class="modal-content">
 			<button type="button" class="form-close" data-dismiss="modal"></button>
 			<div class="modal-body">
-				<form action="adminIndex.html?t=categories">
+				<form action="adminIndex.html">
 					<div class="form-group">
 						<label for="name">Nombre</label>
 						<input type="text" name="name" class="form-control" id="categoryFormName">
@@ -14,8 +14,12 @@
 					</div>
 					<input type="hidden" name="update" value="false" id="categoryFormUpdate">
 					<input type="hidden" name="t" value="categories">
+					<input id="categoryFormUser"type="hidden" name="u">
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+	get("categoryFormUser").value=params["u"];
+</script>

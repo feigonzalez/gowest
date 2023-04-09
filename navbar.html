@@ -1,11 +1,11 @@
-<nav id="topNavbar" class="navbar navbar-expand-sm navbar-dark bg-gowest-dark">
+<nav id="topNavbar" class="navbar navbar-expand navbar-dark bg-gowest-dark">
     <a id="navbar-brand" class="navbar-brand" href="#" onclick="moveTo('index.html')">
 		<img class="navbar-brand-image" src="img/logo.png">
-		<span class="navbar-brand-name">GoWest</span>
+		<span class="navbar-brand-name d-none d-sm-inline">GoWest</span>
 	</a>
     <ul id="navbarVisit" class="navbar-nav navbar-nav-right hidden">
         <li class="nav-item">
-			<a class="btn btn-gowest" id="navbarCartBtn" href="#" onclick="moveTo('cart.html')" data-units="0">
+			<a class="btn btn-gowest no-wrap" id="navbarCartBtn" href="#" onclick="moveTo('cart.html')" data-units="0">
 				<span class="icon fa fa-shopping-cart"></span>
 				<span id="navbarCartUnits" class="badge badge-pill badge-danger hidden">0</span>
 			</a>
@@ -19,10 +19,10 @@
     </ul>
 	<ul id="navbarClient" class="navbar-nav navbar-nav-right hidden">
 		<li class="nav-item">
-			<span class="userWelcome"></span>
+			<span class="userWelcome text-right"></span>
 		</li>
         <li class="nav-item">
-			<a class="btn btn-gowest" id="navbarCartBtn" href="#" onclick="moveTo('cart.html')" data-units="0">
+			<a class="btn btn-gowest no-wrap" id="navbarCartBtn" href="#" onclick="moveTo('cart.html')" data-units="0">
 				<span class="icon fa fa-shopping-cart"></span>
 				<span id="navbarCartUnits" class="badge badge-pill badge-danger hidden">0</span>
 			</a>
@@ -36,7 +36,7 @@
     </ul>
     <ul id="navbarAdmin" class="navbar-nav navbar-nav-right hidden">
 		<li class="nav-item">
-			<span class="userWelcome"></span>
+			<span class="userWelcome text-right"></span>
 		</li>
 		<li class="nav-item">
 			<a class="btn btn-gowest" href="index.html" type="button">
