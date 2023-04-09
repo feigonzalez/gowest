@@ -9,7 +9,10 @@
 			}
 			clearParams();
 			params["u"]=data[0]["id"];
-			moveTo("index.html");
+			if (data[0]["roleID"]==0)
+				moveTo("adminIndex.html");
+			else
+				moveTo("index.html")
 		})
 	} else history.back();
 </script>

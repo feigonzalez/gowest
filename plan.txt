@@ -9,6 +9,7 @@
  [X] .sidebarAdmin
 
 [X] SidebarAdmin
+ [X] Account Button > adminSettings/account
  [X] Products Button > adminSettings/products
  [X] Categories Button > adminSettings/categories
  [X] Clients Button > adminSettings/clients
@@ -66,6 +67,16 @@
  [X] Item Image
  [X] Item Description
  [X] AddToCart
+
+[X] adminSettings/account
+ [X] Name
+ [X] Surname
+ [X] Phone
+ [X] Password
+ [X] Password Confirm
+ [X] Security Question
+ [X] Security Answer
+ [X] Save changes Button > processAdminAccountChanges
 
 [X] adminSettings/products
  [X] List of Products

@@ -1,6 +1,8 @@
 /*
     Código para ser usado en el proyecto GOWEST, del curso de Programación Web 2023-1
 */
+
+//URL Params management
 var url = new URL(window.location.href);
 var params={};
 for([key,val] of url.searchParams){
@@ -32,10 +34,14 @@ function moveTo(newPage,newParams){
 	window.location.href=newPage+appendParams;
 }
 
+//debugging management
 var debugging=true;
 function debugLog(s){if(debugging)console.log(s)}
+
+//utilisties
 function get(id){return document.getElementById(id)}
 
+//database management
 async function selectAll(){
 	debugLog("Retrieving DB data...");
 	var res;

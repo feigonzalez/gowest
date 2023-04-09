@@ -76,8 +76,8 @@
 		{"id":4,"rut":"5.500.055-0","name":"Peter","surname":"Davidson",
 			"mail":"pdavidson@mail.com","phone":"+567891234","pass":"pass",
 			"roleID":1,"secQuestionID":3,"secAnswer":"9"},
-		{"id":10,"rut":"7.707.707-7","name":"Yalvis","surname":"Dickson",
-			"mail":"ydickson@mail.com","phone":"+987654321","pass":"pass",
+		{"id":10,"rut":"7.707.707-7","name":"Alvis","surname":"Dickson",
+			"mail":"adickson@mail.com","phone":"+987654321","pass":"pass",
 			"roleID":0,"secQuestionID":1,"secAnswer":"La Linde"}
 	],
 	"addresses":[

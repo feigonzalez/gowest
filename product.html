@@ -50,6 +50,7 @@
 		</div>
 	</div>
 	<script>
+		clearParamsKeep(["u","p"])
 		if(params["p"]){
 			selectAllWhere("products",(i)=>{return i["code"]==params["p"]}).then(d=>{
 				var data=d[0];

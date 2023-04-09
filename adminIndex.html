@@ -23,11 +23,12 @@
 				<button id="sidebarCollapseBtn" class="btn btn-gowest d-md-none collapsed"
 					data-toggle="collapse" data-target="#adminSidebarGroup"><span class="icon fa fa-angle-up"></span></button>
                 <div id="adminSidebarGroup" class="list-group collapse dont-collapse-sm">
-                    <a href="adminIndex.html?t=products" class="list-group-item list-group-item-gowest">Productos</a>
-                    <a href="adminIndex.html?t=categories" class="list-group-item list-group-item-gowest">Categorías</a>
-                    <a href="adminIndex.html?t=clients" class="list-group-item list-group-item-gowest">Clientes</a>
-                    <a href="adminIndex.html?t=sales" class="list-group-item list-group-item-gowest">Ventas</a>
-                    <a href="adminIndex.html?t=admins" class="list-group-item list-group-item-gowest">Adminstradores</a>
+                    <a href="#" onclick="moveTo('adminIndex.html',[['t','account']])" class="list-group-item list-group-item-gowest">Cuenta</a>
+                    <a href="#" onclick="moveTo('adminIndex.html',[['t','products']])" class="list-group-item list-group-item-gowest">Productos</a>
+                    <a href="#" onclick="moveTo('adminIndex.html',[['t','categories']])" class="list-group-item list-group-item-gowest">Categorías</a>
+                    <a href="#" onclick="moveTo('adminIndex.html',[['t','clients']])" class="list-group-item list-group-item-gowest">Clientes</a>
+                    <a href="#" onclick="moveTo('adminIndex.html',[['t','sales']])" class="list-group-item list-group-item-gowest">Ventas</a>
+                    <a href="#" onclick="moveTo('adminIndex.html',[['t','admins']])" class="list-group-item list-group-item-gowest">Adminstradores</a>
                     <div class="list-group-item list-group-item-last d-none d-md-block"></div>
                 </div>
             </div>
@@ -40,6 +41,8 @@
                     var tabFile="adminWelcome.html";
                     if(tab)
                     switch(tab){
+						case "account":
+                            tabFile="adminAccount.html"; break;
                         case "products":
                             tabFile="adminProducts.html"; break;
                         case "categories":
