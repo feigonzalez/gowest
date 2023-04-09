@@ -5,7 +5,10 @@
 	</a>
     <ul id="navbarVisit" class="navbar-nav navbar-nav-right hidden">
         <li class="nav-item">
-          <a class="btn btn-gowest" id="navbarCartBtn" href="#" onclick="moveTo('cart.html')"><span class="icon fa fa-shopping-cart"></span></a>
+			<a class="btn btn-gowest" id="navbarCartBtn" href="#" onclick="moveTo('cart.html')" data-units="0">
+				<span class="icon fa fa-shopping-cart"></span>
+				<span id="navbarCartUnits" class="badge badge-pill badge-danger hidden">0</span>
+			</a>
         </li>
         <li class="nav-item">
           <a class="btn btn-gowest" href="signup.html" type="button">Registrarse</a>
@@ -19,7 +22,10 @@
 			<span class="userWelcome"></span>
 		</li>
         <li class="nav-item">
-			<a class="btn btn-gowest" id="navbarCartBtn" href="#" onclick="moveTo('cart.html')"><span class="icon fa fa-shopping-cart"></span></a>
+			<a class="btn btn-gowest" id="navbarCartBtn" href="#" onclick="moveTo('cart.html')" data-units="0">
+				<span class="icon fa fa-shopping-cart"></span>
+				<span id="navbarCartUnits" class="badge badge-pill badge-danger hidden">0</span>
+			</a>
         </li>
         <li class="nav-item">
           <a id="navLinkAccount" class="btn btn-gowest" href="#" onclick="moveTo('account.html')">Cuenta</a>
@@ -61,7 +67,7 @@
 	var currPage = window.location.pathname.split("/")[window.location.pathname.split("/").length-1];
     if(currPage=="adminIndex.html"){
 		navToShow="navbarAdmin";
-		get("navbar-brand").setAttribute("href","adminIndex.html")
+		get("navbar-brand").setAttribute("onclick","clearParamsKeep(['u']);moveTo('adminIndex.html')")
 		get("categoryTabsList").remove();
     } else if(params["u"]){
       navToShow="navbarClient";
@@ -78,5 +84,10 @@
 				welcome.innerText=data[0]["name"]+" "+data[0]["surname"];
 			}
 		})
+	}
+	if(params["cart"]){
+		get("navbarCartBtn").dataset["units"]=params["cart"];
+		get("navbarCartUnits").innerText=params["cart"];
+		get("navbarCartUnits").classList.remove("hidden");
 	}
 </script>

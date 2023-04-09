@@ -35,9 +35,9 @@ h1,h2,h3,h4,h5,h6{margin-top:1rem}
 .list-group-item-gowest:hover{text-decoration:none;background-color:#382;color:#fff}
 .list-group-item-last{height:100vh;}
 
-.icon{font-size:1.5em;vertical-align:middle;width:1em}
+.icon{font-size:1.5em;width:1em}
 button.icon{border:none;background-color:transparent}
-.btn .icon{display:block;margin:auto}
+.btn .icon{margin:auto}
 .icon-signoff{background-image:url("img/icon_signoff.png")}
 .icon-edit{background-image:url("img/icon_edit.png")}
 .icon-save{background-image:url("img/icon_save.png")}

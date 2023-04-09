@@ -21,7 +21,7 @@
     </div>
     <div id="category" class="container-fluid categoryGallery">
         <script>
-			clearParamsKeep(["u","c"])
+			clearParamsKeep(["u","c","cart"])
             if(!params["c"])get("err_noCat").classList.remove("hidden")
             loadCategoryGalleryInto(params["c"],get("category"))
         </script>

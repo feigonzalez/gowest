@@ -34,13 +34,10 @@
             </div>
             <div id="adminContent" class="col-md-9">
                 <script>
-                    var url = new URL(window.location.href);
-                    var urlParams = url.searchParams;
                     var i=document.createElement("ihtml");
-                    var tab=urlParams.get("t");
                     var tabFile="adminWelcome.html";
-                    if(tab)
-                    switch(tab){
+                    if(params["t"])
+                    switch(params["t"]){
 						case "account":
                             tabFile="adminAccount.html"; break;
                         case "products":

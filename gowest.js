@@ -96,7 +96,7 @@ async function loadCategoryGalleryInto(cat="",e,link=false){
         "<img class='galleryItemImage mx-auto d-block' src='img/products/{ID}.png'>"+
         "<div class='galleryItemLabel'>{CONTENT}</div>"+
         "<div class='galleryItemPrice'>{PRICE}</div></a>"+
-		"<button class='btn btn-success galleryCartBtn'>Añadir al carrito</button></div>";
+		"<button class='btn btn-success galleryCartBtn' onclick='addToCart(1)'>Añadir al carrito</button></div>";
     for(var i=0;i<(link?1:Math.ceil(cl/4));i++){
         r+="<div class='row galleryRow'>";
         for(var j=0;j<4;j++){
@@ -251,6 +251,18 @@ async function loadSecQuestion(e){
 		get("f_invalidRutFeedback").style.display="block";
 		get("f_inputRut").classList.add("is-invalid");
 	}
+}
+
+function addToCart(units){
+	var cartBtn = get("navbarCartBtn");
+	if(!cartBtn) return;
+	if(!units) units = parseInt(get("addToCartUnits").value);
+	var newUnits=parseInt(cartBtn.dataset["units"])+units;
+	var cartBadge=get("navbarCartUnits");
+	cartBadge.classList.remove("hidden");
+	cartBadge.innerText=newUnits;
+	cartBtn.dataset["units"]=newUnits;
+	params["cart"]=newUnits;
 }
 
 window.addEventListener("load",()=>{

@@ -18,7 +18,7 @@
 <body>
     <script>
         //if user is "admin@admin", redirect to adminindex
-		clearParamsKeep(["u"])
+		clearParamsKeep(["u","cart"])
         if(params["u"] && params["u"]=="admin@admin"){
             moveTo("adminIndex.html");
         }
