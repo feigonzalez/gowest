@@ -19,9 +19,9 @@
     <ihtml src="navbar.html"></ihtml>
 	<div class="container-fluid bg-gowest" id="bradcrumbsHolder">
 		<div class="breadcrumbs">
-			<a id="breadcrumbCategory"></a>
+			<a id="breadcrumbCategory" href="#"></a>
 			/
-			<a id="breadcrumbProduct"></a>
+			<a id="breadcrumbProduct" href="#"></a>
 		</div>
 	</div>
 	<div class="container">
@@ -50,26 +50,24 @@
 		</div>
 	</div>
 	<script>
-		var url = new URL(window.location.href);
-		var urlParams = url.searchParams;
-		var productId=urlParams.get("p")
-		if(productId)
-			selectAllWhere("products",(i)=>{return i["code"]==productId})
-				.then(d=>loadProductData(d[0]))
-		async function loadProductData(data){
-			cat = (await selectAllWhere("categories",(i)=>{return i["code"]==data["category"]}))[0]["name"]
-			get("breadcrumbCategory").innerText=cat;
-			get("breadcrumbCategory").setAttribute("href","category.html?c="+data["category"])
-			get("breadcrumbProduct").innerText=data["name"];
-			get("breadcrumbProduct").setAttribute("href","product.html?p="+data["code"])
-			get("productImage").setAttribute("src","img/products/"+data["code"]+".png");
-			get("productName").innerText=data["name"];
-			get("productPrice").innerText="$"+data["price"];
-			var desc=""
-			for(l of data["description"]) desc+=l;
-			get("productDescription").innerHTML=desc;
-			get("addToCartProductReturn").value=productId;
-			
+		if(params["p"]){
+			selectAllWhere("products",(i)=>{return i["code"]==params["p"]}).then(d=>{
+				var data=d[0];
+				selectAllWhere("categories",(i)=>{return i["code"]==data["category"]}).then(c=>{
+					var cat=c[0]["name"]
+					get("breadcrumbCategory").innerText=cat;
+					get("breadcrumbCategory").setAttribute("onclick","moveTo('category.html',[['c','"+data["category"]+"']])");
+					get("breadcrumbProduct").innerText=data["name"];
+					get("breadcrumbProduct").setAttribute("onclick","moveTo('product.html',[['c','"+data["code"]+"']])")
+					get("productImage").setAttribute("src","img/products/"+data["code"]+".png");
+					get("productName").innerText=data["name"];
+					get("productPrice").innerText="$"+data["price"];
+					var desc=""
+					for(l of data["description"]) desc+=l;
+					get("productDescription").innerHTML=desc;
+					get("addToCartProductReturn").value=params["p"];
+				})
+			})
 		}
 	</script>
 </body>

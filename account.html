@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoWest</title>
+	<link rel="icon" href="img/logo.png"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="gowest.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="gowest.js"></script>
+    <script src="ihtml.js"></script>
+</head>
+<body>
+    <ihtml src="navbar.html"></ihtml>
+    <div class="container-fluid">
+        <div class="row">
+            <div id="clientSidebar" class="sidebar col-md-3 sticky-top">
+				<button id="sidebarCollapseBtn" class="btn btn-gowest d-md-none collapsed"
+					data-toggle="collapse" data-target="#clientSidebarGroup"><span class="icon fa fa-angle-up"></span></button>
+                <div id="clientSidebarGroup" class="list-group collapse dont-collapse-sm">
+                    <a href="#" onclick="moveTo('account.html',[['t','preferences']])" class="list-group-item list-group-item-gowest">Preferencias</a>
+                    <a href="#" onclick="moveTo('account.html',[['t','sales']])"class="list-group-item list-group-item-gowest">Compras</a>
+                    <a href="#" onclick="moveTo('account.html',[['t','security']])"class="list-group-item list-group-item-gowest">Seguridad</a>
+                    <div class="list-group-item list-group-item-last d-none d-md-block"></div>
+                </div>
+            </div>
+            <div id="clientContent" class="col-md-9">
+                <script>
+					clearParamsKeep(["u","t"])
+                    var i=document.createElement("ihtml");
+                    var tab=params["t"];
+                    var tabFile="clientWelcome.html";
+                    if(tab)
+                    switch(tab){
+                        case "preferences":
+                            tabFile="clientPreferences.html"; break;
+                        case "sales":
+                            tabFile="clientSales.html"; break;
+                        case "security":
+                            tabFile="clientSecurity.html"; break;
+                    }
+                    i.setAttribute("src",tabFile)
+                    get("clientContent").appendChild(i)
+                    loadFromElement(i);
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

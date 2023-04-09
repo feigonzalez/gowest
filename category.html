@@ -21,11 +21,9 @@
     </div>
     <div id="category" class="container-fluid categoryGallery">
         <script>
-            var url = new URL(window.location.href);
-            var urlParams = url.searchParams;
-            var category=urlParams.get("c")
-            if(!category)get("err_noCat").classList.remove("hidden")
-            loadCategoryGalleryInto(category,get("category"))
+			clearParamsKeep(["u","c"])
+            if(!params["c"])get("err_noCat").classList.remove("hidden")
+            loadCategoryGalleryInto(params["c"],get("category"))
         </script>
     </div>
 </body>

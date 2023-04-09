@@ -1,0 +1,15 @@
+<script src="gowest.js"></script>
+<script>
+	var url = new URL(window.location.href);
+	var urlParams = url.searchParams;
+	if(urlParams.get("mail")){
+		selectAllWhere("users",(i)=>{return i["mail"]==urlParams.get("mail")}).then(data=>{
+			if(data.length==0){
+				history.back();
+			}
+			clearParams();
+			params["u"]=data[0]["id"];
+			moveTo("index.html");
+		})
+	} else history.back();
+</script>

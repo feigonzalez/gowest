@@ -1,11 +1,11 @@
 <nav id="topNavbar" class="navbar navbar-expand-sm navbar-dark bg-gowest-dark">
-    <a id="navbar-brand" class="navbar-brand" href="index.html">
+    <a id="navbar-brand" class="navbar-brand" href="#" onclick="moveTo('index.html')">
 		<img class="navbar-brand-image" src="img/logo.png">
 		<span class="navbar-brand-name">GoWest</span>
 	</a>
     <ul id="navbarVisit" class="navbar-nav navbar-nav-right hidden">
         <li class="nav-item">
-          <a class="btn btn-gowest" id="navbarCartBtn" href="cart.html" type="button"><span class="icon fa fa-shopping-cart"></span></a>
+          <a class="btn btn-gowest" id="navbarCartBtn" href="#" onclick="moveTo('cart.html')"><span class="icon fa fa-shopping-cart"></span></a>
         </li>
         <li class="nav-item">
           <a class="btn btn-gowest" href="signup.html" type="button">Registrarse</a>
@@ -19,10 +19,10 @@
 			<span class="userWelcome"></span>
 		</li>
         <li class="nav-item">
-			<a class="btn btn-gowest" id="navbarCartBtn" href="cart.html" type="button"><span class="icon fa fa-shopping-cart"></span></a>
+			<a class="btn btn-gowest" id="navbarCartBtn" href="#" onclick="moveTo('cart.html')"><span class="icon fa fa-shopping-cart"></span></a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-gowest" href="account.html" type="button">Cuenta</a>
+          <a id="navLinkAccount" class="btn btn-gowest" href="#" onclick="moveTo('account.html')">Cuenta</a>
         </li>
         <li class="nav-item">
           <a class="btn btn-gowest" href="index.html" type="button"><span class="icon fa fa-power-off"></span></a>
@@ -44,11 +44,11 @@
 		selectAllFrom("categories").then(data=>{
 			if(!get("categoryTabsList"))return;
 			for(row of data){
-				get("categoryTabsList").innerHTML+=`<li id="catTab_${row["code"]}" class="nav-item bg-gowest-dark"><a class="btn btn-gowest" href="category.html?c=${row["code"]}">${row["name"]}</a></li>`;
+				get("categoryTabsList").innerHTML+=`<li id="catTab_${row["code"]}"`+
+					`class="nav-item bg-gowest-dark"><a class="btn btn-gowest" `+
+					`href="#" onclick="moveTo('category.html',[['c','${row["code"]}']])">${row["name"]}</a></li>`;
 			}
-			var url = new URL(window.location.href);
-			var urlParams = url.searchParams;
-			if(urlParams.get("c")){
+			if(params["c"]){
 				get("catTab_"+urlParams.get("c")).classList.add("active");
 			}
 		})
@@ -56,27 +56,27 @@
 </ul>
 <ihtml src="loginModal.html"></ihtml>
 <script>
-    /*Determines which navbar to load depending on whether a "u" parameter (for "user") exists in the url
-      if u="admin@admin", the admin view is loaded instead"*/
-    var url = new URL(window.location.href);
-    var urlParams = url.searchParams;
+	//determine which navbar to show
     var navToShow="";
 	var currPage = window.location.pathname.split("/")[window.location.pathname.split("/").length-1];
     if(currPage=="adminIndex.html"){
 		navToShow="navbarAdmin";
 		get("navbar-brand").setAttribute("href","adminIndex.html")
 		get("categoryTabsList").remove();
-    } else if(urlParams.get("u")!=null){
-      navToShow="navbarClient"
-    }
-    else navToShow="navbarVisit";
+    } else if(params["u"]){
+      navToShow="navbarClient";
+    } else navToShow="navbarVisit";
     document.getElementById(navToShow).classList.remove("hidden");
     //remove hidden navbar elements
     var toRemove=[];
     for(var nav of document.getElementsByClassName("navbar-nav hidden")){toRemove.push(nav)}
     for(var nav of toRemove){nav.remove();}
-    if(urlParams.get("n"))
-      for(var welcome of document.getElementsByClassName("userWelcome")){
-        welcome.innerText=urlParams.get("n");
-      }
+	//show user name if logged in
+	if(params["u"]){
+		selectAllWhere("users",(i)=>{return i["id"]==params["u"]}).then(data=>{
+			for(var welcome of document.getElementsByClassName("userWelcome")){
+				welcome.innerText=data[0]["name"]+" "+data[0]["surname"];
+			}
+		})
+	}
 </script>

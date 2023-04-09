@@ -40,10 +40,7 @@
 						<input class="form-control" id="f_secAnswer" name="secAnswer" required>
 						<div id="f_invalidAnswerFeedback" class="invalid-feedback">Respuesta incorrecta</div>
 						<script>
-							var url = new URL(window.location.href);
-							var urlParams = url.searchParams;
-							if(urlParams.get("valid")&&urlParams.get("valid")=="false"){
-								console.log("invalid");
+							if(params["valid"]&&params["valid"]=="false"){
 								get("f_secAnswer").classList.add("is-invalid");
 							}
 						</script>

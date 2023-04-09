@@ -26,7 +26,7 @@
 [ ] Navbar (as Client)
  [X] Click Logo > index
  [-] Cart Button > cart
- [-] Account Button > account
+ [X] Account Button > account
  [X] SignOff Button > index (as Visit)
  [X] Categories buttons > category
 [X] Navbar (as Admin)
@@ -128,3 +128,9 @@
  [ ] account/preferences
  [ ] account/sales
  [ ] account/security (?)
+
+[ ] account/preferences
+
+[ ] account/sales
+
+[ ] account/security

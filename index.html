@@ -18,10 +18,9 @@
 <body>
     <script>
         //if user is "admin@admin", redirect to adminindex
-        var url = new URL(window.location.href);
-        var urlParams = url.searchParams;
-        if(urlParams.get("u") && urlParams.get("u")=="admin@admin"){
-            window.location.replace("adminIndex.html")
+		clearParamsKeep(["u"])
+        if(params["u"] && params["u"]=="admin@admin"){
+            moveTo("adminIndex.html");
         }
     </script>
     <ihtml src="navbar.html"></ihtml>

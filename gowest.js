@@ -1,6 +1,37 @@
 /*
     Código para ser usado en el proyecto GOWEST, del curso de Programación Web 2023-1
 */
+var url = new URL(window.location.href);
+var params={};
+for([key,val] of url.searchParams){
+	params[key]=val;
+}
+
+function clearParams(){
+	params={};
+}
+function clearParamsKeep(keys){
+	for(param in params){
+		if(keys.indexOf(param)==-1){
+			delete params[param]
+		}
+	}
+}
+
+function moveTo(newPage,newParams){
+	if(newParams){
+		for(pair of newParams){
+			params[pair[0]]=pair[1];
+		}
+	}
+	var appendParams="?";
+	for(key in params){
+		appendParams+=`${encodeURIComponent(key)}=${encodeURIComponent(params[key])}&`;
+	}
+	appendParams=appendParams.substring(0,appendParams.length-1);
+	window.location.href=newPage+appendParams;
+}
+
 var debugging=true;
 function debugLog(s){if(debugging)console.log(s)}
 function get(id){return document.getElementById(id)}
@@ -50,12 +81,12 @@ async function loadCategoryGalleryInto(cat="",e,link=false){
     //var c=json["categories"][cat];
     var cl=c.length //category length
     r="<div class='row bg-gowest categoryTitle'>"+
-        (link?"<a href='category.html?c="+cat+"'>":"")+
+        (link?"<a href='#' onclick='moveTo(\"category.html\",[[\"c\",\""+cat+"\"]])'>":"")+
         cn+
         (link?" <span class='productCount'>Ver "+cl+" productos</span></a>":"")+"</div>";
     var template=
         "<div class='galleryItem'>"+
-		"<a class='galleryItemLink' href='product.html?p={ID}'>"+
+		"<a class='galleryItemLink' href='#' onclick='moveTo(\"product.html\",[[\"p\",\"{ID}\"]])'>"+
         "<img class='galleryItemImage mx-auto d-block' src='img/products/{ID}.png'>"+
         "<div class='galleryItemLabel'>{CONTENT}</div>"+
         "<div class='galleryItemPrice'>{PRICE}</div></a>"+
@@ -202,12 +233,12 @@ async function loadSecQuestion(e){
 	})
 	if(user){
 		get("f_invalidRutFeedback").style.display="none";
-		await selectAllWhere("secQuestions",(i)=>{return i["id"]==user["secQuestionId"]}).then(data=>{
+		await selectAllWhere("secQuestions",(i)=>{return i["rut"]==user["secQuestionId"]}).then(data=>{
 			secQ=data[0];
+			get("secQuestionHolder").innerText=secQ["value"];
+			get("f_rut").value=user["rut"];
+			get("f_inputRut").classList.remove("is-invalid");
 		})
-		get("secQuestionHolder").innerText=secQ["value"];
-		get("f_rut").value=user["rut"];
-		get("f_inputRut").classList.remove("is-invalid");
 	} else {
 		get("secQuestionHolder").innerText="–";
 		get("f_rut").value="";
@@ -215,6 +246,6 @@ async function loadSecQuestion(e){
 		get("f_inputRut").classList.add("is-invalid");
 	}
 }
+
 window.addEventListener("load",()=>{
-    
 })
