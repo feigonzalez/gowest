@@ -2,16 +2,29 @@
     Código para ser usado en el proyecto GOWEST, del curso de Programación Web 2023-1
 */
 
-//URL Params management
+/*
+	URL Params management
+	This allows to move data as a page is loaded by using URL parameters.
+	params is a json object with the form {"parameter":"value"}.
+	params  is automatically filled with the URL parameters when a page is loaded.
+	New parameters can be added to params with the usual method of params[key]=value;
+*/
 var url = new URL(window.location.href);
 var params={};
 for([key,val] of url.searchParams){
 	params[key]=val;
 }
 
+
+//	Clears all url parameters;
 function clearParams(){
 	params={};
 }
+
+/*
+	Clears url parameteres, but keeps the specified ones.
+	KEYS must be an array of parameter names. These are the keys that will be kept.
+*/
 function clearParamsKeep(keys){
 	for(param in params){
 		if(keys.indexOf(param)==-1){
@@ -20,6 +33,10 @@ function clearParamsKeep(keys){
 	}
 }
 
+/*
+	Load a new page. Doing so this way allows the URL parameters to be passed correctly.
+	Loading a new page without using this method clears all parameters.
+*/
 function moveTo(newPage,newParams){
 	if(newParams!=null){
 		for(pair of newParams){
@@ -34,14 +51,39 @@ function moveTo(newPage,newParams){
 	window.location.href=newPage+appendParams;
 }
 
-//debugging management
+/*
+	Debugging Management
+	This provides a print-to-console function that only works when a global variable, debugging,
+	is set to true.
+*/
 var debugging=true;
 function debugLog(s){if(debugging)console.log(s)}
 
-//utilisties
+/*
+	Utilities
+*/
+
+//	get(id) returns the HTML element with the given id, or null if no such element exists.
 function get(id){return document.getElementById(id)}
 
-//database management
+/*
+	Database Management
+	This allows the site to retrieve data from a pseudo-database. This "database" is a json
+	file named "db.json", and structured as follows:
+	{
+		"table1":[
+			{"column1":"value","column2":value},
+			{"column1":"value","column2":value}
+		],
+		"table2":[
+			{"column1":"value","column2":value},
+			{"column1":"value","column2":value}
+		]
+	}
+*/
+
+
+//	selectAll() returns the whole db.json object.
 async function selectAll(){
 	debugLog("Retrieving DB data...");
 	var res;
@@ -50,6 +92,8 @@ async function selectAll(){
 	return res;
 }
 
+
+//	selectAllFrom(table) returns the array that corresponds to the specified table from the "database".
 async function selectAllFrom(table){
 	debugLog(`Retrieving data from DB at table [${table}]`);
 	var db = await selectAll();
@@ -62,9 +106,12 @@ async function selectAllFrom(table){
 	}
 }
 
-//compFunc should be given as (i)=>{return X},
-//where i a row of the selected table and
-//X is the comparison function. It should use fields of i
+/*
+	selectAllWhere(table, compFunc) returns an array that corresponds to the specified table from
+	the database. For each entry in the array, a developer-defined comparison function, compFunc(row),
+	is called. This comparison function should return true if the row being compared should be included
+	in the final returned array.
+*/
 async function selectAllWhere(table,compFunc){
 	debugLog(`Retrieving data from DB at table [${table}] where [${compFunc}]`)
 	var res=[];
@@ -81,6 +128,16 @@ async function selectAllWhere(table,compFunc){
 	return res;
 }
 
+/*
+	Site-specific methods
+*/
+
+/*
+	Builds a <div> element containing the category title, and a number of products from that category.
+	The built <div> element is then appended to the element passed as e.
+	If link is set to true, the category title will be a link that redirects to the corresponding
+	category page, and will also show the total number of products from that category.
+*/
 async function loadCategoryGalleryInto(cat="",e,link=false){
 	var cn = (await selectAllWhere("categories",(i)=>{return i["code"]==cat}))[0]["name"]
 	var c = await selectAllWhere("products",(i)=>{return i["category"]==cat});
@@ -116,6 +173,16 @@ async function loadCategoryGalleryInto(cat="",e,link=false){
     e.innerHTML=r;
 }
 
+/*
+	Modal Preparation methods
+	Each prepareXModal can take a parameter, e. If e is not set, the form will be empty.
+	Otherwise, e is expected to be the button that showed the modal (by using the this keyword as parameter).
+	If e is set correctly, the form will be filled with the corresponding data.
+	Certain functions use e's data-id attribute and make a query to the database. Others use the data from
+	the table directly. Which functions do what is not consistent.
+*/
+
+//	Prepares the Product Modal in the adminProducts page.
 async function prepareProductModal(e){
 	await selectAllFrom("categories").then(data=>{
 		for(row of data){
@@ -142,6 +209,7 @@ async function prepareProductModal(e){
 	}
 }
 
+//	Prepares the Category Modal in the adminCategories page.
 async function prepareCategoryModal(e){
 	if(e){
 		var parent=e.parentElement.parentElement;
@@ -151,6 +219,7 @@ async function prepareCategoryModal(e){
 	}
 }
 
+//	Prepares the Client Modal in the adminClients page.
 async function prepareClientModal(e){
 	var user = (await selectAllWhere("users",(i)=>{return i["rut"]==e.dataset["id"]}))[0]
 	var addresses = (await selectAllWhere("addresses",(i)=>{return i["userID"]==user["id"]}))
@@ -165,6 +234,12 @@ async function prepareClientModal(e){
 		get("clientFormAddressesHolder").innerHTML+=`<div>${a["street"]} ${a["number"]}, ${district["name"]}</div>`;
 	}
 }
+
+/*
+	Prepares the Sales Modal in both the adminSales page and the clientSales page.
+	If userID is set, the modal is assumed to belong to the client view, and the client
+	information is hidden from the form.
+*/
 
 async function prepareSaleModal(e,userID){
 	var sale = (await selectAllWhere("sales",(i)=>{return i["id"]==e.dataset["id"] && (userID?i["userID"]==userID:true)}))[0];
@@ -191,6 +266,7 @@ async function prepareSaleModal(e,userID){
 	get("saleFormDetailsHolder").innerHTML=newInnerHTML;
 }
 
+//	Prepares the Administrator Modal in the adminAdministrators page.
 async function prepareAdministratorModal(e){
 	if(e){
 		get("adminFormShow").classList.remove("hidden");
@@ -206,7 +282,7 @@ async function prepareAdministratorModal(e){
 		get("adminFormNew").classList.remove("hidden");
 	}
 }
-
+//	Prepares the Address Modal in the clientAccounr page.
 async function prepareAddressModal(e){
 	var districts=await selectAllFrom("districts");
 	for(d of districts){
@@ -226,42 +302,56 @@ async function prepareAddressModal(e){
 	}
 }
 
+/*
+	Confirm Action Modals
+	Certain actions should require user confirmation before being taken.
+	A few modals are used for asking cofirmation, and a function is called in each
+	instance to prepare the modal with the correct text and functionality.
+*/
+
+//	Prepares the deleteAdministrator delete modal from the adminAdministrators page.
 function confirmDeleteAdministrator(e){
 	var name=e.parentElement.parentElement.children[0].innerText;
 	get("deleteAlertMessage").innerText=`¿Eliminar administrador ${name}?`;
 	get("deleteAlertConfirm").setAttribute("onclick","moveTo('adminIndex.html',[['t','admins']])");
 }
 
+//	Prepares the deletePrpduct delete modal from the adminProducts page.
 function confirmDeleteProduct(e){
 	var name=e.parentElement.parentElement.children[1].innerText;
 	get("deleteAlertMessage").innerText=`¿Eliminar producto ${name}?`;
 	get("deleteAlertConfirm").setAttribute("onclick","moveTo('adminIndex.html',[['t','products']])");
 }
 
+//	Prepares the deleteCategory delete modal from the adminCategories page.
 function confirmDeleteCategory(e){
 	var name=e.parentElement.parentElement.children[0].innerText;
 	get("deleteAlertMessage").innerText=`¿Eliminar categoría ${name} y todos los productos relacionados?`;
 	get("deleteAlertConfirm").setAttribute("onclick","moveTo('adminIndex.html',[['t','categories']])");
 }
 
+//	Prepares the deleteAddress delete modal from the clientAccount page.
 function confirmDeleteAddress(e){
 	var name=e.parentElement.parentElement.children[0].innerText;
 	get("deleteAlertMessage").innerText=`¿Eliminar dirección ${name}?`;
 	get("deleteAlertConfirm").setAttribute("onclick","moveTo('account.html',[['t','account']])");
 }
 
+//	Prepares the confirmSale confirm modal from the clientSales page.
 function confirmSaleReception(e){
 	var id=e.dataset["id"];
 	get("saleAlertMessage").innerText=`¿Confirmar que la compra de código ${id} fue entregada?`;
 	get("saleAlertConfirm").setAttribute("onclick","moveTo('account.html',[['t','sales']])");
 }
 
+//	Prepares the confirmShipment confirm modal from the adminSales page.
 function confirmSaleShipment(e){
 	var id=e.dataset["id"];
 	get("saleAlertMessage").innerText=`¿Confirmar que la compra de código ${id} fue enviada?`;
 	get("saleAlertConfirm").setAttribute("onclick","moveTo('adminIndex.html',[['t','sales']])");
 }
 
+//	Returns a <span> badge element that corresponds to the passed status, if valid.
 function formatSaleStatus(status){
 	switch(status){
 		case "Carrito": return `<span class='badge badge-pill badge-secondary badge-saleStatus'>${status}</span>`;
@@ -272,6 +362,10 @@ function formatSaleStatus(status){
 	}
 }
 
+/*
+	Queries the database to obtain a user's security question, and fills the
+	form in recoverPass.html. The user is determined from the passed element's value.
+*/
 async function loadSecQuestion(e){
 	var user = (await selectAllWhere("users",(i)=>{return i["rut"]==e.value}))[0]
 	if(user!=null){
@@ -288,6 +382,10 @@ async function loadSecQuestion(e){
 	}
 }
 
+/*
+	Adds a badge to the navbar cart button, or replaces its value, according to the number
+	of units specified.
+*/
 function addToCart(units){
 	var cartBtn = get("navbarCartBtn");
 	if(cartBtn==null) return;
