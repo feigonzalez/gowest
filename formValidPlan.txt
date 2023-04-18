@@ -1,0 +1,10 @@
+[ ] signup
+ [ ] name:          none
+ [ ] surname:       none
+ [ ] rut:           
+ [ ] mail:          (.*)@(.*)
+ [ ] phone:         \+?\d*
+ [ ] pass:          
+ [ ] passConfirm:   equal to pass
+ [ ] address:
+ [ ] answer:

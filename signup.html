@@ -22,7 +22,7 @@
 		</a>
 	</nav>
 	<div class="container mt-3 mb-3">
-		 <form action="processSignup.html">
+		 <form id="signupForm" action="processSignup.html" onsubmit="validateForm(this,event)">
 			<div class="row">
 				<div class="col-sm-6">
 					<label for="f_name">Nombre</label>
@@ -32,7 +32,7 @@
 					<input class="form-control" id="f_surname" name="surname">
 				</div>
 			</div>
-			<label for="f_utr">RUT</label><input class="form-control" id="f_rut" name="rut">
+			<label for="f_rut">RUT</label><input class="form-control" id="f_rut" name="rut">
 			<label for="f_user">Correo</label><input type="email" class="form-control" id="f_user" name="user">
 			<label for="f_phone">Teléfono</label><input class="form-control" id="f_phone" name="phone">
 			<div class="row">
@@ -49,11 +49,11 @@
 				</div>
 				<div class="col-sm-6">
 					<label for="f_district">Comuna</label>
-					<select id="districtSelect" class="form-control" id="f_district" name="district">
+					<select class="form-control" id="f_district" name="district">
 						<script> //gets sec questions from db and sets them as options
 							selectAllFrom("districts").then(data=>{
 								for(row of data)
-									get("districtSelect").innerHTML+=`<option value="${row["id"]}">${row["name"]}</option>`;
+									get("f_district").innerHTML+=`<option value="${row["id"]}">${row["name"]}</option>`;
 							})
 						</script>
 					</select>
@@ -61,11 +61,11 @@
 			</div>
 			<div class="form-group">
 				<label for="f_question">Seleccione una pregunta de seguridad</label>
-				<select id="secQuestionsSelect" class="form-control" id="f_question" name="question">
+				<select class="form-control" id="f_question" name="question">
 					<script> //gets sec questions from db and sets them as options
 						selectAllFrom("secQuestions").then(data=>{
 							for(row of data)
-								get("secQuestionsSelect").innerHTML+=`<option value="${row["id"]}">${row["value"]}</option>`;
+								get("f_question").innerHTML+=`<option value="${row["id"]}">${row["value"]}</option>`;
 						})
 					</script>
 				</select>
