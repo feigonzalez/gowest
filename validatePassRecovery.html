@@ -1,4 +1,5 @@
-<script src="gowest.js"></script>
+<script src="/js/urlParams.js"></script>
+<script src="/js/db.js"></script>
 <script>
 	if(params["rut"]&&params["secAnswer"]){
 		selectAllWhere("users",(i)=>{return i["rut"]==params["rut"]}).then(data=>{

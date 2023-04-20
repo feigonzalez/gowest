@@ -55,12 +55,12 @@
 					`href="#" onclick="moveTo('category.html',[['c','${row["code"]}']])">${row["name"]}</a></li>`;
 			}
 			if(params["c"]){
-				get("catTab_"+urlParams.get("c")).classList.add("active");
+				get("catTab_"+params["c"]).classList.add("active");
 			}
 		})
 	</script>
 </ul>
-<ihtml src="loginModal.html"></ihtml>
+<ihtml src="/templates/loginModal.html"></ihtml>
 <script>
 	//determine which navbar to show
     var navToShow="";
