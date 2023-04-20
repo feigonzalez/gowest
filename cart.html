@@ -29,7 +29,7 @@
 				</table>
 			</div>
 			<div class="col-lg-6" id="checkoutPayment">
-				<form action="checkout.html">
+				<form id="cartCheckoutForm" action="checkout.html" onsubmit="validateCheckout(event)">
 					<div class="form-group">
 						<label for="cartAddess">Dirección de envío</label>
 						<select id="cartFormAddress" class="form-control" name="cartAddress"></select>
@@ -68,8 +68,10 @@
 			"<p>Si no tiene una cuenta, puede <a href='signup.html'>registrarse</a>.</p>";
 	} else {
 		selectAllWhere("sales",(i)=>{return i["userID"]==params["u"]&&i["status"]=="Carrito"}).then(sales=>{
-			selectAllWhere("saleDetails",(i)=>{return i["saleID"]==sales[0]["id"]}).then(details=>{
-				populateItemList(details);
+			if(sales.length==0)console.log("no sales found");
+			else selectAllWhere("saleDetails",(i)=>{return i["saleID"]==sales[0]["id"]}).then(details=>{
+				if(details.length==0) console.log("sale empty")
+				else populateItemList(details);
 			})
 		});
 	}
@@ -94,7 +96,7 @@
 			get("checkoutDetailsTableBody").innerHTML+=`<tr>`+
 				`<td>${product["name"]}</td>`+
 				`<td>$${product["price"]}</td>`+
-				`<td><input class="form-control" onchange="updateCartTotals(this)" type="number" value=${row["units"]}></input></td>`+
+				`<td><input class="form-control cartItemQtty" onchange="updateCartTotals(this)" type="number" value=${row["units"]}></input></td>`+
 				`<td>$${row["subtotal"]}</td>`+
 				`<td><button class="btn btn-danger"><span class="icon fa fa-trash"></span></button></td></tr>`;
 			total+=row["subtotal"]

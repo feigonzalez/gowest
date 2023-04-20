@@ -17,3 +17,25 @@ function validateForm(e,ev){
 	}
 	e.submit();
 }
+
+function spawnAlert(msg){
+	console.log(msg)
+}
+
+function validateCheckout(ev){
+	let qttyInputs=document.getElementsByClassName("cartItemQtty");
+	let qttyTotal = 0;
+	let valid = true;
+	for(qttyInput of qttyInputs){
+		qttyTotal+=qttyInput.value;
+		if(qttyInput.value<1){
+			spawnAlert("La cantidad de items no puede ser menor a 1");
+			valid=false;
+		}
+	}
+	if(qttyTotal<1){
+		spawnAlert("El total de items no puede ser menor a 1");
+		valid=false;
+	}
+	if(!valid) ev.preventDefault();
+}
