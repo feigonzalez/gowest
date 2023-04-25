@@ -59,6 +59,11 @@ async function loadCategoryGalleryInto(cat="",e,link=false){
 	form in recoverPass.html. The user is determined from the passed element's value.
 */
 async function loadSecQuestion(e){
+	makeValid(get("f_inputRut"))
+	if(get("f_inputRut").value.trim().match(/^\d{1,3}(\.\d\d\d)*\-[0-9K]$/)==null){
+		makeInvalid(get("f_inputRut"),"Formato incorrecto (Ingrese con puntos y guión).")
+		return;
+	}
 	var user = (await selectAllWhere("users",(i)=>{return i["rut"]==e.value}))[0]
 	if(user!=null){
 		var secQ = (await selectAllWhere("secQuestions",(i)=>{return i["id"]==user["secQuestionID"]}))[0]
@@ -68,7 +73,7 @@ async function loadSecQuestion(e){
 	} else {
 		get("secQuestionHolder").innerText="–";
 		get("f_rut").value="";
-		makeInvalid(get("f_inputRut"));
+		makeInvalid(get("f_inputRut"),"RUT no encontrado");
 	}
 }
 

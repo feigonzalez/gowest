@@ -11,11 +11,11 @@
 [X] @43	<input id="addToCartProductReturn" type="hidden" name="p">
 
 [.\recoverPass.html]
-[ ] @32	<input class="form-control" id="f_inputRut" onchange="loadSecQuestion(this)">
-[ ] @39	<form action="validatePassRecovery.html">
-[ ] @42	<input class="form-control" id="f_secAnswer" name="secAnswer" required>
-[ ] @50	<input type="hidden" id="f_rut" name="rut">
-[ ] @52	<input type="submit" class="btn btn-success" value="Recuperar contraseÃ±a">
+[X] @32	<input class="form-control" id="f_inputRut" onchange="loadSecQuestion(this)">
+[X] @39	<form action="validatePassRecovery.html">
+[X] @42	<input class="form-control" id="f_secAnswer" name="secAnswer" required>
+[X] @50	<input type="hidden" id="f_rut" name="rut">
+[X] @52	<input type="submit" class="btn btn-success" value="Recuperar contraseÃ±a">
 
 [.\signup.html]
 [X] @27	<form id="signupForm" action="processSignup.html" onsubmit="validateForm(this,event)">

@@ -50,7 +50,7 @@
 						<input class="form-control" id="f_secAnswer" data-feedback="Respuesta incorrecta" name="secAnswer" required>
 						<script>
 							if(params["valid"]&&params["valid"]=="false"){
-								makeInvalid(get("f_secAnswer"))
+								makeInvalid(get("f_secAnswer"),"Respuesta incorrecta")
 							}
 						</script>
 					</div>
