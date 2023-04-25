@@ -77,6 +77,7 @@
 	}
 	
 	function updateCartTotals(e){
+		validateCheckoutItemCount(e)
 		var price=parseInt(e.parentElement.parentElement.children[1].innerText.substring(1));
 		var se=e.parentElement.parentElement.children[3];
 		se.innerText="$"+price*e.value;
@@ -91,15 +92,17 @@
 	async function populateItemList(data){
 		params["cart"]=data.length
 		var total=0;
+		var count=0;
 		for(var row of data){
 			var product = (await selectAllWhere("products",(i)=>{return i["id"]==row["productID"]}))[0];
 			get("checkoutDetailsTableBody").innerHTML+=`<tr>`+
 				`<td>${product["name"]}</td>`+
 				`<td>$${product["price"]}</td>`+
-				`<td><input class="form-control cartItemQtty" onchange="updateCartTotals(this)" type="number" value=${row["units"]}></input></td>`+
+				`<td><input id="f_cartItem${count}"class="form-control cartItemQtty" onchange="updateCartTotals(this)" type="number" value=${row["units"]}></input></td>`+
 				`<td>$${row["subtotal"]}</td>`+
 				`<td><button class="btn btn-danger"><span class="icon fa fa-trash"></span></button></td></tr>`;
 			total+=row["subtotal"]
+			count+=1;
 		}
 		get("checkoutDetailsTableBody").innerHTML+="<tr class='bg-gowest-dark'><td></td><td></td><th>Total</th><td id='cartTotal'>$"+total+"</td><td></td></tr>";
 	}

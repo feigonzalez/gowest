@@ -40,7 +40,7 @@
 					<div id="productPrice"></div>
 					<div id="productDescription"></div>
 					<div id="saleControls" class="row">
-						<input id="addToCartUnits" name="units" class="form-control mr-2 col-3" type="number" value=1>
+						<input id="addToCartUnits" name="units" class="form-control mr-2 col-3" type="number" value=1 onchange="validateAddToCart(this)">
 						<input id="addToCartProductReturn" type="hidden" name="p">
 						<button class="btn btn-success" id="addToCartBtn" onclick="addToCart()">Añadir al Carrito</button>
 					</div>

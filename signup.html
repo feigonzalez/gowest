@@ -25,7 +25,7 @@
 		</a>
 	</nav>
 	<div class="container mt-3 mb-3">
-		 <form id="signupForm" action="processSignup.html" onsubmit="validateForm(this,event)">
+		 <form id="signupForm" action="processSignup.html" onsubmit="validateSignup(event)">
 			<div class="row">
 				<div class="col-sm-6">
 					<label for="f_name">Nombre</label>
@@ -35,9 +35,9 @@
 					<input class="form-control" id="f_surname" name="surname">
 				</div>
 			</div>
-			<label for="f_rut">RUT</label><input class="form-control" id="f_rut" name="rut">
-			<label for="f_user">Correo</label><input type="email" class="form-control" id="f_user" name="user">
-			<label for="f_phone">Teléfono</label><input class="form-control" id="f_phone" name="phone">
+			<div><label for="f_rut">RUT</label><input class="form-control" id="f_rut" name="rut"></div>
+			<div><label for="f_user">Correo</label><input type="email" class="form-control" id="f_user" name="user"></div>
+			<div><label for="f_phone">Teléfono</label><input class="form-control" id="f_phone" name="phone"></div>
 			<div class="row">
 				<div class="col-sm-6">
 					<label for="f_pass">Contraseña</label><input type="password" class="form-control" id="f_pass" name="pass">
@@ -45,15 +45,28 @@
 				<div class="col-sm-6">
 					<label for="f_passConfirm">Repetir Contraseña</label><input type="password" class="form-control" id="f_passConfirm" name="passConfirm">
 				</div>
+				<div id="passGuides">
+					Su contraseña debe tener lo siguiente:
+					<ul>
+						<li>Longitud mínima de 8</li>
+						<li>Longitud máxima de 40</li>
+						<li>Incluír dígitos numéricos</li>
+						<li>Incluir al menos uno de los siguientes caractreres: ! # @ $ % &</li>
+						<li>Incluír al menos una letra mayúscula</li>
+					</ul>
+				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-6">
-					<label for="f_address">Dirección</label><input class="form-control" id="f_address" name="address">
+				<div class="col-8 col-sm-6">
+					<label for="f_addressStreet">Dirección</label><input class="form-control" id="f_addressStreet" name="addressStreet">
 				</div>
-				<div class="col-sm-6">
+				<div class="col-4 col-sm-2">
+					<label for="f_addressNumber">Número</label><input class="form-control" id="f_addressNumber" name="addressNumber">
+				</div>
+				<div class="col-sm-4">
 					<label for="f_district">Comuna</label>
 					<select class="form-control" id="f_district" name="district">
-						<script> //gets sec questions from db and sets them as options
+						<script> //gets districts from db and sets them as options
 							selectAllFrom("districts").then(data=>{
 								for(row of data)
 									get("f_district").innerHTML+=`<option value="${row["id"]}">${row["name"]}</option>`;

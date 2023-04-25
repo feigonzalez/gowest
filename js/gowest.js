@@ -3,130 +3,11 @@
 */
 
 /*
-	URL Params management
-	This allows to move data as a page is loaded by using URL parameters.
-	params is a json object with the form {"parameter":"value"}.
-	params  is automatically filled with the URL parameters when a page is loaded.
-	New parameters can be added to params with the usual method of params[key]=value;
-*/
-var url = new URL(window.location.href);
-var params={};
-for([key,val] of url.searchParams){
-	params[key]=val;
-}
-
-
-//	Clears all url parameters;
-function clearParams(){
-	params={};
-}
-
-/*
-	Clears url parameteres, but keeps the specified ones.
-	KEYS must be an array of parameter names. These are the keys that will be kept.
-*/
-function clearParamsKeep(keys){
-	for(param in params){
-		if(keys.indexOf(param)==-1){
-			delete params[param]
-		}
-	}
-}
-
-/*
-	Load a new page. Doing so this way allows the URL parameters to be passed correctly.
-	Loading a new page without using this method clears all parameters.
-*/
-function moveTo(newPage,newParams){
-	if(newParams!=null){
-		for(pair of newParams){
-			params[pair[0]]=pair[1];
-		}
-	}
-	var appendParams="?";
-	for(key in params){
-		appendParams+=`${encodeURIComponent(key)}=${encodeURIComponent(params[key])}&`;
-	}
-	appendParams=appendParams.substring(0,appendParams.length-1);
-	window.location.href=newPage+appendParams;
-}
-
-/*
-	Debugging Management
-	This provides a print-to-console function that only works when a global variable, debugging,
-	is set to true.
-*/
-var debugging=true;
-function debugLog(s){if(debugging)console.log(s)}
-
-/*
 	Utilities
 */
 
 //	get(id) returns the HTML element with the given id, or null if no such element exists.
 function get(id){return document.getElementById(id)}
-
-/*
-	Database Management
-	This allows the site to retrieve data from a pseudo-database. This "database" is a json
-	file named "db.json", and structured as follows:
-	{
-		"table1":[
-			{"column1":"value","column2":value},
-			{"column1":"value","column2":value}
-		],
-		"table2":[
-			{"column1":"value","column2":value},
-			{"column1":"value","column2":value}
-		]
-	}
-*/
-
-
-//	selectAll() returns the whole db.json object.
-async function selectAll(){
-	debugLog("Retrieving DB data...");
-	var res;
-	await fetch("db.json").then(r=>r.json()).then(j=>res=j);
-	debugLog("DB data retrieved.")
-	return res;
-}
-
-
-//	selectAllFrom(table) returns the array that corresponds to the specified table from the "database".
-async function selectAllFrom(table){
-	debugLog(`Retrieving data from DB at table [${table}]`);
-	var db = await selectAll();
-	if(table in db){
-		debugLog(`Data from table [${table}] retrieved.`);
-		return db[table];
-	} else {
-		debugLog(`Table [${table}] not found`);
-		return null;
-	}
-}
-
-/*
-	selectAllWhere(table, compFunc) returns an array that corresponds to the specified table from
-	the database. For each entry in the array, a developer-defined comparison function, compFunc(row),
-	is called. This comparison function should return true if the row being compared should be included
-	in the final returned array.
-*/
-async function selectAllWhere(table,compFunc){
-	debugLog(`Retrieving data from DB at table [${table}] where [${compFunc}]`)
-	var res=[];
-	var db = await selectAll();
-	if(!(table in db)){
-		debugLog(`Table [${table}] not found.`)
-		return [];
-	} else {
-		for(var i of db[table]){
-			if(compFunc(i))res.push(i)
-		}
-		debugLog(`Retrieved ${res.length} rows from table [${table}]`);
-	}
-	return res;
-}
 
 /*
 	Site-specific methods
@@ -369,16 +250,14 @@ function formatSaleStatus(status){
 async function loadSecQuestion(e){
 	var user = (await selectAllWhere("users",(i)=>{return i["rut"]==e.value}))[0]
 	if(user!=null){
-		get("f_invalidRutFeedback").style.display="none";
 		var secQ = (await selectAllWhere("secQuestions",(i)=>{return i["id"]==user["secQuestionID"]}))[0]
 		get("secQuestionHolder").innerText=secQ["value"];
 		get("f_rut").value=user["rut"];
-		get("f_inputRut").classList.remove("is-invalid");
+		makeValid(get("f_inputRut"))
 	} else {
 		get("secQuestionHolder").innerText="–";
 		get("f_rut").value="";
-		get("f_invalidRutFeedback").style.display="block";
-		get("f_inputRut").classList.add("is-invalid");
+		makeInvalid(get("f_inputRut"));
 	}
 }
 
@@ -396,25 +275,6 @@ function addToCart(units){
 	cartBadge.innerText=newUnits;
 	cartBtn.dataset["units"]=newUnits;
 	params["cart"]=newUnits;
-}
-
-/*
-	Form validation
-*/
-function validateForm(e,ev){
-	ev.preventDefault();
-	switch (e.id){
-		case "signupForm":
-			var pass=get("f_pass").value;
-			var passConfirm=get("f_passConfirm").value;
-			if(pass!=passConfirm){
-				console.log("pass bad")
-				return false;
-			}
-			break;
-		default:break;
-	}
-	e.submit();
 }
 
 window.addEventListener("load",()=>{

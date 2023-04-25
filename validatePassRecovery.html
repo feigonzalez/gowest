@@ -9,7 +9,7 @@
 				params["u"]=user["id"];
 				moveTo("index.html");
 			} else {
-				clearParams();
+				clearParamsKeep("rut");
 				params["valid"]="false";
 				moveTo("recoverPass.html");
 			}

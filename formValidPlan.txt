@@ -1,17 +1,14 @@
 [.\cart.html]
-[ ] @31	<form action="checkout.html">
-[ ] @34	<select id="cartFormAddress" class="form-control" name="cartAddress"></select>
-[ ] @38	<select class="form-control" id="cartPaymentMethod" name="paymentMethod">
-[ ] @46	<input type="submit" class="btn btn-success" value="Pagar">
-[ ] @48	<input id="cartFormUser" type="hidden" name="u">
-[ ] @96	`<td><input class="form-control" onchange="updateCartTotals(this)" type="number" value=${row["units"]}></input></td>`+
-
-[.\findForms.py]
-[ ] @10	if "<form" in line or "<input" in line or "<select" in line:
+[X] @31	<form action="checkout.html">
+[X] @34	<select id="cartFormAddress" class="form-control" name="cartAddress"></select>
+[X] @38	<select class="form-control" id="cartPaymentMethod" name="paymentMethod">
+[X] @46	<input type="submit" class="btn btn-success" value="Pagar">
+[X] @48	<input id="cartFormUser" type="hidden" name="u">
+[X] @96	`<td><input class="form-control" onchange="updateCartTotals(this)" type="number" value=${row["units"]}></input></td>`+
 
 [.\product.html]
-[ ] @42	<input id="addToCartUnits" name="units" class="form-control mr-2 col-3" type="number" value=1>
-[ ] @43	<input id="addToCartProductReturn" type="hidden" name="p">
+[X] @42	<input id="addToCartUnits" name="units" class="form-control mr-2 col-3" type="number" value=1>
+[X] @43	<input id="addToCartProductReturn" type="hidden" name="p">
 
 [.\recoverPass.html]
 [ ] @32	<input class="form-control" id="f_inputRut" onchange="loadSecQuestion(this)">
@@ -21,18 +18,19 @@
 [ ] @52	<input type="submit" class="btn btn-success" value="Recuperar contraseÃ±a">
 
 [.\signup.html]
-[ ] @27	<form id="signupForm" action="processSignup.html" onsubmit="validateForm(this,event)">
-[ ] @31	<input class="form-control" id="f_name" name="name">
-[ ] @34	<input class="form-control" id="f_surname" name="surname">
-[ ] @37	<label for="f_rut">RUT</label><input class="form-control" id="f_rut" name="rut">
-[ ] @38	<label for="f_user">Correo</label><input type="email" class="form-control" id="f_user" name="user">
-[ ] @39	<label for="f_phone">TelÃ©fono</label><input class="form-control" id="f_phone" name="phone">
-[ ] @42	<label for="f_pass">ContraseÃ±a</label><input type="password" class="form-control" id="f_pass" name="pass">
-[ ] @45	<label for="f_passConfirm">Repetir ContraseÃ±a</label><input type="password" class="form-control" id="f_passConfirm" name="passConfirm">
-[ ] @50	<label for="f_address">DirecciÃ³n</label><input class="form-control" id="f_address" name="address">
-[ ] @54	<select class="form-control" id="f_district" name="district">
-[ ] @66	<select class="form-control" id="f_question" name="question">
-[ ] @77	<input class="form-control" id="f_answer" name="answer">
+[X] @27	<form id="signupForm" action="processSignup.html" onsubmit="validateForm(this,event)">
+[X] @31	<input class="form-control" id="f_name" name="name">
+[X] @34	<input class="form-control" id="f_surname" name="surname">
+[X] @37	<label for="f_rut">RUT</label><input class="form-control" id="f_rut" name="rut">
+[X] @38	<label for="f_user">Correo</label><input type="email" class="form-control" id="f_user" name="user">
+[X] @39	<label for="f_phone">TelÃ©fono</label><input class="form-control" id="f_phone" name="phone">
+[X] @42	<label for="f_pass">ContraseÃ±a</label><input type="password" class="form-control" id="f_pass" name="pass">
+[X] @45	<label for="f_passConfirm">Repetir ContraseÃ±a</label><input type="password" class="form-control" id="f_passConfirm" name="passConfirm">
+[X] @50	<label for="f_addressStreet">DirecciÃ³n</label><input class="form-control" id="f_addressStreet" name="addressStreet">
+[X] @50	<label for="f_addressNumber">DirecciÃ³n</label><input class="form-control" id="f_addressNumber" name="addressNumber">
+[X] @54	<select class="form-control" id="f_district" name="district">
+[X] @66	<select class="form-control" id="f_question" name="question">
+[X] @77	<input class="form-control" id="f_answer" name="answer">
 
 [.\templates\addressDataModal.html]
 [ ] @5	<form action="account.html">

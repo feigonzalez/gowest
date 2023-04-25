@@ -30,8 +30,14 @@
 			<div class="col-sm-6">
 				<div class="form-group">
 					<label for="rut">Ingrese su rut</label>
-					<input class="form-control" id="f_inputRut" onchange="loadSecQuestion(this)">
-					<div id="f_invalidRutFeedback" class="invalid-feedback">Usuario no encontrado</div>
+					<input class="form-control" id="f_inputRut" data-feedback="Usuario no encontrado" onchange="loadSecQuestion(this)">
+					<script>
+						if(params["rut"]){
+							get("f_inputRut").value=params["rut"];
+							loadSecQuestion(get("f_inputRut"))
+						}
+
+					</script>
 				</div>
 				<div class="form-group">
 					<div>Pregunta de seguridad</div>
@@ -40,11 +46,10 @@
 				<form action="validatePassRecovery.html">
 					<div class="form-group">
 						<label for="secAnswer">Responda la pregunta de seguridad</label>
-						<input class="form-control" id="f_secAnswer" name="secAnswer" required>
-						<div id="f_invalidAnswerFeedback" class="invalid-feedback">Respuesta incorrecta</div>
+						<input class="form-control" id="f_secAnswer" data-feedback="Respuesta incorrecta" name="secAnswer" required>
 						<script>
 							if(params["valid"]&&params["valid"]=="false"){
-								get("f_secAnswer").classList.add("is-invalid");
+								makeInvalid(get("f_secAnswer"))
 							}
 						</script>
 					</div>
