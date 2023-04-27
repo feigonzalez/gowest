@@ -33,38 +33,29 @@
 [X] @77	<input class="form-control" id="f_answer" name="answer">
 
 [.\templates\addressDataModal.html]
-[ ] @5	<form action="account.html">
-[ ] @8	<input type="text" name="name" class="form-control" id="addressFormStreet">
-[ ] @12	<input type="number" name="price" class="form-control" id="addressFormNumber">
-[ ] @16	<input type="number" name="stock" class="form-control" id="addressFormPostalCode">
-[ ] @20	<select name="category" class="form-control" id="addressFormDistrict">
-[ ] @27	<input type="hidden" name="update" value="false" id="addressFormUpdate">
-[ ] @28	<input type="hidden" name="t" value="account">
-[ ] @29	<input id="addressFormUser" type="hidden" name="u">
+[X] @5	<form action="account.html">
+[X] @8	<input type="text" name="name" class="form-control" id="addressFormStreet">
+[X] @12	<input type="number" name="price" class="form-control" id="addressFormNumber">
+[X] @16	<input type="number" name="stock" class="form-control" id="addressFormPostalCode">
 
 [.\templates\adminAccount.html]
-[ ] @1	<form action="processAdminAccountChanges.html">
-[ ] @5	<input id="adminName" name="name" class="form-control">
-[ ] @9	<input id="adminSurname" name="surname" class="form-control">
-[ ] @14	<input id="adminPhone" name="phone" class="form-control">
-[ ] @17	<input id="adminSaveData" type="submit" value="Guardar" class="btn btn-success">
-[ ] @19	<input id="adminDataFormUser" type="hidden" name="u">
-[ ] @22	<form action="processAdminAccountChanges.html">
-[ ] @26	<input id="adminPass" name="pass" class="form-control">
-[ ] @30	<input id="adminPassConfirm" name="passConfirm" class="form-control">
-[ ] @36	<select id="adminSecQuestion" name="secQuestion" class="form-control"></select>
-[ ] @40	<input id="adminSecAnswer" name="secAnswer" class="form-control">
-[ ] @44	<input id="adminSaveSecurity" type="submit" value="Guardar" class="btn btn-success">
-[ ] @46	<input id="adminSecFormUser" type="hidden" name="u">
+[X] @1	<form action="processAdminAccountChanges.html">
+[X] @5	<input id="adminName" name="name" class="form-control">
+[X] @9	<input id="adminSurname" name="surname" class="form-control">
+[X] @14	<input id="adminPhone" name="phone" class="form-control">
+[X] @22	<form action="processAdminAccountChanges.html">
+[X] @26	<input id="adminPass" name="pass" class="form-control">
+[X] @30	<input id="adminPassConfirm" name="passConfirm" class="form-control">
+[X] @40	<input id="adminSecAnswer" name="secAnswer" class="form-control">
 
 [.\templates\adminAdministrators.html]
-[ ] @0	<input class="searchbar" id="administratorsSearchbar" placeholder="Buscar en Administradores"></input>
+[X] @0	<input class="searchbar" id="administratorsSearchbar" placeholder="Buscar en Administradores"></input>
 
 [.\templates\adminCategories.html]
-[ ] @0	<input class="searchbar" id="categorySearchbar" placeholder="Buscar en CategorÃ­as"></input>
+[X] @0	<input class="searchbar" id="categorySearchbar" placeholder="Buscar en CategorÃ­as"></input>
 
 [.\templates\adminClients.html]
-[ ] @0	<input class="searchbar" id="clientSearchbar" placeholder="Buscar en Clientes"></input>
+[X] @0	<input class="searchbar" id="clientSearchbar" placeholder="Buscar en Clientes"></input>
 
 [.\templates\administratorDataModal.html]
 [ ] @5	<form id="adminFormShow" action="adminIndex.html">
@@ -74,9 +65,6 @@
 [ ] @41	<input type="text" name="rut" class="form-control" id="adminFormNewRUT">
 [ ] @45	<input type="email" name="mail" class="form-control" id="adminFormNewMail">
 [ ] @49	<input type="text" name="phone" class="form-control" id="adminFormNewPhone">
-[ ] @55	<input type="hidden" name="update" value="false" id="productFormUpdate">
-[ ] @56	<input type="hidden" name="t" value="admins">
-[ ] @57	<input id="adminSecFormUser" type="hidden" name="u">
 
 [.\templates\adminProducts.html]
 [ ] @0	<input class="searchbar" id="productSearchbar" placeholder="Buscar en Productos"></input>
@@ -87,9 +75,6 @@
 [.\templates\categoryDataModal.html]
 [ ] @5	<form action="adminIndex.html">
 [ ] @8	<input type="text" name="name" class="form-control" id="categoryFormName">
-[ ] @14	<input type="hidden" name="update" value="false" id="categoryFormUpdate">
-[ ] @15	<input type="hidden" name="t" value="categories">
-[ ] @16	<input id="categoryFormUser"type="hidden" name="u">
 
 [.\templates\clientAccount.html]
 [ ] @2	<form action="processClientAccountChanges.html">
@@ -97,15 +82,11 @@
 [ ] @10	<input id="clientSurname" name="surname" class="form-control">
 [ ] @15	<input id="clientMail" name="mail" class="form-control">
 [ ] @19	<input id="clientPhone" name="phone" class="form-control">
-[ ] @22	<input id="clientSaveData" type="submit" value="Guardar" class="btn btn-success">
-[ ] @24	<input type="hidden" id="clientDataFormUser" name="u">
 [ ] @28	<form action="processClientAccountChanges.html">
 [ ] @32	<input id="clientPass" name="pass" class="form-control">
 [ ] @36	<input id="clientPassConfirm" name="passConfirm" class="form-control">
 [ ] @42	<select id="clientSecQuestion" name="secQuestion" class="form-control"></select>
 [ ] @46	<input id="clientSecAnswer" name="secAnswer" class="form-control">
-[ ] @50	<input id="clientSaveSecurity" type="submit" value="Guardar" class="btn btn-success">
-[ ] @52	<input type="hidden" id="clientSecFormUser" name="u">
 
 [.\templates\clientDataModal.html]
 [ ] @5	<form action="adminIndex.html?t=clients">
@@ -125,9 +106,6 @@
 [ ] @19	<input type="number" name="price" class="form-control" id="productFormPrice">
 [ ] @23	<input type="number" name="stock" class="form-control" id="productFormStock">
 [ ] @27	<select name="category" class="form-control" id="productFormCategory">
-[ ] @38	<input type="hidden" name="update" value="false" id="productFormUpdate">
-[ ] @39	<input type="hidden" name="t" value="products">
-[ ] @40	<input id="productFormUser" type="hidden" name="u">
 
 [.\templates\saleDataModal.html]
 [ ] @5	<form action="adminIndex.html?t=sales">

@@ -1,5 +1,5 @@
 <div class="container mt-3">
-	<form action="processAdminAccountChanges.html">
+	<form action="processAdminAccountChanges.html" onsubmit="validateAdminAccountForm(event)">
 		<div class="row form-group">
 			<div class="col-sm-6">
 				<label for="name">Nombre</label>
@@ -20,15 +20,25 @@
 		<input id="adminDataFormUser" type="hidden" name="u">
 	</form>
 	<hr>
-	<form action="processAdminAccountChanges.html">
+	<form action="processAdminAccountChanges.html" onsubmit="validateAdminSecurityForm(event)">
 		<div class="row form-group">
 			<div class="col-sm-6">
 				<label for="pass">Nueva Contraseña</label>
-				<input id="adminPass" name="pass" class="form-control">
+				<input id="adminPass" type=password name="pass" class="form-control">
 			</div>
 			<div class="col-sm-6">
 				<label for="newPassConfirm">Repetir Nueva Contraseña</label>
-				<input id="adminPassConfirm" name="passConfirm" class="form-control">
+				<input id="adminPassConfirm" type=password name="passConfirm" class="form-control">
+			</div>
+			<div id="passGuides">
+				Su contraseña debe tener lo siguiente:
+				<ul>
+					<li>Longitud mínima de 8</li>
+					<li>Longitud máxima de 40</li>
+					<li>Incluír dígitos numéricos</li>
+					<li>Incluir al menos uno de los siguientes caractreres: ! # @ $ % &</li>
+					<li>Incluír al menos una letra mayúscula</li>
+				</ul>
 			</div>
 		</div>
 		<div class="row form-group">

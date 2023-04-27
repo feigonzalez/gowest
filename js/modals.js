@@ -109,6 +109,9 @@ async function prepareAdministratorModal(e){
 }
 //	Prepares the Address Modal in the clientAccounr page.
 async function prepareAddressModal(e){
+	makeValid(get("addressFormStreet"));
+	makeValid(get("addressFormNumber"));
+	makeValid(get("addressFormPostalCode"));
 	var districts=await selectAllFrom("districts");
 	for(d of districts){
 		get("addressFormDistrict").innerHTML+=`<option value=${d["id"]}>${d["name"]}</option>`;
@@ -174,15 +177,4 @@ function confirmSaleShipment(e){
 	var id=e.dataset["id"];
 	get("saleAlertMessage").innerText=`¿Confirmar que la compra de código ${id} fue enviada?`;
 	get("saleAlertConfirm").setAttribute("onclick","moveTo('adminIndex.html',[['t','sales']])");
-}
-
-//	Returns a <span> badge element that corresponds to the passed status, if valid.
-function formatSaleStatus(status){
-	switch(status){
-		case "Carrito": return `<span class='badge badge-pill badge-secondary badge-saleStatus'>${status}</span>`;
-		case "Pagada": return `<span class='badge badge-pill badge-danger badge-saleStatus'>${status}</span>`;
-		case "Despachada": return `<span class='badge badge-pill badge-primary badge-saleStatus'>${status}</span>`;
-		case "Completada": return `<span class='badge badge-pill badge-success badge-saleStatus'>${status}</span>`;
-		default: return status;
-	}
 }

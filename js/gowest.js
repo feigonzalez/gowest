@@ -93,5 +93,16 @@ function addToCart(units){
 	params["cart"]=newUnits;
 }
 
+//	Returns a <span> badge element that corresponds to the passed sale status, if valid.
+function formatSaleStatus(status){
+	switch(status){
+		case "Carrito": return `<span class='badge badge-pill badge-secondary badge-saleStatus'>${status}</span>`;
+		case "Pagada": return `<span class='badge badge-pill badge-danger badge-saleStatus'>${status}</span>`;
+		case "Despachada": return `<span class='badge badge-pill badge-primary badge-saleStatus'>${status}</span>`;
+		case "Completada": return `<span class='badge badge-pill badge-success badge-saleStatus'>${status}</span>`;
+		default: return status;
+	}
+}
+
 window.addEventListener("load",()=>{
 })
