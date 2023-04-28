@@ -58,54 +58,49 @@
 [X] @0	<input class="searchbar" id="clientSearchbar" placeholder="Buscar en Clientes"></input>
 
 [.\templates\administratorDataModal.html]
-[ ] @5	<form id="adminFormShow" action="adminIndex.html">
-[ ] @30	<form id="adminFormNew" action="adminIndex.html">
-[ ] @33	<input type="text" name="name" class="form-control" id="adminFormNewName">
-[ ] @37	<input type="text" name="surname" class="form-control" id="adminFormNewSurname">
-[ ] @41	<input type="text" name="rut" class="form-control" id="adminFormNewRUT">
-[ ] @45	<input type="email" name="mail" class="form-control" id="adminFormNewMail">
-[ ] @49	<input type="text" name="phone" class="form-control" id="adminFormNewPhone">
+[X] @30	<form id="adminFormNew" action="adminIndex.html">
+[X] @33	<input type="text" name="name" class="form-control" id="adminFormNewName">
+[X] @37	<input type="text" name="surname" class="form-control" id="adminFormNewSurname">
+[X] @41	<input type="text" name="rut" class="form-control" id="adminFormNewRUT">
+[X] @45	<input type="email" name="mail" class="form-control" id="adminFormNewMail">
+[X] @49	<input type="text" name="phone" class="form-control" id="adminFormNewPhone">
 
 [.\templates\adminProducts.html]
-[ ] @0	<input class="searchbar" id="productSearchbar" placeholder="Buscar en Productos"></input>
+[X] @0	<input class="searchbar" id="productSearchbar" placeholder="Buscar en Productos"></input>
 
 [.\templates\adminSales.html]
-[ ] @0	<input class="searchbar" id="salesSearchbar" placeholder="Buscar en Ventas"></input>
+[X] @0	<input class="searchbar" id="salesSearchbar" placeholder="Buscar en Ventas"></input>
 
 [.\templates\categoryDataModal.html]
-[ ] @5	<form action="adminIndex.html">
-[ ] @8	<input type="text" name="name" class="form-control" id="categoryFormName">
+[X] @5	<form action="adminIndex.html">
+[X] @8	<input type="text" name="name" class="form-control" id="categoryFormName">
 
 [.\templates\clientAccount.html]
-[ ] @2	<form action="processClientAccountChanges.html">
-[ ] @6	<input id="clientName" name="name" class="form-control">
-[ ] @10	<input id="clientSurname" name="surname" class="form-control">
-[ ] @15	<input id="clientMail" name="mail" class="form-control">
-[ ] @19	<input id="clientPhone" name="phone" class="form-control">
-[ ] @28	<form action="processClientAccountChanges.html">
-[ ] @32	<input id="clientPass" name="pass" class="form-control">
-[ ] @36	<input id="clientPassConfirm" name="passConfirm" class="form-control">
-[ ] @42	<select id="clientSecQuestion" name="secQuestion" class="form-control"></select>
-[ ] @46	<input id="clientSecAnswer" name="secAnswer" class="form-control">
-
-[.\templates\clientDataModal.html]
-[ ] @5	<form action="adminIndex.html?t=clients">
+[X] @2	<form action="processClientAccountChanges.html">
+[X] @6	<input id="clientName" name="name" class="form-control">
+[X] @10	<input id="clientSurname" name="surname" class="form-control">
+[X] @15	<input id="clientMail" name="mail" class="form-control">
+[X] @19	<input id="clientPhone" name="phone" class="form-control">
+[X] @28	<form action="processClientAccountChanges.html">
+[X] @32	<input id="clientPass" name="pass" class="form-control">
+[X] @36	<input id="clientPassConfirm" name="passConfirm" class="form-control">
+[X] @46	<input id="clientSecAnswer" name="secAnswer" class="form-control">
 
 [.\templates\clientSales.html]
-[ ] @0	<input class="searchbar" id="salesSearchbar" placeholder="Buscar en Compras"></input>
+[X] @0	<input class="searchbar" id="salesSearchbar" placeholder="Buscar en Compras"></input>
 
 [.\templates\loginModal.html]
-[ ] @5	<form action="processLogin.html">
-[ ] @8	<input type="email" name="mail" class="form-control" placeholder="Ingrese Correo" id="loginMail" required>
-[ ] @12	<input type="password" class="form-control" placeholder="Ingrese contraseÃ±a" id="loginPass" required>
+[X] @5	<form action="processLogin.html">
+[X] @8	<input type="email" name="mail" class="form-control" placeholder="Ingrese Correo" id="loginMail" required>
+[X] @12	<input type="password" class="form-control" placeholder="Ingrese contraseÃ±a" id="loginPass" required>
 
 [.\templates\productDataModal.html]
-[ ] @5	<form action="adminIndex.html">
-[ ] @10	<input type="file" name="image" class="form-control" id="productFormImage">
-[ ] @15	<input type="text" name="name" class="form-control" id="productFormName">
-[ ] @19	<input type="number" name="price" class="form-control" id="productFormPrice">
-[ ] @23	<input type="number" name="stock" class="form-control" id="productFormStock">
-[ ] @27	<select name="category" class="form-control" id="productFormCategory">
+[X] @5	<form action="adminIndex.html">
+[X] @10	<input type="file" name="image" class="form-control" id="productFormImage">
+[X] @15	<input type="text" name="name" class="form-control" id="productFormName">
+[X] @19	<input type="number" name="price" class="form-control" id="productFormPrice">
+[X] @23	<input type="number" name="stock" class="form-control" id="productFormStock">
+[X] @27	<select name="category" class="form-control" id="productFormCategory">
 
 [.\templates\saleDataModal.html]
-[ ] @5	<form action="adminIndex.html?t=sales">
+[X] @5	<form action="adminIndex.html?t=sales">

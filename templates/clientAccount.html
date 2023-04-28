@@ -1,6 +1,6 @@
 <div class="container mt-3">
 	<h4>Datos</h4>
-	<form action="processClientAccountChanges.html">
+	<form action="processClientAccountChanges.html" onsumbit="validateClientAccountForm(event)">
 		<div class="row form-group">
 			<div class="col-sm-6">
 				<label for="name">Nombre</label>
@@ -26,7 +26,7 @@
 	</form>
 	<hr>
 	<h4>Seguridad</h4>
-	<form action="processClientAccountChanges.html">
+	<form action="processClientAccountChanges.html" onsubmit="validateClientPasswordForm(event)">
 		<div class="row form-group">
 			<div class="col-sm-6">
 				<label for="pass">Nueva Contraseña</label>
@@ -36,7 +36,22 @@
 				<label for="newPassConfirm">Repetir Nueva Contraseña</label>
 				<input id="clientPassConfirm" name="passConfirm" class="form-control">
 			</div>
+			<div id="passGuides">
+				Su contraseña debe tener lo siguiente:
+				<ul>
+					<li>Longitud mínima de 8</li>
+					<li>Longitud máxima de 40</li>
+					<li>Incluír dígitos numéricos</li>
+					<li>Incluir al menos uno de los siguientes caractreres: ! # @ $ % &</li>
+					<li>Incluír al menos una letra mayúscula</li>
+				</ul>
+			</div>
 		</div>
+		<div class="form-group text-right">
+			<input id="clientSaveSecurity" type="submit" value="Guardar Contraseña" class="btn btn-success">
+		</div>
+	</form>
+	<form action="processClientAccountChanges.html" onsubmit="validateClientSecQuestionForm(event)">
 		<div class="row form-group">
 			<div class="col-sm-6">
 				<label for="secQuestion">Cambiar Pregunta de Seguridad</label>
@@ -48,7 +63,7 @@
 			</div>
 		</div>
 		<div class="form-group text-right">
-			<input id="clientSaveSecurity" type="submit" value="Guardar" class="btn btn-success">
+			<input id="clientSaveSecurity" type="submit" value="Guardar Datos de Recuperación" class="btn btn-success">
 		</div>
 		<input type="hidden" id="clientSecFormUser" name="u">
 	</form>
@@ -97,5 +112,5 @@
 		})
 	</script>
 </div>
-<ihtml src="/templates/addressDataModal.html"></ihtml>
-<ihtml src="/templates/deleteAlertModal.html"></ihtml>
+<ihtml src="templates/addressDataModal.html"></ihtml>
+<ihtml src="templates/deleteAlertModal.html"></ihtml>

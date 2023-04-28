@@ -22,7 +22,7 @@ function debugLog(s){if(debugging)console.log(s)}
 async function selectAll(){
 	debugLog("Retrieving DB data...");
 	var res;
-	await fetch("/js/db.json").then(r=>r.json()).then(j=>res=j);
+	await fetch("js/db.json").then(r=>r.json()).then(j=>res=j);
 	debugLog("DB data retrieved.")
 	return res;
 }

@@ -20,7 +20,7 @@
 		<input id="adminDataFormUser" type="hidden" name="u">
 	</form>
 	<hr>
-	<form action="processAdminAccountChanges.html" onsubmit="validateAdminSecurityForm(event)">
+	<form action="processAdminAccountChanges.html" onsubmit="validateAdminPasswordForm(event)">
 		<div class="row form-group">
 			<div class="col-sm-6">
 				<label for="pass">Nueva Contraseña</label>
@@ -41,6 +41,12 @@
 				</ul>
 			</div>
 		</div>
+		<div class="form-group">
+			<input id="adminSaveSecurity" type="submit" value="Guardar Nueva Contraseña" class="btn btn-success">
+		</div>
+		<input id="adminSecFormUser" type="hidden" name="u">
+	</form>
+	<form action="processAdminAccountChanges.html" onsubmit="validateAdminSecQuestionForm(event)">
 		<div class="row form-group">
 			<div class="col-sm-6">
 				<label for="secQuestion">Cambiar Pregunta de Seguridad</label>
@@ -52,7 +58,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<input id="adminSaveSecurity" type="submit" value="Guardar" class="btn btn-success">
+			<input id="adminSaveSecurity" type="submit" value="Guardar Datos de Recuperación" class="btn btn-success">
 		</div>
 		<input id="adminSecFormUser" type="hidden" name="u">
 	</form>

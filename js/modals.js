@@ -9,11 +9,17 @@
 
 //	Prepares the Product Modal in the adminProducts page.
 async function prepareProductModal(e){
+	get("productFormCategory").innerHTML="";
 	await selectAllFrom("categories").then(data=>{
 		for(row of data){
 			get("productFormCategory").innerHTML+=`<option value="${row["code"]}">${row["name"]}</option>`;
 		}
 	});
+	makeValid(get("productFormImage"));
+	makeValid(get("productFormName"));
+	makeValid(get("productFormPrice"));
+	makeValid(get("productFormStock"));
+	makeValid(get("productFormDescription"));
 	if(e){
 		var parent=e.parentElement.parentElement;
 		get("productFormImagePreview").setAttribute("src",parent.children[0].children[0].getAttribute("src"));
@@ -21,7 +27,7 @@ async function prepareProductModal(e){
 		get("productFormPrice").value=parent.children[2].innerText;
 		get("productFormStock").value=parent.children[3].innerText;
 		get("productFormCategory").value=parent.children[4].innerText;
-		get("productFormDescription").innerText=parent.children[5].innerHTML;
+		get("productFormDescription").value=parent.children[5].innerHTML;
 		get("productFormUpdate").value=true;
 	} else {
 		get("productFormImagePreview").setAttribute("src","");
@@ -29,13 +35,14 @@ async function prepareProductModal(e){
 		get("productFormPrice").value="";
 		get("productFormStock").value="";
 		get("productFormCategory").value="";
-		get("productFormDescription").innerText="";
+		get("productFormDescription").value="";
 		get("productFormUpdate").value=false;
 	}
 }
 
 //	Prepares the Category Modal in the adminCategories page.
 async function prepareCategoryModal(e){
+	makeValid(get("categoryFormName"));
 	if(e){
 		var parent=e.parentElement.parentElement;
 		get("categoryFormName").value=parent.children[0].innerText;
@@ -93,6 +100,11 @@ async function prepareSaleModal(e,userID){
 
 //	Prepares the Administrator Modal in the adminAdministrators page.
 async function prepareAdministratorModal(e){
+	makeValid(get("adminFormNewName"));
+	makeValid(get("adminFormNewSurname"));
+	makeValid(get("adminFormNewRUT"));
+	makeValid(get("adminFormNewMail"));
+	makeValid(get("adminFormNewPhone"));
 	if(e){
 		get("adminFormShow").classList.remove("hidden");
 		get("adminFormNew").classList.add("hidden");
@@ -112,6 +124,7 @@ async function prepareAddressModal(e){
 	makeValid(get("addressFormStreet"));
 	makeValid(get("addressFormNumber"));
 	makeValid(get("addressFormPostalCode"));
+	get("addressFormDistrict").innerHTML="";
 	var districts=await selectAllFrom("districts");
 	for(d of districts){
 		get("addressFormDistrict").innerHTML+=`<option value=${d["id"]}>${d["name"]}</option>`;
