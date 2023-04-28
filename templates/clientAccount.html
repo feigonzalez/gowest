@@ -1,6 +1,6 @@
 <div class="container mt-3">
 	<h4>Datos</h4>
-	<form action="processClientAccountChanges.html" onsumbit="validateClientAccountForm(event)">
+	<form action="processClientAccountChanges.html" onsubmit="validateClientAccountForm(event)">
 		<div class="row form-group">
 			<div class="col-sm-6">
 				<label for="name">Nombre</label>
@@ -30,11 +30,11 @@
 		<div class="row form-group">
 			<div class="col-sm-6">
 				<label for="pass">Nueva Contraseña</label>
-				<input id="clientPass" name="pass" class="form-control">
+				<input id="clientPass" type="password" name="pass" class="form-control">
 			</div>
 			<div class="col-sm-6">
 				<label for="newPassConfirm">Repetir Nueva Contraseña</label>
-				<input id="clientPassConfirm" name="passConfirm" class="form-control">
+				<input id="clientPassConfirm" type="password" name="passConfirm" class="form-control">
 			</div>
 			<div id="passGuides">
 				Su contraseña debe tener lo siguiente:
@@ -50,6 +50,7 @@
 		<div class="form-group text-right">
 			<input id="clientSaveSecurity" type="submit" value="Guardar Contraseña" class="btn btn-success">
 		</div>
+		<input type="hidden" id="clientDataFormUser" name="u">
 	</form>
 	<form action="processClientAccountChanges.html" onsubmit="validateClientSecQuestionForm(event)">
 		<div class="row form-group">

@@ -80,11 +80,15 @@ async function loadSecQuestion(e){
 /*
 	Adds a badge to the navbar cart button, or replaces its value, according to the number
 	of units specified.
+	If units is undefined, it is assumed to be called from the product page "Add to Cart" button.
 */
 function addToCart(units){
 	var cartBtn = get("navbarCartBtn");
 	if(cartBtn==null) return;
-	if(units==null) units = parseInt(get("addToCartUnits").value);
+	if(units==null){
+		units = parseInt(get("addToCartUnits").value);
+		if(units<1)return;
+	}
 	var newUnits=parseInt(cartBtn.dataset["units"])+units;
 	var cartBadge=get("navbarCartUnits");
 	cartBadge.classList.remove("hidden");
