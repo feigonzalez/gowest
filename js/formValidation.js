@@ -42,7 +42,7 @@ function isValidEmail(str){
 }
 
 //Returns true is the given string has at least one letter.
-//Normallt used on fields that correspond to a name.
+//Normally used on fields that correspond to a name.
 function isValidName(str){
 	return str.trim().match(/[a-zA-Z]/)!=null;
 }
@@ -79,10 +79,6 @@ function makeInvalid(e,msg){
 	e.classList.add("is-invalid");
 	fElem.style.display="block";
 	fElem.innerHTML+="<div class='validationFeedback'>"+msg+"</div>";
-}
-
-function spawnAlert(msg){
-	console.log(msg)
 }
 
 function validateSignup(ev){

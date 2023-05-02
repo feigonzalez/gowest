@@ -31,7 +31,9 @@ function clearParamsKeep(keys){
 
 /*
 	Load a new page. Doing so this way allows the URL parameters to be passed correctly.
-	Loading a new page without using this method clears all parameters.
+	Loading a new page without using a moveTo method clears all parameters.
+	newParams, if it exists, should be an array of [k,v] pairs, where k is the key, and v
+	is the value. For instance, newParams could be [["key1","val1"],["key2","val2"]].
 */
 function moveTo(newPage,newParams){
 	if(newParams!=null){
@@ -45,4 +47,25 @@ function moveTo(newPage,newParams){
 	}
 	appendParams=appendParams.substring(0,appendParams.length-1);
 	window.location.href=newPage+appendParams;
+}
+
+/*
+	Load a new page, replacing the current page in the history. Doing so this way allows the
+	URL parameters to be passed correctly.
+	Loading a new page without using a moveTo method clears all parameters.
+	newParams, if it exists, should be an array of [k,v] pairs, where k is the key, and v
+	is the value. For instance, newParams could be [["key1","val1"],["key2","val2"]].
+*/
+function moveToReplace(newPage,newParams){
+	if(newParams!=null){
+		for(pair of newParams){
+			params[pair[0]]=pair[1];
+		}
+	}
+	var appendParams="?";
+	for(key in params){
+		appendParams+=`${encodeURIComponent(key)}=${encodeURIComponent(params[key])}&`;
+	}
+	appendParams=appendParams.substring(0,appendParams.length-1);
+	window.location.replace(newPage+appendParams);
 }

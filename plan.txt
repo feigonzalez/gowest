@@ -1,3 +1,9 @@
+[ ] API
+ [ ] Determine API to be used
+ [ ] Determine where to use API
+ [ ] Call API
+ [ ] Process API call data
+
 [X] index (as Visit/Client):
  [X] .navbar
  [X] Gallery
